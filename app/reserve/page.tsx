@@ -1,29 +1,30 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { StickyHeader } from "@/components/sticky-header"
-import { ThemeSelector } from "@/components/theme-selector"
-import { PageStickyHeader } from "@/components/page-sticky-header"
-import { Footer } from "@/components/footer"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { StickyHeader } from "@/components/sticky-header";
+import { PageStickyHeader } from "@/components/page-sticky-header";
+import { Footer } from "@/components/footer";
 
 export default function ReserveStation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-white">
-      <ThemeSelector />
       <StickyHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <PageStickyHeader currentPage="reserve" />
 
       <div className="container mx-auto px-6 py-12 pt-32">
         {/* Hero Section */}
         <div className="text-left mb-4">
-          <h1 className="text-4xl lg:text-6xl font-light text-black mb-6">Partner With Powerdon</h1>
+          <h1 className="text-4xl lg:text-6xl font-light text-black mb-6">
+            Partner With Powerdon
+          </h1>
           <p className="text-gray-600 max-w-3xl text-lg mx-0">
-            Let us place our premium charging stations at your festival or event. Enhance attendee experience while
-            generating additional revenue - at no cost to you.
+            Let us place our premium charging stations at your festival or
+            event. Enhance attendee experience while generating additional
+            revenue - at no cost to you.
           </p>
           <div className="mt-8">
             <Button
@@ -60,13 +61,20 @@ export default function ReserveStation() {
           <Card className="bg-white border border-gray-200 overflow-hidden shadow-lg">
             <CardContent className="p-0">
               <div className="w-full h-48 mb-6">
-                <img src="/images/happy-attendees.png" alt="Happy Attendees" className="w-full h-full object-cover" />
+                <img
+                  src="/images/happy-attendees.png"
+                  alt="Happy Attendees"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="px-6 pb-6">
-                <h3 className="text-xl font-semibold mb-3 text-black">Happy Attendees</h3>
+                <h3 className="text-xl font-semibold mb-3 text-black">
+                  Happy Attendees
+                </h3>
                 <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
-                  Keep your festival-goers connected and engaged. No more dead phones means better social media coverage
-                  and happier attendees who stay longer.
+                  Keep your festival-goers connected and engaged. No more dead
+                  phones means better social media coverage and happier
+                  attendees who stay longer.
                 </p>
               </div>
             </CardContent>
@@ -82,10 +90,13 @@ export default function ReserveStation() {
                 />
               </div>
               <div className="px-6 pb-6">
-                <h3 className="text-xl font-semibold mb-3 text-black">Free Digital Signage</h3>
+                <h3 className="text-xl font-semibold mb-3 text-black">
+                  Free Digital Signage
+                </h3>
                 <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
-                  Promote your event schedule, sponsors, and announcements on our high-visibility digital displays -
-                  completely free as part of our partnership.
+                  Promote your event schedule, sponsors, and announcements on
+                  our high-visibility digital displays - completely free as part
+                  of our partnership.
                 </p>
               </div>
             </CardContent>
@@ -94,12 +105,19 @@ export default function ReserveStation() {
           <Card className="bg-white border border-gray-200 overflow-hidden shadow-lg">
             <CardContent className="p-0">
               <div className="w-full h-48 mb-6">
-                <img src="/images/revenue-share.png" alt="Revenue Share" className="w-full h-full object-cover" />
+                <img
+                  src="/images/revenue-share.png"
+                  alt="Revenue Share"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="px-6 pb-6">
-                <h3 className="text-xl font-semibold mb-3 text-black">Revenue Share</h3>
+                <h3 className="text-xl font-semibold mb-3 text-black">
+                  Revenue Share
+                </h3>
                 <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
-                  Earn from every rented power bank. Turn charging into a profit centre for your festival.
+                  Earn from every rented power bank. Turn charging into a profit
+                  centre for your festival.
                 </p>
               </div>
             </CardContent>
@@ -110,49 +128,76 @@ export default function ReserveStation() {
         <div className="space-y-8 max-w-2xl mb-32">
           <div className="flex items-start space-x-4">
             <div className="flex-shrink-0 mt-1">
-              <img src="/images/checkmark.png" alt="Checkmark" className="w-6 h-6" />
+              <img
+                src="/images/checkmark.png"
+                alt="Checkmark"
+                className="w-6 h-6"
+              />
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-black mb-2">Zero Investment</h3>
+              <h3 className="text-xl font-semibold text-black mb-2">
+                Zero Investment
+              </h3>
               <p className="text-gray-500 leading-relaxed">
-                No upfront costs, setup fees, or equipment rental. We handle everything from installation to
-                maintenance.
+                No upfront costs, setup fees, or equipment rental. We handle
+                everything from installation to maintenance.
               </p>
             </div>
           </div>
 
           <div className="flex items-start space-x-4">
             <div className="flex-shrink-0 mt-1">
-              <img src="/images/checkmark.png" alt="Checkmark" className="w-6 h-6" />
+              <img
+                src="/images/checkmark.png"
+                alt="Checkmark"
+                className="w-6 h-6"
+              />
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-black mb-2">Always On</h3>
+              <h3 className="text-xl font-semibold text-black mb-2">
+                Always On
+              </h3>
               <p className="text-gray-500 leading-relaxed">
-                Round-the-clock monitoring and support ensures your attendees never face charging issues.
+                Round-the-clock monitoring and support ensures your attendees
+                never face charging issues.
               </p>
             </div>
           </div>
 
           <div className="flex items-start space-x-4">
             <div className="flex-shrink-0 mt-1">
-              <img src="/images/checkmark.png" alt="Checkmark" className="w-6 h-6" />
+              <img
+                src="/images/checkmark.png"
+                alt="Checkmark"
+                className="w-6 h-6"
+              />
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-black mb-2">Data Insights</h3>
+              <h3 className="text-xl font-semibold text-black mb-2">
+                Data Insights
+              </h3>
               <p className="text-gray-500 leading-relaxed">
-                Get valuable attendee behavior analytics and foot traffic patterns to improve future events.
+                Get valuable attendee behavior analytics and foot traffic
+                patterns to improve future events.
               </p>
             </div>
           </div>
 
           <div className="flex items-start space-x-4">
             <div className="flex-shrink-0 mt-1">
-              <img src="/images/checkmark.png" alt="Checkmark" className="w-6 h-6" />
+              <img
+                src="/images/checkmark.png"
+                alt="Checkmark"
+                className="w-6 h-6"
+              />
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-black mb-2">Secure Storage</h3>
+              <h3 className="text-xl font-semibold text-black mb-2">
+                Secure Storage
+              </h3>
               <p className="text-gray-500 leading-relaxed">
-                Advanced security features protect devices while charging, giving attendees peace of mind.
+                Advanced security features protect devices while charging,
+                giving attendees peace of mind.
               </p>
             </div>
           </div>
@@ -161,5 +206,5 @@ export default function ReserveStation() {
       {/* Add Footer before closing div */}
       <Footer />
     </div>
-  )
+  );
 }
