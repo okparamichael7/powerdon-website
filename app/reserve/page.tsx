@@ -71,7 +71,7 @@ export default function ReserveStation() {
                 <h3 className="text-xl font-semibold mb-3 text-black">
                   Happy Attendees
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
+                <p className="text-gray-500 text-sm leading-relaxed">
                   Keep your festival-goers connected and engaged. No more dead
                   phones means better social media coverage and happier
                   attendees who stay longer.
@@ -93,7 +93,7 @@ export default function ReserveStation() {
                 <h3 className="text-xl font-semibold mb-3 text-black">
                   Free Digital Signage
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
+                <p className="text-gray-500 text-sm leading-relaxed">
                   Promote your event schedule, sponsors, and announcements on
                   our high-visibility digital displays - completely free as part
                   of our partnership.
@@ -115,7 +115,7 @@ export default function ReserveStation() {
                 <h3 className="text-xl font-semibold mb-3 text-black">
                   Revenue Share
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
+                <p className="text-gray-500 text-sm leading-relaxed">
                   Earn from every rented power bank. Turn charging into a profit
                   centre for your festival.
                 </p>
