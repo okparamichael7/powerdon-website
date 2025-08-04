@@ -7,6 +7,7 @@ import { Users, Smartphone } from "lucide-react";
 import { StickyHeader } from "@/components/sticky-header";
 import { PageStickyHeader } from "@/components/page-sticky-header";
 import { Footer } from "@/components/footer";
+import Link from "next/link";
 
 export default function AdvertisingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,11 +66,20 @@ export default function AdvertisingPage() {
 
         {/* Hero Image Section */}
         <div className="w-full mb-16 mt-[90px]">
-          <img
-            src="/images/music-festival-ad.jpeg"
-            alt="POWERDON charging station displaying digital advertisement for Music is Universal event"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-[60vh] rounded-lg shadow-lg object-cover"
-          />
+          >
+            <source src="/videos/music-festival-ad.mp4" type="video/mp4" />
+            {/* Fallback image in case video doesn't load */}
+            <img
+              src="/images/music-festival-ad.jpeg"
+              alt="POWERDON charging station displaying digital advertisement for Music is Universal event"
+            />
+          </video>
         </div>
 
         {/* Why Advertise with Powerdon */}
@@ -237,9 +247,11 @@ export default function AdvertisingPage() {
                     • Perfect for small to mid-size festivals and brand pilots
                   </p>
                 </div>
-                <Button className="w-full bg-black hover:bg-gray-800 text-white py-3 mt-20">
-                  Get started
-                </Button>
+                <Link href="/advertising/quote">
+                  <Button className="w-full bg-black hover:bg-gray-800 text-white py-3 mt-20">
+                    Get started
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -273,9 +285,11 @@ export default function AdvertisingPage() {
                   <p>• Option for A/B testing support for various creatives</p>
                   <p>• Our most popular pick for mid-to-large festivals</p>
                 </div>
-                <Button className="w-full bg-black hover:bg-gray-800 text-white py-3 mt-6">
-                  Get started
-                </Button>
+                <Link href="/advertising/quote">
+                  <Button className="w-full bg-black hover:bg-gray-800 text-white py-3 mt-6">
+                    Get started
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>

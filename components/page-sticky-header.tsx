@@ -40,8 +40,8 @@ export function PageStickyHeader({ currentPage }: PageStickyHeaderProps) {
       style={{
         width: "500px",
         height: "auto",
-        top: "528.4px",
-        left: "950px",
+        bottom: "65px", // Changed from top to bottom
+        right: "20px", // Changed from left to right
       }}
     >
       <div className="flex items-center justify-between p-4">

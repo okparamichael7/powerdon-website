@@ -205,3 +205,39 @@ body {
 .animate-fade-text {
   animation: fadeText 4s ease-in-out infinite;
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration) linear infinite;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
+}
+
+/* Smooth transitions for all motion components */
+[motion] {
+  transition: all 0.3s ease-out;
+}
+
+/* Menu item hover effects */
+.menu-item:hover {
+  transform: translateX(5px);
+}

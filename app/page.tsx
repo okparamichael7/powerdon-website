@@ -140,7 +140,6 @@ export default function PowerdonLanding() {
             <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-40 lg:h-40 bg-blue-400 rounded-full blur-3xl mx-auto -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-20"></div>
           </div>
 
-          {/* Add responsive image underneath the glow effect */}
           {/* Add responsive video underneath the glow effect */}
           <div className="relative z-10 mt-4 mr-2">
             {/* Desktop/Tablet Video - Hidden on mobile < 450px */}

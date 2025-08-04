@@ -42,7 +42,7 @@ export function StickySublines() {
       style={{
         width: "auto",
         height: "auto",
-        bottom: "20px",
+        bottom: "65px",
         right: "20px",
         transform: showSublines
           ? "translateY(0) scale(1)"
