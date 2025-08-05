@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { MarqueeText } from "./magicui/marquee-text";
@@ -16,6 +16,23 @@ interface StickyHeaderProps {
 
 export function StickyHeader({ isMenuOpen, setIsMenuOpen }: StickyHeaderProps) {
   const [isSticky, setIsSticky] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuOpen, setIsMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,12 +50,13 @@ export function StickyHeader({ isMenuOpen, setIsMenuOpen }: StickyHeaderProps) {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
+            ref={menuRef}
             layoutId="menu"
             initial={{ borderRadius: 12 }}
             animate={{ borderRadius: 16 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed top-6 right-6 w-80 bg-[#989899] p-4 rounded-xl shadow-lg z-50"
+            className="fixed top-6 right-6 w-64 md:w-80 bg-[#989899] p-4 rounded-xl shadow-lg z-50"
           >
             {/* Close Button */}
             <button
@@ -103,7 +121,7 @@ export function StickyHeader({ isMenuOpen, setIsMenuOpen }: StickyHeaderProps) {
           <div
             className={cn(
               "relative max-w-xl overflow-hidden",
-              "hidden sm:block" // Show on sm screens and up
+              "hidden md:block" // Show on sm screens and up
             )}
           >
             <MarqueeText pauseOnHover className="[--duration:20s]">

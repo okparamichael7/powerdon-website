@@ -152,7 +152,7 @@ export default function ContactPage() {
                   </Label>
                   <Input
                     id="firstName"
-                    className={`${"bg-white border-gray-300"} text-white`}
+                    className={`bg-white border-gray-300 text-black`}
                   />
                 </div>
                 <div>
@@ -161,7 +161,7 @@ export default function ContactPage() {
                   </Label>
                   <Input
                     id="lastName"
-                    className={`${"bg-white border-gray-300"} text-white`}
+                    className={`bg-white border-gray-300 text-black`}
                   />
                 </div>
               </div>
@@ -174,7 +174,7 @@ export default function ContactPage() {
                   <Input
                     id="email"
                     type="email"
-                    className={`${"bg-white border-gray-300"} text-white`}
+                    className={`bg-white border-gray-300 text-black`}
                   />
                 </div>
                 <div>
@@ -183,7 +183,7 @@ export default function ContactPage() {
                   </Label>
                   <Input
                     id="phone"
-                    className={`${"bg-white border-gray-300"} text-white`}
+                    className={`bg-white border-gray-300 text-black`}
                   />
                 </div>
               </div>
@@ -194,7 +194,7 @@ export default function ContactPage() {
                 </Label>
                 <Input
                   id="company"
-                  className={`${"bg-white border-gray-300"} text-white`}
+                  className={`bg-white border-gray-300 text-black`}
                 />
               </div>
 
@@ -204,7 +204,7 @@ export default function ContactPage() {
                 </Label>
                 <Select>
                   <SelectTrigger
-                    className={`${"bg-white border-gray-300"} text-white`}
+                    className={`bg-white border-gray-300 text-black placeholder:text-gray-600`}
                   >
                     <SelectValue placeholder="Select a subject" />
                   </SelectTrigger>
@@ -227,7 +227,7 @@ export default function ContactPage() {
                 </Label>
                 <Textarea
                   id="message"
-                  className={`${"bg-white border-gray-300"} text-white min-h-[120px]`}
+                  className={`bg-white border-gray-300 text-black placeholder:text-gray-600 min-h-[120px]`}
                   placeholder="Tell us how we can help you..."
                 />
               </div>

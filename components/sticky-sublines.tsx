@@ -53,7 +53,7 @@ export function StickySublines() {
       <div className="p-2 py-0">
         <div className="text-center mb-4"></div>
 
-        <div className="flex gap-2 flex-row">
+        <div className="flex gap-2 flex-col sm:flex-row">
           <Button
             onClick={handleAdvertisingClick}
             className={`bg-blue-700/90 hover:bg-blue-600 border-blue-500/50 text-white shadow-lg font-medium transform hover:scale-105 transition-all duration-200 leading-3 px-4`}
@@ -66,7 +66,7 @@ export function StickySublines() {
               paddingRight: "16px",
               paddingBottom: "13px",
               paddingLeft: "16px",
-              fontSize: "14px",
+              fontSize: "clamp(12px, 3vw, 14px)",
               animationDuration: "0ms",
             }}
           >
@@ -85,7 +85,7 @@ export function StickySublines() {
               paddingRight: "16px",
               paddingBottom: "13px",
               paddingLeft: "16px",
-              fontSize: "14px",
+              fontSize: "clamp(12px, 3vw, 14px)",
               animationDuration: "0ms",
             }}
           >

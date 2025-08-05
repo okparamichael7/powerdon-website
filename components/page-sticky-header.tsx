@@ -36,12 +36,11 @@ export function PageStickyHeader({ currentPage }: PageStickyHeaderProps) {
 
   return (
     <div
-      className={`fixed z-40 bg-blue-900/95 border-blue-700/50 backdrop-blur-md border transition-all duration-300 ease-out shadow-lg`}
+      className={`fixed z-40 w-[174px] sm:w-[500px] bg-blue-900/95 border-blue-700/50 backdrop-blur-md border transition-all duration-300 ease-out shadow-lg`}
       style={{
-        width: "500px",
         height: "auto",
-        bottom: "65px", // Changed from top to bottom
-        right: "20px", // Changed from left to right
+        bottom: "65px",
+        right: "20px",
       }}
     >
       <div className="flex items-center justify-between p-4">
@@ -52,12 +51,12 @@ export function PageStickyHeader({ currentPage }: PageStickyHeaderProps) {
             alt="Powerdon"
             width={120}
             height={36}
-            className="h-6 w-auto brightness-0 invert"
+            className="h-6 w-auto brightness-0 invert hidden sm:block"
           />
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 flex-col sm:flex-row">
           <Button
             onClick={handleAdvertisingClick}
             className={`bg-blue-700 hover:bg-blue-600 border-blue-600 text-white text-sm font-medium transform hover:scale-105 transition-all duration-200 ${
@@ -70,7 +69,7 @@ export function PageStickyHeader({ currentPage }: PageStickyHeaderProps) {
             style={{
               width: "140px",
               height: "36px",
-              fontSize: "12px",
+              fontSize: "clamp(12px, 3vw, 14px)",
               animationDuration: "0ms",
             }}
           >
@@ -87,7 +86,7 @@ export function PageStickyHeader({ currentPage }: PageStickyHeaderProps) {
             style={{
               width: "140px",
               height: "36px",
-              fontSize: "12px",
+              fontSize: "clamp(12px, 3vw, 14px)",
               animationDuration: "0ms",
             }}
           >
