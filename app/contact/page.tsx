@@ -33,8 +33,7 @@ export default function ContactPage() {
           <p
             className={`text-xl text-gray-600 max-w-3xl mx-auto text-left ml-0 mr-[600px]`}
           >
-            Have questions about our charging stations or want to discuss a
-            partnership? We'd love to hear from you.
+            Have questions about our charging stations or want to join our testing phase and pre-launch program? We'd love to hear from you.
           </p>
         </div>
 
@@ -51,8 +50,8 @@ export default function ContactPage() {
                   <Mail className={`w-6 h-6 ${"text-blue-600"} mt-1`} />
                   <div>
                     <h3 className="text-black font-semibold mb-1">Email</h3>
-                    <p className={"text-gray-600"}>hello@powerdon.com</p>
-                    <p className={"text-gray-600"}>support@powerdon.com</p>
+                    <p className={"text-gray-600"}>support@powerdon.nl</p>
+                    <p className={"text-gray-600"}>branding@powerdon.nl</p>
                   </div>
                 </div>
 
@@ -60,9 +59,9 @@ export default function ContactPage() {
                   <Phone className="w-6 h-6 text-green-400 mt-1" />
                   <div>
                     <h3 className="text-black font-semibold mb-1">Phone</h3>
-                    <p className={"text-gray-600"}>+1 (555) 123-4567</p>
+                    <p className={"text-gray-600"}>+31 (06)130713536</p>
                     <p className={`${"text-gray-600"} text-sm`}>
-                      Mon-Fri 9AM-6PM PST
+                      Mon-Fri 9AM-6PM CEST
                     </p>
                   </div>
                 </div>
@@ -71,8 +70,9 @@ export default function ContactPage() {
                   <MapPin className="w-6 h-6 text-purple-400 mt-1" />
                   <div>
                     <h3 className="text-black font-semibold mb-1">Address</h3>
-                    <p className={"text-gray-600"}>123 Innovation Drive</p>
-                    <p className={"text-gray-600"}>San Francisco, CA 94105</p>
+                    <p className={"text-gray-600"}>Luzacstraat 7A01
+                      </p>
+                    <p className={"text-gray-600"}>3038 VT, Rotterdam</p>
                   </div>
                 </div>
 
