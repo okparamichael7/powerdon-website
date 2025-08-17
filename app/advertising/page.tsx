@@ -241,7 +241,7 @@ export default function AdvertisingPage() {
                     locations
                   </p>
                   <p>• Digital display ads during charging sessions</p>
-                  <p>• Basic analytics</p>
+                  <p>• Analytics on impression, engagement time </p>
                   <p>• Estimated 50,000+ impressions per event</p>
                   <p>
                     • Perfect for small to mid-size festivals and brand pilots
