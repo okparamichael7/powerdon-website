@@ -202,8 +202,8 @@ export default function AdvertisingPage() {
                 </p>
                 <ul className={`${getTextColor()} space-y-2`}>
                   <li>• Custom color schemes</li>
-                  <li>• Logo integration</li>
-                  <li>• Branded charging cables</li>
+                  <li>• Logo and QR code integration for campaigns </li>
+                  <li>• Unique brand touchpoint in moments of need</li>
                   <li>• Custom welcome messages</li>
                 </ul>
               </CardContent>
@@ -216,7 +216,7 @@ export default function AdvertisingPage() {
           <h2 className="font-light text-black mb-12 text-left text-4xl">
             Advertising Packages
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             <Card className="bg-white border border-gray-200 overflow-hidden shadow-lg">
               <div
                 className="w-full relative flex items-center justify-between px-6 py-4 h-60"
@@ -247,11 +247,6 @@ export default function AdvertisingPage() {
                     • Perfect for small to mid-size festivals and brand pilots
                   </p>
                 </div>
-                <Link href="/advertising/quote">
-                  <Button className="w-full bg-black hover:bg-gray-800 text-white py-3 mt-20">
-                    Get started
-                  </Button>
-                </Link>
               </CardContent>
             </Card>
 
@@ -285,16 +280,116 @@ export default function AdvertisingPage() {
                   <p>• Option for A/B testing support for various creatives</p>
                   <p>• Our most popular pick for mid-to-large festivals</p>
                 </div>
-                <Link href="/advertising/quote">
-                  <Button className="w-full bg-black hover:bg-gray-800 text-white py-3 mt-6">
-                    Get started
-                  </Button>
-                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white border border-gray-200 overflow-hidden shadow-lg">
+              <div
+                className="w-full relative flex items-center justify-between px-6 py-4 h-60"
+                style={{
+                  backgroundImage: "url(/images/gradient-1.png)",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <div className="flex flex-col pt-[30px]">
+                  <CardTitle className="text-white text-2xl font-medium tracking-[0.005em]">
+                    Pilot Testing
+                  </CardTitle>
+                  <span className="text-white px-3 py-1 rounded-full mt-2 w-fit text-xs font-normal tracking-wider bg-[rgba(255,255,255,0.2)]">
+                    STARTUP FRIENDLY
+                  </span>
+                </div>
+                <div className="text-white text-right">
+                  <span className="text-2xl font-medium">Custom</span>
+                  <span className="opacity-80 text-base"> pricing</span>
+                </div>
+              </div>
+              <CardContent className="p-6 space-y-4 py-10 pb-6 pt-[52px]">
+                <div className="text-gray-800 space-y-2 mb-7">
+                  <p>• 3-5 stations for small events and startups</p>
+                  <p>• Flexible pricing based on event size and budget</p>
+                  <p>• Basic digital display advertising</p>
+                  <p>• Up to 25,000 impressions per event</p>
+                  <p>• Perfect for testing our services at startup events</p>
+                </div>
+                <Button className="w-full bg-black hover:bg-gray-800 text-white py-3 mt-6">
+                  Collaborate
+                </Button>
               </CardContent>
             </Card>
           </div>
         </div>
       </div>
+      {/* Pilot Testing Request Quote Section */}
+      <div className="mb-32 mt-16">
+        <div className="bg-gray-50 rounded-lg p-8 max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-3xl font-light text-black mb-4">
+              Interested in Pilot Testing?
+            </h3>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Perfect for startups and small events looking to test our
+              advertising solutions. Get custom pricing tailored to your budget
+              and event size.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <div className="flex-shrink-0 mt-1">
+                  <img
+                    src="/images/checkmark.png"
+                    alt="Checkmark"
+                    className="w-5 h-5"
+                  />
+                </div>
+                <p className="text-gray-700">
+                  No long-term commitments required
+                </p>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="flex-shrink-0 mt-1">
+                  <img
+                    src="/images/checkmark.png"
+                    alt="Checkmark"
+                    className="w-5 h-5"
+                  />
+                </div>
+                <p className="text-gray-700">
+                  Free consultation and setup guidance
+                </p>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="flex-shrink-0 mt-1">
+                  <img
+                    src="/images/checkmark.png"
+                    alt="Checkmark"
+                    className="w-5 h-5"
+                  />
+                </div>
+                <p className="text-gray-700">
+                  Detailed performance analytics included
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center md:text-left">
+              <Button
+                onClick={() => (window.location.href = "/advertising/quote")}
+                className="bg-black text-white hover:bg-gray-800 px-8 py-3 font-medium text-lg mb-4"
+              >
+                Start Your Campaign Now
+              </Button>
+              <p className="text-sm text-gray-500">
+                Get a custom proposal within 24 hours
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Add Footer before closing div */}
       <Footer />
     </div>
