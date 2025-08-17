@@ -13,9 +13,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Contact } from "lucide-react";
 import { StickyHeader } from "@/components/sticky-header";
 import { Footer } from "@/components/footer";
+import ContactForm from "./form/ContactForm";
 
 export default function ContactPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -138,111 +139,7 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <Card className={"bg-white border-gray-200"}>
-            <CardHeader>
-              <CardTitle className="text-black text-2xl">
-                Send us a Message
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="firstName" className="text-black">
-                    First Name
-                  </Label>
-                  <Input
-                    id="firstName"
-                    className={`bg-white border-gray-300 text-black`}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="lastName" className="text-black">
-                    Last Name
-                  </Label>
-                  <Input
-                    id="lastName"
-                    className={`bg-white border-gray-300 text-black`}
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="email" className="text-black">
-                    Email
-                  </Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    className={`bg-white border-gray-300 text-black`}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="phone" className="text-black">
-                    Phone (Optional)
-                  </Label>
-                  <Input
-                    id="phone"
-                    className={`bg-white border-gray-300 text-black`}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <Label htmlFor="company" className="text-black">
-                  Company (Optional)
-                </Label>
-                <Input
-                  id="company"
-                  className={`bg-white border-gray-300 text-black`}
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="subject" className="text-black mb-1">
-                  Subject
-                </Label>
-                <Select>
-                  <SelectTrigger
-                    className={`bg-white border-gray-300 text-black placeholder:text-gray-600`}
-                  >
-                    <SelectValue placeholder="Select a subject" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="general">General Inquiry</SelectItem>
-                    <SelectItem value="sales">Sales Question</SelectItem>
-                    <SelectItem value="support">Technical Support</SelectItem>
-                    <SelectItem value="partnership">
-                      Partnership Opportunity
-                    </SelectItem>
-                    <SelectItem value="media">Media Inquiry</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <Label htmlFor="message" className="text-black">
-                  Message
-                </Label>
-                <Textarea
-                  id="message"
-                  className={`bg-white border-gray-300 text-black placeholder:text-gray-600 min-h-[120px]`}
-                  placeholder="Tell us how we can help you..."
-                />
-              </div>
-
-              <Button
-                className={`w-full ${"bg-black hover:bg-gray-800"} text-lg py-3`}
-              >
-                Send Message
-              </Button>
-
-              <p className={`${"text-gray-600"} text-sm text-center`}>
-                We typically respond within 24 hours during business days.
-              </p>
-            </CardContent>
-          </Card>
+          <ContactForm />
         </div>
 
         {/* FAQ Section */}
