@@ -10,7 +10,7 @@ import {
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Partnership Email
+// Partnership Email to Admin
 export async function sendPartnershipEmail(values: any) {
   try {
     const {
@@ -28,7 +28,7 @@ export async function sendPartnershipEmail(values: any) {
 
     const { data, error } = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
-      to: values.email,
+      to: process.env.TO_EMAIL!,
       subject: `Partnership Application Received: ${values.eventName}`,
       react: PartnershipNotificationTemplate({
         organizer,
@@ -74,15 +74,15 @@ export async function sendPartnershipConfirmationEmail(values: any) {
   }
 }
 
-// Contact Email
+// Contact Email to Admin
 export async function sendContactEmail(values: any) {
   try {
     const { firstName, lastName, email, phone, company, subject, message } =
       values;
     const { data, error } = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
-      to: email,
-      subject: `We've received your message: ${subject}`,
+      to: process.env.TO_EMAIL!,
+      subject: `Contact Form Submission: ${subject}`,
       react: ContactNotificationTemplate({
         firstName,
         lastName,
@@ -124,7 +124,7 @@ export async function sendContactConfirmationEmail(values: any) {
   }
 }
 
-// Advertising / Quote Email
+// Advertising / Quote Email to Admin
 export async function sendAdvertisingEmail(values: any) {
   try {
     const {
@@ -140,7 +140,7 @@ export async function sendAdvertisingEmail(values: any) {
     } = values;
     const { data, error } = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
-      to: email,
+      to: process.env.TO_EMAIL!,
       subject: "Campaign Quote Request Received",
       react: QuoteNotificationTemplate({
         company,
