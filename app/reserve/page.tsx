@@ -193,11 +193,10 @@ export default function ReserveStation() {
             </div>
             <div>
               <h3 className="text-xl font-semibold text-black mb-2">
-                Secure Storage
+                Attendees freedom to move around
               </h3>
               <p className="text-gray-500 leading-relaxed">
-                Advanced security features protect devices while charging,
-                giving attendees peace of mind.
+                Attendees can charge on the go and keep exploring the event without interruptions.
               </p>
             </div>
           </div>
@@ -252,7 +251,7 @@ export default function ReserveStation() {
                     />
                   </div>
                   <p className="text-gray-700">
-                    Detailed performance analytics included
+                    Happy Attendees, Higher ratings
                   </p>
                 </div>
               </div>
@@ -262,7 +261,7 @@ export default function ReserveStation() {
                   onClick={() => (window.location.href = "/reserve/form")}
                   className="bg-black text-white hover:bg-gray-800 px-8 py-3 font-medium text-lg mb-4"
                 >
-                  Start Your Campaign Now
+                  Power Up Your Event Today
                 </Button>
                 <p className="text-sm text-gray-500">
                   Get a custom proposal within 24 hours
