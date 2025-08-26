@@ -129,7 +129,7 @@ export const ContactNotificationTemplate = ({
 
           {/* Footer */}
           <Section style={footer}>
-            <div style={socialLinks}>
+            {/* <div style={socialLinks}>
               <Link href="#" style={socialLink}>
                 <Img
                   src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg"
@@ -157,7 +157,7 @@ export const ContactNotificationTemplate = ({
                   style={socialIcon}
                 />
               </Link>
-            </div>
+            </div> */}
             <Text style={footerText}>
               This message was sent via the PowerDon contact form.
             </Text>

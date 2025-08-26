@@ -217,7 +217,7 @@ export const ConfirmationTemplate = ({
 
           {/* Footer */}
           <Section style={footer}>
-            <div style={socialLinks}>
+            {/* <div style={socialLinks}>
               <Link href="#" style={socialLink}>
                 <Img
                   src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg"
@@ -245,7 +245,7 @@ export const ConfirmationTemplate = ({
                   style={socialIcon}
                 />
               </Link>
-            </div>
+            </div> */}
             <Text style={footerTitle}>Need immediate assistance?</Text>
             <Text style={footerText}>
               Email us at{" "}
