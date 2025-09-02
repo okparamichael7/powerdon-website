@@ -313,7 +313,10 @@ export default function AdvertisingPage() {
                   <p>• Up to 25,000 impressions per event</p>
                   <p>• Perfect for testing our services at startup events</p>
                 </div>
-                <Button className="w-full bg-black hover:bg-gray-800 text-white py-3 mt-6">
+                <Button
+                  className="w-full bg-black hover:bg-gray-800 text-white py-3 mt-6"
+                  onClick={() => (window.location.href = "/advertising/quote")}
+                >
                   Collaborate
                 </Button>
               </CardContent>

@@ -10,6 +10,7 @@ const campaignSchema = z.object({
   timeline: z.string().optional(),
   targetLocations: z.string().optional(),
   goals: z.string().optional(),
+  isCollaboration: z.boolean().optional(),
 });
 
 const contactSchema = z.object({

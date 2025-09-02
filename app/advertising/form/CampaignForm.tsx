@@ -27,6 +27,7 @@ import SuccessMessage from "@/components/success-message";
 import ErrorMessage from "@/components/error-message";
 import { campaignSchema } from "@/schema";
 import { campaign, CampaignFormData } from "@/app/actions/campaign";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function CampaignForm() {
   const [isPending, startTransition] = useTransition();
@@ -46,6 +47,7 @@ export default function CampaignForm() {
       timeline: "",
       targetLocations: "",
       goals: "",
+      isCollaboration: false,
     },
   });
 
@@ -215,7 +217,6 @@ export default function CampaignForm() {
                         <SelectItem value="7500-15000">
                           €7,500 - €15,000
                         </SelectItem>
-                        <SelectItem value="over-15000">Over €15,000</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -243,6 +244,31 @@ export default function CampaignForm() {
                 )}
               />
             </div>
+
+            <FormField
+              control={form.control}
+              name="isCollaboration"
+              render={({ field }) => (
+                <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                      className="my-auto"
+                    />
+                  </FormControl>
+                  <div className="space-y-1 leading-none">
+                    <Label
+                      htmlFor="collaboration"
+                      className="text-black text-sm cursor-pointer"
+                    >
+                      This is a collaboration inquiry (not a campaign request)
+                    </Label>
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
             <FormField
               control={form.control}
@@ -276,7 +302,7 @@ export default function CampaignForm() {
                   <FormControl>
                     <Textarea
                       id="goals"
-                      className="bg-white border-gray-300 min-h-[120px] mb-10 ml-0 mt-1 text-slate-400"
+                      className="bg-white border-gray-300 min-h-[120px] mb-10 ml-0 mt-1 text-black"
                       placeholder="Tell us about your marketing objectives, target audience, creative requirements, and what success looks like for your campaign..."
                       {...field}
                     />
