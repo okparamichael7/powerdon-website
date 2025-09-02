@@ -2,11 +2,7 @@
 
 import { z } from "zod";
 import { reserveSchema } from "@/schema";
-import {
-  sendPartnershipConfirmationEmail,
-  sendPartnershipEmail,
-} from "@/lib/mail";
-// import { sendConfirmationEmail, sendNotificationEmail } from "@/lib/mail";
+import { sendPartnershipEmail } from "@/lib/mail";
 
 export type ReserveFormData = z.infer<typeof reserveSchema>;
 
@@ -25,8 +21,6 @@ export async function reserve(values: ReserveFormData) {
     const { data } = validation;
 
     await sendPartnershipEmail(data);
-
-    await sendPartnershipConfirmationEmail(data);
 
     return { success: "Application submitted successfully", status: 200 };
   } catch (error) {

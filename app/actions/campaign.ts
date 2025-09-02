@@ -2,10 +2,7 @@
 
 import { z } from "zod";
 import { campaignSchema } from "@/schema";
-import {
-  sendAdvertisingConfirmationEmail,
-  sendAdvertisingEmail,
-} from "@/lib/mail";
+import { sendAdvertisingEmail } from "@/lib/mail";
 
 export type CampaignFormData = z.infer<typeof campaignSchema>;
 
@@ -24,8 +21,6 @@ export async function campaign(values: CampaignFormData) {
     const { data } = validation;
 
     await sendAdvertisingEmail(data);
-
-    await sendAdvertisingConfirmationEmail(data);
 
     return { success: "Campaign request submitted successfully", status: 200 };
   } catch (error) {

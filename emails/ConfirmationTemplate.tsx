@@ -24,6 +24,7 @@ interface Props {
   formType: FormType;
   submissionData: SubmissionData;
   customMessage?: string;
+  requestId?: string;
 }
 
 const formConfig = {
@@ -96,6 +97,7 @@ export const ConfirmationTemplate = ({
   formType,
   submissionData,
   customMessage,
+  requestId,
 }: Props) => {
   const config = formConfig[formType] || {
     title: "Contact Inquiry",
@@ -183,6 +185,11 @@ export const ConfirmationTemplate = ({
                   minute: "2-digit",
                 })}
               </Text>
+              {requestId && (
+                <Text style={requestIdText}>
+                  Reference ID: <strong>{requestId}</strong>
+                </Text>
+              )}
             </div>
           </Section>
 
@@ -446,6 +453,14 @@ const timestamp: CSSProperties = {
   color: "#94a3b8",
   margin: "0",
   fontStyle: "italic",
+};
+
+const requestIdText: CSSProperties = {
+  fontSize: "12px",
+  color: "#94a3b8",
+  margin: "8px 0 0 0",
+  fontFamily: "monospace",
+  letterSpacing: "0.5px",
 };
 
 const nextStepsCard = (color: string): CSSProperties => ({

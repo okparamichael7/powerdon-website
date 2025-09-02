@@ -7,72 +7,9 @@ import {
   PilotTestingNotificationTemplate,
   QuoteNotificationTemplate,
 } from "@/emails";
+import { generateRequestId } from "./utils";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-
-// Partnership Email to Admin
-export async function sendPartnershipEmail(values: any) {
-  try {
-    const {
-      organizer,
-      contact,
-      email,
-      phone,
-      eventName,
-      eventDate,
-      location,
-      attendees,
-      eventType,
-      additionalInfo,
-    } = values;
-
-    const { data, error } = await resend.emails.send({
-      from: `PowerDon <${process.env.FROM_EMAIL!}>`,
-      to: process.env.TO_EMAIL!,
-      subject: `Partnership Application Received: ${values.eventName}`,
-      react: PartnershipNotificationTemplate({
-        organizer,
-        contact,
-        email,
-        phone,
-        eventName,
-        eventDate,
-        location,
-        attendees,
-        eventType,
-        additionalInfo: additionalInfo || "",
-      }),
-    });
-
-    if (error) throw new Error("An error occurred while sending the email.");
-    return data;
-  } catch (error: any) {
-    throw new Error(`An error occurred: ${error.message}`);
-  }
-}
-
-// PARTNERSHIP confirmation email
-export async function sendPartnershipConfirmationEmail(values: any) {
-  try {
-    const { organizer: firstName, email, ...submissionData } = values;
-
-    const { data, error } = await resend.emails.send({
-      from: `PowerDon <${process.env.FROM_EMAIL!}>`,
-      to: email,
-      subject: "Your partnership request 🤝",
-      react: ConfirmationTemplate({
-        firstName,
-        formType: "partnership",
-        submissionData,
-      }),
-    });
-
-    if (error) throw new Error(error.message);
-    return data;
-  } catch (error: any) {
-    throw new Error(`Partnership confirmation failed: ${error.message}`);
-  }
-}
 
 // Contact Email to Admin
 export async function sendContactEmail(values: any) {
@@ -124,9 +61,71 @@ export async function sendContactConfirmationEmail(values: any) {
   }
 }
 
+// Partnership Email to Admin
+export async function sendPartnershipEmail(values: any) {
+  try {
+    const requestId = generateRequestId("PTN");
+    const {
+      organizer,
+      contact,
+      email,
+      phone,
+      eventName,
+      eventDate,
+      location,
+      attendees,
+      eventType,
+      additionalInfo,
+    } = values;
+
+    // Send to admin
+    const adminEmail = await resend.emails.send({
+      from: `PowerDon <${process.env.FROM_EMAIL!}>`,
+      to: process.env.TO_EMAIL!,
+      subject: `[${requestId}] Partnership Application Received: ${eventName}`,
+      react: PartnershipNotificationTemplate({
+        requestId,
+        organizer,
+        contact,
+        email,
+        phone,
+        eventName,
+        eventDate,
+        location,
+        attendees,
+        eventType,
+        additionalInfo: additionalInfo || "",
+      }),
+    });
+
+    if (adminEmail.error) throw new Error("Failed to send admin email");
+
+    // Send confirmation to user
+    const confirmationEmail = await resend.emails.send({
+      from: `PowerDon <${process.env.FROM_EMAIL!}>`,
+      to: email,
+      subject: `[${requestId}] Your partnership request 🤝`,
+      react: ConfirmationTemplate({
+        firstName: organizer,
+        formType: "partnership",
+        submissionData: values,
+        requestId,
+      }),
+    });
+
+    if (confirmationEmail.error)
+      throw new Error("Failed to send confirmation email");
+
+    return { admin: adminEmail.data, confirmation: confirmationEmail.data };
+  } catch (error: any) {
+    throw new Error(`Partnership email failed: ${error.message}`);
+  }
+}
+
 // Advertising / Quote Email to Admin
 export async function sendAdvertisingEmail(values: any) {
   try {
+    const requestId = generateRequestId("CAM");
     const {
       company,
       contact,
@@ -138,11 +137,14 @@ export async function sendAdvertisingEmail(values: any) {
       targetLocations,
       goals,
     } = values;
-    const { data, error } = await resend.emails.send({
+
+    // Send to admin
+    const adminEmail = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
       to: process.env.TO_EMAIL!,
-      subject: "Campaign Quote Request Received",
+      subject: `[${requestId}] Campaign Quote Request Received`,
       react: QuoteNotificationTemplate({
+        requestId,
         company,
         contact,
         email,
@@ -155,39 +157,34 @@ export async function sendAdvertisingEmail(values: any) {
       }),
     });
 
-    if (error) throw new Error("An error occurred while sending the email.");
-    return data;
-  } catch (error: any) {
-    throw new Error(`An error occurred: ${error.message}`);
-  }
-}
+    if (adminEmail.error) throw new Error("Failed to send admin email");
 
-// ADVERTISING (quote) confirmation email
-export async function sendAdvertisingConfirmationEmail(values: any) {
-  try {
-    const { contact: firstName, email, ...submissionData } = values;
-
-    const { data, error } = await resend.emails.send({
+    // Send confirmation to user
+    const confirmationEmail = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
       to: email,
-      subject: "We've received your quote request 📈",
+      subject: `[${requestId}] We've received your quote request 📈`,
       react: ConfirmationTemplate({
-        firstName,
+        firstName: contact,
         formType: "advertising",
-        submissionData,
+        submissionData: values,
+        requestId,
       }),
     });
 
-    if (error) throw new Error(error.message);
-    return data;
+    if (confirmationEmail.error)
+      throw new Error("Failed to send confirmation email");
+
+    return { admin: adminEmail.data, confirmation: confirmationEmail.data };
   } catch (error: any) {
-    throw new Error(`Advertising confirmation failed: ${error.message}`);
+    throw new Error(`Advertising email failed: ${error.message}`);
   }
 }
 
 // Pilot Testing Email
 export async function sendPilotTestingEmail(values: any) {
   try {
+    const requestId = generateRequestId("PLT");
     const {
       company,
       contact,
@@ -199,11 +196,14 @@ export async function sendPilotTestingEmail(values: any) {
       targetLocations,
       goals,
     } = values;
-    const { data, error } = await resend.emails.send({
+
+    // Send to admin
+    const adminEmail = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
-      to: email,
-      subject: "Pilot Testing Request Received",
+      to: process.env.TO_EMAIL!,
+      subject: `[${requestId}] Pilot Testing Request Received`,
       react: PilotTestingNotificationTemplate({
+        requestId,
         company,
         contact,
         email,
@@ -216,32 +216,26 @@ export async function sendPilotTestingEmail(values: any) {
       }),
     });
 
-    if (error) throw new Error("An error occurred while sending the email.");
-    return data;
-  } catch (error: any) {
-    throw new Error(`An error occurred: ${error.message}`);
-  }
-}
+    if (adminEmail.error) throw new Error("Failed to send admin email");
 
-// PILOT TESTING confirmation email
-export async function sendPilotTestingConfirmationEmail(values: any) {
-  try {
-    const { contact: firstName, email, ...submissionData } = values;
-
-    const { data, error } = await resend.emails.send({
+    // Send confirmation to user
+    const confirmationEmail = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
       to: email,
-      subject: "Pilot testing request received 🚀",
+      subject: `[${requestId}] Pilot testing request received 🚀`,
       react: ConfirmationTemplate({
-        firstName,
+        firstName: contact,
         formType: "pilot-testing",
-        submissionData,
+        submissionData: values,
+        requestId,
       }),
     });
 
-    if (error) throw new Error(error.message);
-    return data;
+    if (confirmationEmail.error)
+      throw new Error("Failed to send confirmation email");
+
+    return { admin: adminEmail.data, confirmation: confirmationEmail.data };
   } catch (error: any) {
-    throw new Error(`Pilot testing confirmation failed: ${error.message}`);
+    throw new Error(`Pilot testing email failed: ${error.message}`);
   }
 }

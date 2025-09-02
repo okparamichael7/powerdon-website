@@ -36,4 +36,16 @@ const reserveSchema = z.object({
   additionalInfo: z.string().optional(),
 });
 
-export { campaignSchema, contactSchema, reserveSchema };
+const pilotTestingSchema = z.object({
+  company: z.string().min(1, "Company name is required"),
+  contact: z.string().min(1, "Contact person is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(1, "Phone number is required"),
+  industry: z.string().optional(),
+  budget: z.string().optional(),
+  timeline: z.string().optional(),
+  targetLocations: z.string().optional(),
+  goals: z.string().min(1, "Please describe your testing goals"),
+});
+
+export { campaignSchema, contactSchema, reserveSchema, pilotTestingSchema };

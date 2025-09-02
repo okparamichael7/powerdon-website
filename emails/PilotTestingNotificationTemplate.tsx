@@ -14,6 +14,7 @@ import {
 } from "@react-email/components";
 
 interface Props {
+  requestId?: string;
   company: string;
   contact: string;
   email: string;
@@ -26,6 +27,7 @@ interface Props {
 }
 
 export const PilotTestingNotificationTemplate = ({
+  requestId,
   company,
   contact,
   email,
@@ -39,7 +41,11 @@ export const PilotTestingNotificationTemplate = ({
   return (
     <Html lang="en">
       <Head />
-      <Preview>New Pilot Testing Request from {company}</Preview>
+      <Preview>
+        {requestId
+          ? `[${requestId}] New Pilot Testing Request from ${company}`
+          : `New Pilot Testing Request from ${company}`}
+      </Preview>
       <Body style={main}>
         <Container style={container}>
           {/* Gradient Header */}
@@ -108,6 +114,12 @@ export const PilotTestingNotificationTemplate = ({
                   </div>
                 )}
               </div>
+              {requestId && (
+                <div style={infoItem}>
+                  <Text style={label}>Request ID:</Text>
+                  <Text style={requestIdValue}>{requestId}</Text>
+                </div>
+              )}
             </Section>
 
             {/* Pilot Requirements */}
@@ -292,6 +304,18 @@ const requirementValue: CSSProperties = {
   color: "#1e293b",
   margin: "0",
   wordBreak: "break-word",
+};
+
+const requestIdValue: CSSProperties = {
+  fontSize: "14px",
+  color: "#64748b",
+  margin: "0",
+  fontFamily: "monospace",
+  letterSpacing: "0.5px",
+  backgroundColor: "#f1f5f9",
+  padding: "4px 8px",
+  borderRadius: "4px",
+  border: "1px solid #e2e8f0",
 };
 
 const messageCard: CSSProperties = {
