@@ -138,7 +138,7 @@ export default function AboutPage() {
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
                     We build connections between people, brands, and communities
-                    through our shared charging network.
+                    through our shared charging network - and we make advertising a force for the community, not clutter. Our targeted, context-aware placements help local businesses through reach nearby customers, deliver useful, and timely offers while people charge.
                   </p>
                 </div>
               </CardContent>
@@ -160,7 +160,7 @@ export default function AboutPage() {
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
                     We maintain the highest standards in product quality,
-                    customer service, and user experience.
+                    customer service, and user experience. Our advertising follows suit — curated creative, strict brand-safety controls, and measurable outcomes that deliver reliable, responsible results.
                   </p>
                 </div>
               </CardContent>
