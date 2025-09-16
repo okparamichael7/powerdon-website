@@ -52,19 +52,19 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-3 gap-12 max-w-5xl">
             <div className="text-left">
               <div className="text-6xl font-bold text-black mb-2 lg:text-8xl">
-                500<span className="text-4xl px-2">+</span>
+                150<span className="text-4xl px-2">+</span>
               </div>
               <p className="text-lg text-gray-600">charging stations</p>
             </div>
             <div className="text-left">
               <div className="text-6xl font-bold text-black mb-2 lg:text-8xl">
-                48<span className="text-4xl px-2">+</span>
+                20<span className="text-4xl px-2">+</span>
               </div>
               <p className="text-lg text-gray-600">cities served</p>
             </div>
             <div className="text-left">
               <div className="text-6xl font-bold text-black mb-2 lg:text-8xl">
-                99.9<span className="text-4xl px-[0px4]">%</span>
+                90<span className="text-4xl px-[0px4]">%</span>
               </div>
               <p className="text-lg text-gray-600">uptime improvement</p>
             </div>
@@ -94,7 +94,7 @@ export default function AboutPage() {
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
                     We continuously push the boundaries of charging technology
-                    to deliver faster, more efficient solutions.
+                    to deliver faster, more efficient power solution - and applying the same spirit to reinvent advertising that reaches attendees when they are relaxed and receptive.  
                   </p>
                 </div>
               </CardContent>
@@ -116,7 +116,7 @@ export default function AboutPage() {
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
                     Our stations use renewable energy sources and promote device
-                    longevity through proper charging practices.
+                    longevity through proper charging practices. Paired with targeted, low-power displays, they outperform static banners — reducing material waste and measuring ads per impression.
                   </p>
                 </div>
               </CardContent>
