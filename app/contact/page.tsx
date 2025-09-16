@@ -60,7 +60,7 @@ export default function ContactPage() {
                   <Phone className="w-6 h-6 text-green-400 mt-1" />
                   <div>
                     <h3 className="text-black font-semibold mb-1">Phone</h3>
-                    <p className={"text-gray-600"}>+31 (06)130713536</p>
+                    <p className={"text-gray-600"}>+31 (06)13071536</p>
                     <p className={`${"text-gray-600"} text-sm`}>
                       Mon-Fri 9AM-6PM CEST
                     </p>
@@ -87,7 +87,7 @@ export default function ContactPage() {
                       Monday - Friday: 9:00 AM - 6:00 PM
                     </p>
                     <p className={"text-gray-600"}>
-                      Saturday: 10:00 AM - 4:00 PM
+                      Saturday: 9:00 AM - 11:00 PM
                     </p>
                     <p className={"text-gray-600"}>Sunday: Closed</p>
                   </div>
@@ -190,7 +190,7 @@ export default function ContactPage() {
             <Card className={"bg-white border-gray-200"}>
               <CardContent className="p-6">
                 <h3 className="text-black font-semibold mb-3">
-                  What's included in your support package?
+                  What is included in your support package?
                 </h3>
                 <p className={"text-gray-600"}>
                   All packages include setup, monitoring, maintenance, and 24/7
