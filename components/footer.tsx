@@ -2,21 +2,47 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { toast } from "sonner";
 
 export function Footer() {
+  const handleSocialClick = (platform: string) => {
+    toast.info(`${platform} link coming soon!`, {
+      description:
+        "We're working on connecting our social media accounts. Stay tuned!",
+      duration: 4000,
+      position: "bottom-right",
+      action: {
+        label: "Got it",
+        onClick: () => toast.dismiss(),
+      },
+      style: {
+        background: "white",
+        border: "1px solid #e5e7eb",
+        color: "#374151",
+      },
+    });
+  };
+
   return (
     <footer className="bg-black text-white w-full py-10 pb-4">
       <div className="w-full px-0">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12 mx-auto mr-6 ml-6">
           {/* Logo Section - Left Side */}
           <div className="flex-shrink-0">
-            <Image
-              src="/images/powerdon-logo-white.png"
-              alt="POWERDON"
-              width={200}
-              height={60}
-              className="h-8 w-auto"
-            />
+            <Link href="/">
+              <Image
+                src="/images/powerdon-logo-white.png"
+                alt="POWERDON"
+                width={200}
+                height={60}
+                className="h-8 w-auto"
+              />
+            </Link>
+            {/* Chamber of Commerce Details */}
+            <div className="mt-4 text-gray-400 text-left text-xs">
+              <p>KvK: 86755080</p>
+              <p>BTW: NL003946515B25</p>
+            </div>
           </div>
 
           {/* Navigation and Social Links - Right Side */}
@@ -57,30 +83,30 @@ export function Footer() {
 
             {/* Social Media Links */}
             <div className="space-y-4 mr-8 text-left">
-              <a
-                href="#"
-                className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs"
+              <button
+                onClick={() => handleSocialClick("Instagram")}
+                className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs text-left"
               >
                 INSTAGRAM
-              </a>
-              <a
-                href="#"
-                className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs"
+              </button>
+              <button
+                onClick={() => handleSocialClick("Facebook")}
+                className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs text-left"
               >
                 FACEBOOK
-              </a>
-              <a
-                href="#"
-                className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs"
+              </button>
+              <button
+                onClick={() => handleSocialClick("LinkedIn")}
+                className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs text-left"
               >
                 LINKEDIN
-              </a>
-              <a
-                href="#"
-                className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs"
+              </button>
+              <button
+                onClick={() => handleSocialClick("Twitter")}
+                className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs text-left"
               >
                 TWITTER
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -91,13 +117,13 @@ export function Footer() {
             <div className="w-full flex flex-wrap gap-6 justify-between text-xs px-6">
               <div className="text-gray-400 text-xs">© 2025 PowerDon</div>
               <a
-                href="#"
+                href="/terms"
                 className="text-gray-400 hover:text-white transition-colors mr-6"
               >
                 Terms of Use
               </a>
               <a
-                href="#"
+                href="privacy"
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 Privacy Policy

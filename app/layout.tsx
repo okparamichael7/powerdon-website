@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 // Remove Inter import since we'll use system Helvetica
 
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html className="text-left" lang="en">
       <body className={helveticaFont}>
         <ThemeProvider>{children}</ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );

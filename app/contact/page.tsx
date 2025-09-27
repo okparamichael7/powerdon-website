@@ -17,6 +17,7 @@ import { Mail, Phone, MapPin, Clock, Contact } from "lucide-react";
 import { StickyHeader } from "@/components/sticky-header";
 import { Footer } from "@/components/footer";
 import ContactForm from "./form/ContactForm";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,7 +35,8 @@ export default function ContactPage() {
           <p
             className={`text-xl text-gray-600 max-w-3xl mx-auto text-left ml-0 mr-[600px]`}
           >
-            Have questions about our charging stations or want to join our testing phase and pre-launch program? We'd love to hear from you.
+            Have questions about our charging stations or want to join our
+            testing phase and pre-launch program? We'd love to hear from you.
           </p>
         </div>
 
@@ -71,8 +73,7 @@ export default function ContactPage() {
                   <MapPin className="w-6 h-6 text-purple-400 mt-1" />
                   <div>
                     <h3 className="text-black font-semibold mb-1">Address</h3>
-                    <p className={"text-gray-600"}>Luzacstraat 7A01
-                      </p>
+                    <p className={"text-gray-600"}>Luzacstraat 7A01</p>
                     <p className={"text-gray-600"}>3038 VT, Rotterdam</p>
                   </div>
                 </div>
@@ -110,29 +111,11 @@ export default function ContactPage() {
                     Interested in advertising or reserving stations for your
                     event?
                   </p>
-                  <Button size="sm" className={"bg-black hover:bg-gray-800"}>
-                    Contact Sales
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className={"bg-white border-gray-200"}>
-                <CardContent className="p-4">
-                  <h4 className="text-black font-semibold mb-2">
-                    Technical Support
-                  </h4>
-                  <p className={`${"text-gray-600"} text-sm mb-3`}>
-                    Need help with an existing charging station or service?
-                  </p>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className={`border-blue-500 text-white hover:${
-                      "bg-black hover:bg-gray-800".split(" ")[0]
-                    } bg-black`}
-                  >
-                    Get Support
-                  </Button>
+                  <Link href="/advertising/quote">
+                    <Button size="sm" className={"bg-black hover:bg-gray-800"}>
+                      Contact Sales
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </div>
