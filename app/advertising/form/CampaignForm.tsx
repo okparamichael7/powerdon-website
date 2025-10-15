@@ -210,8 +210,8 @@ export default function CampaignForm() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="under-2500">Under €1000</SelectItem>
-                        <SelectItem value="1000-3500">
+                        <SelectItem value="under-2500">Under €1,000</SelectItem>
+                        <SelectItem value="1,000-3,500">
                           €1000 - €3500
                         </SelectItem>
                         <SelectItem value="7500-15000">
@@ -235,7 +235,7 @@ export default function CampaignForm() {
                       <Input
                         id="timeline"
                         className="bg-white border-gray-300 text-black mt-1"
-                        placeholder="e.g. Single event, ongoing"
+                        placeholder="e.g. single event, repeated events"
                         {...field}
                       />
                     </FormControl>
