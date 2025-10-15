@@ -153,7 +153,7 @@ export default function PowerdonLanding() {
               width={1200}
               height={600}
             >
-              <source src="/videos/trailer landscape.mp4" type="video/mp4" />
+              <source src="/videos/trailer-landscape.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
