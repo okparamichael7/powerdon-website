@@ -181,11 +181,11 @@ export default function CampaignForm() {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="technology">Technology</SelectItem>
-                      <SelectItem value="retail">Retail</SelectItem>
-                      <SelectItem value="finance">Finance</SelectItem>
-                      <SelectItem value="healthcare">Healthcare</SelectItem>
-                      <SelectItem value="automotive">Automotive</SelectItem>
+                      <SelectItem value="consumer goods">Technology</SelectItem>
+                      <SelectItem value="E-commerce/retail">Retail</SelectItem>
+                      <SelectItem value="event">Finance</SelectItem>
+                      <SelectItem value="Health & Wellness">Healthcare</SelectItem>
+                      <SelectItem value="beauty & cosmetic services">Automotive</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>
@@ -210,12 +210,12 @@ export default function CampaignForm() {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="under-2500">Under €2,500</SelectItem>
-                        <SelectItem value="2500-7500">
-                          €2,500 - €7,500
+                        <SelectItem value="under-2500">Under €1000</SelectItem>
+                        <SelectItem value="1000-3500">
+                          €1000 - €3500
                         </SelectItem>
                         <SelectItem value="7500-15000">
-                          €7,500 - €15,000
+                          €3,500 - €6,000
                         </SelectItem>
                       </SelectContent>
                     </Select>
@@ -235,7 +235,7 @@ export default function CampaignForm() {
                       <Input
                         id="timeline"
                         className="bg-white border-gray-300 text-black mt-1"
-                        placeholder="e.g. 3 months, ongoing"
+                        placeholder="e.g. Single event, ongoing"
                         {...field}
                       />
                     </FormControl>
@@ -282,7 +282,7 @@ export default function CampaignForm() {
                     <Input
                       id="target-locations"
                       className="bg-white border-gray-300 text-black mt-1"
-                      placeholder="e.g. Airports, Malls, Events, Specific cities"
+                      placeholder="e.g. Airports, Malls, Events, Festivals, Specific cities"
                       {...field}
                     />
                   </FormControl>
