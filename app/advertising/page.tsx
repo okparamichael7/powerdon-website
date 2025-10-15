@@ -230,7 +230,7 @@ export default function AdvertisingPage() {
                   Starter
                 </CardTitle>
                 <div className="text-white text-right">
-                  <span className="text-2xl font-medium">€2,500</span>
+                  <span className="text-2xl font-medium">€1,000</span>
                   <span className="opacity-80 text-base"> / event</span>
                 </div>
               </div>
@@ -268,7 +268,7 @@ export default function AdvertisingPage() {
                   </span>
                 </div>
                 <div className="text-white text-right">
-                  <span className="text-2xl font-medium">€7,500</span>
+                  <span className="text-2xl font-medium">€3,500</span>
                   <span className="opacity-80 text-base"> / event</span>
                 </div>
               </div>
