@@ -45,12 +45,12 @@ export default function AdvertisingPage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-6xl font-light text-black mb-6 text-left">
-            Amplify Your Brand
+            Maximize your brand reach
           </h1>
           <p
             className={`text-gray-600 max-w-3xl mx-auto text-left ml-0 text-lg`}
           >
-            Reach your target audience when they need power most. Our charging
+            Whether you’re showcasing a new product, launching a campaign, or promoting brand awareness. Our charging
             stations provide premium advertising opportunities with guaranteed
             engagement.
           </p>
@@ -98,7 +98,7 @@ export default function AdvertisingPage() {
               </h3>
               <p className="text-gray-500 leading-relaxed">
                 Your brand gets prime real estate on our charging stations,
-                positioned at eye level for maximum impact during the 15-30
+                positioned at eye level for maximum impact during the 45-60
                 minute charging sessions.
               </p>
             </div>
@@ -117,7 +117,7 @@ export default function AdvertisingPage() {
                 Targeted Reach
               </h3>
               <p className="text-gray-500 leading-relaxed">
-                Reach tech-savvy consumers in high-traffic locations including
+                Reach targeted consumers in high-traffic locations including
                 airports, malls, conferences, and events where your ideal
                 customers gather.
               </p>
@@ -134,12 +134,10 @@ export default function AdvertisingPage() {
             </div>
             <div>
               <h3 className="text-xl font-semibold text-black mb-2">
-                Measurable Results
+                Flexible Ad Campaign
               </h3>
               <p className="text-gray-500 leading-relaxed">
-                Get detailed analytics on impressions, engagement time, and user
-                demographics to measure your campaign's effectiveness.
-              </p>
+                Unlike static banners, ads can be swapped or updated instantly during the event. Brands can run time-based messages [e.g., 'see you at our booth at 6pm'].              </p>
             </div>
           </div>
 
