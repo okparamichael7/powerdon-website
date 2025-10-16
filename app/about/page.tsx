@@ -137,7 +137,7 @@ export default function AboutPage() {
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
                     We build connections between people, brands, and communities
-                    through our shared charging network - and we make advertising a force for the community, not clutter. Our targeted, context-aware placements help local businesses through reach nearby customers, deliver useful, and timely offers while people charge.
+                    through our shared charging network - and we make advertising a force for the community, not clutter. Our targeted, context-aware placements help local businesses reach customers, deliver useful, and timely offers while people charge.
                   </p>
                 </div>
               </CardContent>
