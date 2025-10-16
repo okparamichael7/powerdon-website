@@ -195,10 +195,10 @@ export default function PowerdonLanding() {
               </div>
               <div className="px-6 pb-6">
                 <h3 className="text-xl font-semibold text-black text-left mb-2">
-                  Seamless Event Support
+                  Two-in-One Efficiency
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem] text-left">
-                  Perfect for conferences, festivals, and corporate events.
+                  Reduce clutter and maximize visibility with one smart solution for both power and promotion.
                 </p>
               </div>
             </CardContent>
@@ -282,11 +282,11 @@ export default function PowerdonLanding() {
                 />
               </div>
               <h3 className="text-xl font-semibold text-black text-left mb-2">
-                Reliable Network
+                Premium Brand Visibility
               </h3>
               <p className="text-gray-600 text-left pr-14">
-                Our extensive network of charging stations ensures you're never
-                far from power when you need it most.
+                Amplify your brand impact with smart, high-traffic advertising
+                  placements that captivate audiences.
               </p>
             </div>
             <div className="bg-white bg-opacity-80 border-gray-200 p-8 rounded-lg backdrop-blur-sm shadow-lg shadow-blue-100/50 px-8 py-[24pxpx]">
@@ -298,11 +298,10 @@ export default function PowerdonLanding() {
                 />
               </div>
               <h3 className="text-xl font-semibold text-black text-left mb-2">
-                Fast Charging
+                Portal & Fast Charging
               </h3>
               <p className="text-gray-600 text-left pr-14">
-                Advanced charging technology gets your devices powered up
-                quickly and safely.
+                Attendees can capture and share their experience without the fear of running out of power.
               </p>
             </div>
           </div>
