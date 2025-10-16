@@ -94,7 +94,7 @@ export default function PowerdonLanding() {
                 : "opacity-0 translate-y-4"
             }`}
           >
-            Fast charging & high visibility ads
+            Fast charging & Instant visibility
           </h1>
           <h2
             className={`text-4xl lg:text-6xl font-light text-gray-900 mb-6 leading-tight transition-all duration-1000 ease-out delay-1200 text-left tracking-[-0.005em] ${
