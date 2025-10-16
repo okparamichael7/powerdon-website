@@ -22,7 +22,7 @@ export default function ReserveStation() {
             Partner With Powerdon
           </h1>
           <p className="text-gray-600 max-w-3xl text-lg mx-0">
-            Let us place our premium charging stations at your festival or
+            Trust us to place our premium charging stations at your festival or
             event. Enhance attendee experience while generating additional
             revenue - at no cost to you.
           </p>
@@ -95,7 +95,7 @@ export default function ReserveStation() {
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
                   Promote your event schedule, sponsors, and announcements on
-                  our high-visibility digital displays - completely free as part
+                  our high-visibility digital displays - part
                   of our partnership.
                 </p>
               </div>
@@ -174,11 +174,10 @@ export default function ReserveStation() {
             </div>
             <div>
               <h3 className="text-xl font-semibold text-black mb-2">
-                Data Insights
+                Increased Event Reputation
               </h3>
               <p className="text-gray-500 leading-relaxed">
-                Get valuable attendee behavior analytics and foot traffic
-                patterns to improve future events.
+                By providing effortless charging and connectivity solutions which positions your event as organized, innovative, and attendee-first — setting you apart from competitors.
               </p>
             </div>
           </div>
@@ -193,7 +192,7 @@ export default function ReserveStation() {
             </div>
             <div>
               <h3 className="text-xl font-semibold text-black mb-2">
-                Attendees freedom to move around
+                Freedom to move around
               </h3>
               <p className="text-gray-500 leading-relaxed">
                 Attendees can charge on the go and keep exploring the event without interruptions.
