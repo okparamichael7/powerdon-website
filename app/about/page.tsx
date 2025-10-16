@@ -115,8 +115,7 @@ export default function AboutPage() {
                     Sustainability
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem]">
-                    Our stations use renewable energy sources and promote device
-                    longevity through proper charging practices. Paired with targeted, low-power displays, they outperform static banners — reducing material waste and measuring ads per impression.
+                    Sustainability isn't a trend - it is a standard. Powerdon empowers your event to deliver value to your eventgoers while reducing environmental impact through cleaner power. Paired with targeted, HD Screen displays, they outperform static banners — reducing material waste and measuring ads per impression.
                   </p>
                 </div>
               </CardContent>
