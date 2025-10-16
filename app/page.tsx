@@ -94,7 +94,7 @@ export default function PowerdonLanding() {
                 : "opacity-0 translate-y-4"
             }`}
           >
-            Portable & fast charging
+            Fast charging & high visibility ads
           </h1>
           <h2
             className={`text-4xl lg:text-6xl font-light text-gray-900 mb-6 leading-tight transition-all duration-1000 ease-out delay-1200 text-left tracking-[-0.005em] ${
@@ -103,7 +103,7 @@ export default function PowerdonLanding() {
                 : "opacity-0 translate-y-4"
             }`}
           >
-            Return to any station
+            In one compact form
           </h2>
         </div>
 
@@ -195,10 +195,10 @@ export default function PowerdonLanding() {
               </div>
               <div className="px-6 pb-6">
                 <h3 className="text-xl font-semibold text-black text-left mb-2">
-                  Two-in-One Efficiency
+                  Discover Dual Purpose Design
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem] text-left">
-                  Reduce clutter and maximize visibility with one smart solution for both power and promotion.
+                  Power banks with built-in LED screens — perfect for promoting, charging, and catching eyes on the move.
                 </p>
               </div>
             </CardContent>
@@ -218,8 +218,7 @@ export default function PowerdonLanding() {
                   Brand Exposure
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem] text-left">
-                  Amplify your brand impact with smart, high-traffic advertising
-                  placements that captivate audiences.
+                 Transform every charge into a marketing moment. Our LED screen puts the torch on your brand — bright, bold, and impossible to ignore.
                 </p>
               </div>
             </CardContent>
@@ -240,7 +239,7 @@ export default function PowerdonLanding() {
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem] text-left">
                   Stay connected with fast, dependable charging stations —
-                  compatible with every device, anywhere.
+                  compatible with every device, anywhere. No outlets? No problem.
                 </p>
               </div>
             </CardContent>
