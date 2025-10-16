@@ -198,7 +198,7 @@ export default function PowerdonLanding() {
                   Discover Dual Purpose Design
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem] text-left">
-                  Power banks with built-in LED screens — perfect for promoting, charging, and catching eyes on the move.
+                  Power banks with built-in LED screen — perfect for promoting, phone charging, and designed for mobility.
                 </p>
               </div>
             </CardContent>
