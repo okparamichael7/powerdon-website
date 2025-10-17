@@ -179,7 +179,7 @@ export default function PowerdonLanding() {
 
         {/* Section Title */}
         <h2 className="font-light mr-0 text-4xl pr-6 tracking-[-0.005em] text-gray-900 mt-[120px] text-left w-full px-6 mb-14">
-          Your ultimate partner for events, experiences, and engagements
+          Your ultimate partner for events, experiences, and exposure
         </h2>
 
         {/* Feature Cards */}
