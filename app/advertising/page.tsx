@@ -45,7 +45,7 @@ export default function AdvertisingPage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-6xl font-light text-black mb-6 text-left">
-            Maximize your brand reach
+            Maximize Your Brand Reach
           </h1>
           <p
             className={`text-gray-600 max-w-3xl mx-auto text-left ml-0 text-lg`}
