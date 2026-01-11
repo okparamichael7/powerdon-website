@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "sonner";
+import { trackButtonClick } from "@/lib/analytics";
 
 export function Footer() {
   const handleSocialClick = (platform: string) => {
@@ -95,12 +96,15 @@ export function Footer() {
               >
                 FACEBOOK
               </button>
-              <button
-                onClick={() => handleSocialClick("LinkedIn")}
-                className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs text-left"
+              <a
+                href="https://www.linkedin.com/company/powerdon/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackButtonClick("LinkedIn - Footer")}
+                className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs text-left cursor-pointer"
               >
                 LINKEDIN
-              </button>
+              </a>
               <button
                 onClick={() => handleSocialClick("Twitter")}
                 className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs text-left"

@@ -19,9 +19,8 @@ const nextConfig = {
   // SEO: Remove X-Powered-By header for security
   poweredByHeader: false,
   reactStrictMode: true,
-  // SEO: Optimize production builds
-  swcMinify: true,
   // SEO: Add security headers
+  // Note: swcMinify is enabled by default in Next.js 13+ and doesn't need to be specified
   async headers() {
     return [
       {

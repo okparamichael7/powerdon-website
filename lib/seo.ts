@@ -14,7 +14,7 @@ export const siteConfig = {
   ogImage: "/images/powerdon-logo-black.png",
   links: {
     twitter: "https://twitter.com/powerdon",
-    linkedin: "https://linkedin.com/company/powerdon",
+    linkedin: "https://www.linkedin.com/company/powerdon/",
     instagram: "https://instagram.com/powerdon",
   },
   contact: {
@@ -35,7 +35,7 @@ export const siteConfig = {
     foundingDate: "2024",
     sameAs: [
       "https://twitter.com/powerdon",
-      "https://linkedin.com/company/powerdon",
+      "https://www.linkedin.com/company/powerdon/",
       "https://instagram.com/powerdon",
     ],
   },
