@@ -8,6 +8,7 @@ import { StickyHeader } from "@/components/sticky-header";
 import { PageStickyHeader } from "@/components/page-sticky-header";
 import { Footer } from "@/components/footer";
 import Link from "next/link";
+import { trackButtonClick, trackVideoPlay } from "@/lib/analytics";
 
 export default function AdvertisingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,7 +57,10 @@ export default function AdvertisingPage() {
           </p>
           <div className="mt-8 text-left">
             <Button
-              onClick={() => (window.location.href = "/advertising/quote")}
+              onClick={() => {
+                trackButtonClick("Request Quote - Advertising Page");
+                window.location.href = "/advertising/quote";
+              }}
               className="bg-black text-white hover:bg-gray-800 px-8 py-3 font-medium"
             >
               Request quote
@@ -72,6 +76,7 @@ export default function AdvertisingPage() {
             muted
             playsInline
             className="w-full h-[60vh] rounded-lg shadow-lg object-cover"
+            onPlay={() => trackVideoPlay("Music Festival Ad - Advertising Page")}
           >
             <source src="/videos/music-festival-ad.mp4" type="video/mp4" />
             {/* Fallback image in case video doesn't load */}
@@ -313,7 +318,10 @@ export default function AdvertisingPage() {
                 </div>
                 <Button
                   className="w-full bg-black hover:bg-gray-800 text-white py-3 mt-6"
-                  onClick={() => (window.location.href = "/advertising/quote")}
+                  onClick={() => {
+                    trackButtonClick("Collaborate - Pilot Testing Card");
+                    window.location.href = "/advertising/quote";
+                  }}
                 >
                   Collaborate
                 </Button>
@@ -378,7 +386,10 @@ export default function AdvertisingPage() {
 
             <div className="text-center md:text-left">
               <Button
-                onClick={() => (window.location.href = "/advertising/quote")}
+                onClick={() => {
+                  trackButtonClick("Start Your Campaign Now");
+                  window.location.href = "/advertising/quote";
+                }}
                 className="bg-black text-white hover:bg-gray-800 px-8 py-3 font-medium text-lg mb-4"
               >
                 Start Your Campaign Now

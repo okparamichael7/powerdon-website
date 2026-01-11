@@ -27,6 +27,7 @@ import SuccessMessage from "@/components/success-message";
 import ErrorMessage from "@/components/error-message";
 import { contactSchema } from "@/schema";
 import { contact, ContactFormData } from "@/app/actions/contact";
+import { trackFormSubmit, trackConversion } from "@/lib/analytics";
 
 export default function ContactForm() {
   const [isPending, startTransition] = useTransition();
@@ -54,6 +55,8 @@ export default function ContactForm() {
         .then((data) => {
           if (data.success) {
             setFormStatus("success");
+            trackFormSubmit("Contact Form");
+            trackConversion("Contact Form Submission");
 
             // Clear form
             form.reset();

@@ -8,6 +8,7 @@ import { StickyHeader } from "@/components/sticky-header";
 import { StickySublines } from "@/components/sticky-sublines";
 import { Footer } from "@/components/footer";
 import { Card, CardContent } from "@/components/ui/card";
+import { trackButtonClick, trackVideoPlay } from "@/lib/analytics";
 
 export default function PowerdonLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,10 +32,12 @@ export default function PowerdonLanding() {
 
   // Instant navigation handlers
   const handleAdvertisingClick = () => {
+    trackButtonClick("Advertising on Powerdon");
     window.location.href = "/advertising";
   };
 
   const handleReserveClick = () => {
+    trackButtonClick("Reserve a station");
     window.location.href = "/reserve";
   };
 
@@ -152,6 +155,7 @@ export default function PowerdonLanding() {
               style={{ marginLeft: "8px", marginRight: "8px" }}
               width={1200}
               height={600}
+              onPlay={() => trackVideoPlay("Product Trailer - Desktop")}
             >
               <source src="/videos/trailer-full-res-landscape.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -167,6 +171,7 @@ export default function PowerdonLanding() {
               style={{ marginLeft: "8px", marginRight: "8px" }}
               width={600}
               height={1200}
+              onPlay={() => trackVideoPlay("Product Trailer - Mobile")}
             >
               <source src="/videos/trailer-full-res-landscape.mp4" type="video/mp4" />
               Your browser does not support the video tag.

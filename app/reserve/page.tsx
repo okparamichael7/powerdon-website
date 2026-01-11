@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { StickyHeader } from "@/components/sticky-header";
 import { PageStickyHeader } from "@/components/page-sticky-header";
 import { Footer } from "@/components/footer";
+import { trackButtonClick } from "@/lib/analytics";
 
 export default function ReserveStation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,7 +29,10 @@ export default function ReserveStation() {
           </p>
           <div className="mt-8">
             <Button
-              onClick={() => (window.location.href = "/reserve/form")}
+              onClick={() => {
+                trackButtonClick("Reserve Station - Reserve Page");
+                window.location.href = "/reserve/form";
+              }}
               className="bg-black text-white hover:bg-gray-800 px-8 py-3 font-medium"
             >
               Reserve Station
@@ -257,7 +261,10 @@ export default function ReserveStation() {
 
               <div className="text-center md:text-left">
                 <Button
-                  onClick={() => (window.location.href = "/reserve/form")}
+                  onClick={() => {
+                    trackButtonClick("Power Up Your Event Today");
+                    window.location.href = "/reserve/form";
+                  }}
                   className="bg-black text-white hover:bg-gray-800 px-8 py-3 font-medium text-lg mb-4"
                 >
                   Power Up Your Event Today

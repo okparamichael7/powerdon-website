@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { StickyHeader } from "@/components/sticky-header";
 import { Footer } from "@/components/footer";
+import { trackButtonClick } from "@/lib/analytics";
 
 export default function AboutPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -181,12 +182,16 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/reserve">
-                <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3 font-medium">
+                <Button
+                  onClick={() => trackButtonClick("Reserve a station - About Page")}
+                  className="bg-black text-white hover:bg-gray-800 px-8 py-3 font-medium"
+                >
                   Reserve a station
                 </Button>
               </Link>
               <Link href="/advertising">
                 <Button
+                  onClick={() => trackButtonClick("Advertise with us - About Page")}
                   variant="outline"
                   className="border-black text-black hover:bg-black hover:text-white px-8 py-3 font-medium bg-transparent"
                 >

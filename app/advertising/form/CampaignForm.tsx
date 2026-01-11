@@ -28,6 +28,7 @@ import ErrorMessage from "@/components/error-message";
 import { campaignSchema } from "@/schema";
 import { campaign, CampaignFormData } from "@/app/actions/campaign";
 import { Checkbox } from "@/components/ui/checkbox";
+import { trackFormSubmit, trackConversion } from "@/lib/analytics";
 
 export default function CampaignForm() {
   const [isPending, startTransition] = useTransition();
@@ -58,6 +59,13 @@ export default function CampaignForm() {
         .then((data) => {
           if (data.success) {
             setFormStatus("success");
+            trackFormSubmit("Campaign Form");
+            trackConversion(
+              values.isCollaboration
+                ? "Collaboration Inquiry"
+                : "Campaign Quote Request",
+              1
+            );
 
             // Clear form
             form.reset();

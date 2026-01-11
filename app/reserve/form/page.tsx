@@ -25,6 +25,7 @@ import SuccessMessage from "@/components/success-message";
 import ErrorMessage from "@/components/error-message";
 import { reserveSchema } from "@/schema";
 import { reserve, ReserveFormData } from "@/app/actions/reserve";
+import { trackFormSubmit, trackConversion } from "@/lib/analytics";
 
 export default function ReserveFormPage() {
   const [isPending, startTransition] = useTransition();
@@ -56,6 +57,8 @@ export default function ReserveFormPage() {
         .then((data) => {
           if (data.success) {
             setFormStatus("success");
+            trackFormSubmit("Reserve Station Form");
+            trackConversion("Reserve Station Application", 1);
 
             // Clear form
             form.reset();

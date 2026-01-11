@@ -18,6 +18,7 @@ import { StickyHeader } from "@/components/sticky-header";
 import { Footer } from "@/components/footer";
 import ContactForm from "./form/ContactForm";
 import Link from "next/link";
+import { trackButtonClick } from "@/lib/analytics";
 
 export default function ContactPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -112,7 +113,11 @@ export default function ContactPage() {
                     event?
                   </p>
                   <Link href="/advertising/quote">
-                    <Button size="sm" className={"bg-black hover:bg-gray-800"}>
+                    <Button
+                      onClick={() => trackButtonClick("Contact Sales - Contact Page")}
+                      size="sm"
+                      className={"bg-black hover:bg-gray-800"}
+                    >
                       Contact Sales
                     </Button>
                   </Link>
