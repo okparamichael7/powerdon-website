@@ -53,7 +53,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-3 gap-12 max-w-5xl">
             <div className="text-left">
               <div className="text-6xl font-bold text-black mb-2 lg:text-8xl">
-                90<span className="text-4xl px-2">+</span>
+                15<span className="text-4xl px-2">+</span>
               </div>
               <p className="text-lg text-gray-600">charging stations</p>
             </div>
@@ -61,11 +61,11 @@ export default function AboutPage() {
               <div className="text-6xl font-bold text-black mb-2 lg:text-8xl">
                 20<span className="text-4xl px-2">+</span>
               </div>
-              <p className="text-lg text-gray-600">campaigns completed</p>
+              <p className="text-lg text-gray-600">ongoing campaigns</p>
             </div>
             <div className="text-left">
               <div className="text-6xl font-bold text-black mb-2 lg:text-8xl">
-                90<span className="text-4xl px-[0px4]">%</span>
+                94<span className="text-4xl px-[0px4]">%</span>
               </div>
               <p className="text-lg text-gray-600">uptime improvement</p>
             </div>
