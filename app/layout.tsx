@@ -45,13 +45,13 @@ export default function RootLayout({
         <ThemeProvider>{children}</ThemeProvider>
         <Toaster />
         <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SLDP7D8PQ6"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y85E456VL6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-SLDP7D8PQ6');
+  gtag('config', 'G-Y85E456VL6');
 </script>
         <Analytics />
       </body>
