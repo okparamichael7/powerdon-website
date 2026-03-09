@@ -44,15 +44,11 @@ export default function RootLayout({
       <body className={helveticaFont}>
         <ThemeProvider>{children}</ThemeProvider>
         <Toaster />
-       <body className={helveticaFont}>
-  <ThemeProvider>{children}</ThemeProvider>
-  <Toaster />
 
   <Script
     src="https://www.googletagmanager.com/gtag/js?id=G-Y85E456VL6"
     strategy="afterInteractive"
   />
-
   <Script id="google-analytics" strategy="afterInteractive">
   {`
     window.dataLayer = window.dataLayer || [];
