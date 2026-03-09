@@ -44,7 +44,7 @@ export default function RootLayout({
       <body className={helveticaFont}>
         <ThemeProvider>{children}</ThemeProvider>
         <Toaster />
-        {/* Google tag (gtag.js) */}
+        </* Google tag (gtag.js) */>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y85E456VL6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
