@@ -116,7 +116,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-transparent mx-auto px-6 pt-20 md:pt-40">
+        <div className="border-t border-transparent mx-auto px-6 pt-6 md:pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 border-b border-gray-400 py-6">
             <div className="w-full flex flex-wrap gap-6 justify-between text-xs px-6">
               <div className="text-gray-400 text-xs">© 2025 PowerDon</div>
