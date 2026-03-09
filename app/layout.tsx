@@ -44,15 +44,26 @@ export default function RootLayout({
       <body className={helveticaFont}>
         <ThemeProvider>{children}</ThemeProvider>
         <Toaster />
-        </* Google tag (gtag.js) */>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y85E456VL6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+       <body className={helveticaFont}>
+  <ThemeProvider>{children}</ThemeProvider>
+  <Toaster />
 
-  gtag('config', 'G-Y85E456VL6');
-</script>
+  <Script
+    src="https://www.googletagmanager.com/gtag/js?id=G-Y85E456VL6"
+    strategy="afterInteractive"
+  />
+
+  <Script id="google-analytics" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y85E456VL6');
+  `}
+  </Script>
+
+  <Analytics />
+</body>
         <Analytics />
       </body>
     </html>
