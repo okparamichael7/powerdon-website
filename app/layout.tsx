@@ -46,17 +46,18 @@ export default function RootLayout({
         <Toaster />
 
   <Script
-    src="https://www.googletagmanager.com/gtag/js?id=G-Y85E456VL6"
-    strategy="afterInteractive"
-  />
-  <Script id="google-analytics" strategy="afterInteractive">
+  src="https://www.googletagmanager.com/gtag/js?id=G-Y85E456VL6"
+  strategy="afterInteractive"
+/>
+
+<Script id="google-analytics" strategy="afterInteractive">
   {`
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-Y85E456VL6');
   `}
-  </Script>
+</Script>
 
   <Analytics />
 </body>
