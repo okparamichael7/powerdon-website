@@ -25,7 +25,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white w-full py-10 pb-4">
+    <footer className="bg-black text-white w-full py-6 pb-4">
       <div className="w-full px-0">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12 mx-auto mr-6 ml-6">
           {/* Logo Section - Left Side */}
