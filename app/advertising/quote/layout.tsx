@@ -1,18 +1,9 @@
-import { Metadata } from "next";
-import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+import { getLocalizedPageMetadata } from "@/lib/seo-page";
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Request Advertising Quote - PowerDon",
-  description:
-    "Get a custom advertising quote for your campaign on PowerDon charging stations. Request pricing for digital display ads, branded stations, and event partnerships.",
-  keywords: [
-    "advertising quote",
-    "charging station advertising pricing",
-    "event advertising rates",
-    "digital signage pricing",
-  ],
-  path: "/advertising/quote",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return getLocalizedPageMetadata("advertisingQuote");
+}
 
 export default function AdvertisingQuoteLayout({
   children,

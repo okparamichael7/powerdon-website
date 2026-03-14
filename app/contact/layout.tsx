@@ -1,19 +1,9 @@
-import { Metadata } from "next";
-import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+import { getLocalizedPageMetadata } from "@/lib/seo-page";
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Contact Us - Get in Touch with PowerDon",
-  description:
-    "Contact PowerDon for questions about charging stations, advertising opportunities, or partnership inquiries. Reach us via email, phone, or our contact form.",
-  keywords: [
-    "contact PowerDon",
-    "charging station support",
-    "customer service",
-    "business inquiries",
-    "partnership contact",
-  ],
-  path: "/contact",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return getLocalizedPageMetadata("contact");
+}
 
 export default function ContactLayout({
   children,

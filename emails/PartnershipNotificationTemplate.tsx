@@ -21,6 +21,7 @@ interface Props {
   phone: string;
   eventName: string;
   eventDate?: string;
+  address: string;
   location?: string;
   attendees?: string;
   eventType?: string;
@@ -35,6 +36,7 @@ export const PartnershipNotificationTemplate = ({
   phone,
   eventName,
   eventDate,
+  address,
   location,
   attendees,
   eventType,
@@ -86,6 +88,9 @@ export const PartnershipNotificationTemplate = ({
                     <span style={eventDetailIcon}>📍</span> {location}
                   </Text>
                 )}
+                <Text style={eventDetailItem}>
+                  <span style={eventDetailIcon}>🏢</span> {address}
+                </Text>
                 {attendees && (
                   <Text style={eventDetailItem}>
                     <span style={eventDetailIcon}>👥</span> {attendees}{" "}
@@ -122,6 +127,10 @@ export const PartnershipNotificationTemplate = ({
                       {phone}
                     </Link>
                   </Text>
+                </div>
+                <div style={infoItem}>
+                  <Text style={label}>Venue Address:</Text>
+                  <Text style={value}>{address}</Text>
                 </div>
                 {eventType && (
                   <div style={infoItem}>

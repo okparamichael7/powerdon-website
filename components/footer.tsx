@@ -3,17 +3,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "sonner";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { trackButtonClick } from "@/lib/analytics";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export function Footer() {
+  const { href, t, namespace } = useTranslation();
+  const copy = namespace("common");
+
   const handleSocialClick = (platform: string) => {
-    toast.info(`${platform} link coming soon!`, {
-      description:
-        "We're working on connecting our social media accounts. Stay tuned!",
+    toast.info(t("common.footer.toast.title", { platform }), {
+      description: copy.footer.toast.description,
       duration: 4000,
       position: "bottom-right",
       action: {
-        label: "Got it",
+        label: copy.footer.toast.action,
         onClick: () => toast.dismiss(),
       },
       style: {
@@ -30,10 +34,10 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12 mx-auto mr-6 ml-6">
           {/* Logo Section - Left Side */}
           <div className="flex-shrink-0">
-            <Link href="/">
+            <Link href={href("/")}>
               <Image
                 src="/images/powerdon-logo-white.png"
-                alt="POWERDON"
+                alt={copy.footer.logoAlt}
                 width={200}
                 height={60}
                 className="h-8 w-auto"
@@ -41,8 +45,8 @@ export function Footer() {
             </Link>
             {/* Chamber of Commerce Details */}
             <div className="mt-4 text-gray-400 text-left text-xs">
-              <p>KvK: 86755080</p>
-              <p>BTW: NL003946515B25</p>
+              <p>{copy.footer.business.kvk}</p>
+              <p>{copy.footer.business.vat}</p>
             </div>
           </div>
 
@@ -51,34 +55,34 @@ export function Footer() {
             {/* Navigation Links */}
             <div className="space-y-5 mr-[50px] text-left col-span-2">
               <Link
-                href="/"
+                href={href("/")}
                 className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs"
               >
-                HOME
+                {copy.footer.navigation.home}
               </Link>
               <Link
-                href="/reserve"
+                href={href("/reserve")}
                 className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs"
               >
-                RESERVE STATION
+                {copy.footer.navigation.reserve}
               </Link>
               <Link
-                href="/advertising"
+                href={href("/advertising")}
                 className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs"
               >
-                ADVERTISING
+                {copy.footer.navigation.advertising}
               </Link>
               <Link
-                href="/about"
+                href={href("/about")}
                 className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs"
               >
-                ABOUT
+                {copy.footer.navigation.about}
               </Link>
               <Link
-                href="/contact"
+                href={href("/contact")}
                 className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs"
               >
-                CONTACT
+                {copy.footer.navigation.contact}
               </Link>
             </div>
 
@@ -88,28 +92,28 @@ export function Footer() {
                 onClick={() => handleSocialClick("Instagram")}
                 className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs text-left"
               >
-                INSTAGRAM
+                {copy.footer.social.instagram}
               </button>
               <button
                 onClick={() => handleSocialClick("Facebook")}
                 className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs text-left"
               >
-                FACEBOOK
+                {copy.footer.social.facebook}
               </button>
               <a
                 href="https://www.linkedin.com/company/powerdon/"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackButtonClick("LinkedIn - Footer")}
+                onClick={() => trackButtonClick("footer_linkedin")}
                 className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs text-left cursor-pointer"
               >
-                LINKEDIN
+                {copy.footer.social.linkedin}
               </a>
               <button
                 onClick={() => handleSocialClick("Twitter")}
                 className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs text-left"
               >
-                TWITTER
+                {copy.footer.social.twitter}
               </button>
             </div>
           </div>
@@ -117,21 +121,28 @@ export function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-transparent mx-auto px-6 pt-6 md:pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 border-b border-gray-400 py-6">
-            <div className="w-full flex flex-wrap gap-6 justify-between text-xs px-6">
-              <div className="text-gray-400 text-xs">© 2025 PowerDon</div>
-              <a
-                href="/terms"
-                className="text-gray-400 hover:text-white transition-colors mr-6"
-              >
-                Terms of Use
-              </a>
-              <a
-                href="privacy"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                Privacy Policy
-              </a>
+          <div className="border-b border-gray-400 py-6">
+            <div className="flex w-full flex-col gap-6 px-6 text-xs md:flex-row md:items-center md:justify-between">
+              <div className="flex justify-start">
+                <LanguageSwitcher variant="footer" />
+              </div>
+              <div className="flex flex-wrap items-center gap-6 text-xs md:justify-end">
+                <div className="text-gray-400 text-xs">
+                  {copy.footer.copyright}
+                </div>
+                <Link
+                  href={href("/terms")}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  {copy.footer.legal.terms}
+                </Link>
+                <Link
+                  href={href("/privacy")}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  {copy.footer.legal.privacy}
+                </Link>
+              </div>
             </div>
           </div>
         </div>

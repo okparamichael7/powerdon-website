@@ -4,15 +4,26 @@ import {
   getServiceSchema,
   getWebSiteSchema,
 } from "@/lib/seo";
+import type { Locale } from "@/lib/i18n/config";
 
 /**
  * Structured Data Component (Server Component)
  * Renders JSON-LD structured data for SEO
  */
-export function StructuredDataServer() {
+export function StructuredDataServer({
+  locale,
+  serviceDescription,
+}: {
+  locale: Locale;
+  serviceDescription: string;
+}) {
   const organizationSchema = getOrganizationSchema();
   const localBusinessSchema = getLocalBusinessSchema();
-  const serviceSchema = getServiceSchema();
+  const serviceSchema = {
+    ...getServiceSchema(),
+    description: serviceDescription,
+    inLanguage: locale,
+  };
   const websiteSchema = getWebSiteSchema();
 
   return (
@@ -38,7 +49,7 @@ export function StructuredDataServer() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(websiteSchema),
+          __html: JSON.stringify({ ...websiteSchema, inLanguage: locale }),
         }}
       />
     </>

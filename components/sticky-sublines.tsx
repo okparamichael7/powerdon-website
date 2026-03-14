@@ -3,10 +3,13 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 export function StickySublines() {
   const [showSublines, setShowSublines] = useState(false);
   const pathname = usePathname();
+  const { href, namespace } = useTranslation();
+  const copy = namespace("common");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,18 +25,18 @@ export function StickySublines() {
   }, []);
 
   // Only show on home page
-  if (pathname !== "/" || !showSublines) {
+  const isHomePage = pathname === "/" || pathname === "/nl";
+
+  if (!isHomePage || !showSublines) {
     return null;
   }
 
   const handleAdvertisingClick = () => {
-    // Instant navigation with 0ms animation duration
-    window.location.href = "/advertising";
+    window.location.href = href("/advertising");
   };
 
   const handleReserveClick = () => {
-    // Instant navigation with 0ms animation duration
-    window.location.href = "/reserve";
+    window.location.href = href("/reserve");
   };
 
   return (
@@ -70,7 +73,7 @@ export function StickySublines() {
               animationDuration: "0ms",
             }}
           >
-            Advertising on Powerdon
+            {copy.stickySublines.advertisingCta}
           </Button>
 
           <Button
@@ -89,7 +92,7 @@ export function StickySublines() {
               animationDuration: "0ms",
             }}
           >
-            Reserve a station
+            {copy.stickySublines.reserveCta}
           </Button>
         </div>
       </div>

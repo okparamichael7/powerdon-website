@@ -25,18 +25,22 @@ import {
 } from "@/components/ui/form";
 import SuccessMessage from "@/components/success-message";
 import ErrorMessage from "@/components/error-message";
-import { contactSchema } from "@/schema";
+import { createContactSchema, contactSchema } from "@/schema";
 import { contact, ContactFormData } from "@/app/actions/contact";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 import { trackFormSubmit, trackConversion } from "@/lib/analytics";
 
 export default function ContactForm() {
   const [isPending, startTransition] = useTransition();
   const [formStatus, setFormStatus] = useState<"success" | "error" | null>(
-    null
+    null,
   );
+  const { locale, namespace } = useTranslation();
+  const forms = namespace("forms");
+  const schema = createContactSchema(forms.validation);
 
   const form = useForm<z.infer<typeof contactSchema>>({
-    resolver: zodResolver(contactSchema),
+    resolver: zodResolver(schema),
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -51,12 +55,12 @@ export default function ContactForm() {
   // Handle form submission
   const onSubmit = async (values: ContactFormData) => {
     startTransition(() => {
-      contact(values)
+      contact(values, locale)
         .then((data) => {
           if (data.success) {
             setFormStatus("success");
-            trackFormSubmit("Contact Form");
-            trackConversion("Contact Form Submission");
+            trackFormSubmit("contact_form");
+            trackConversion("contact_form_submission");
 
             // Clear form
             form.reset();
@@ -75,9 +79,11 @@ export default function ContactForm() {
   };
 
   return (
-    <Card className={"bg-white border-gray-200"}>
+    <Card className="bg-white border-gray-200">
       <CardHeader>
-        <CardTitle className="text-black text-2xl">Send us a Message</CardTitle>
+        <CardTitle className="text-black text-2xl">
+          {forms.contact.title}
+        </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <FormContainer {...form}>
@@ -92,7 +98,7 @@ export default function ContactForm() {
                 render={({ field }) => (
                   <FormItem>
                     <Label htmlFor="firstName" className="text-black">
-                      First Name
+                      {forms.contact.fields.firstName}
                     </Label>
                     <FormControl>
                       <Input
@@ -111,7 +117,7 @@ export default function ContactForm() {
                 render={({ field }) => (
                   <FormItem>
                     <Label htmlFor="lastName" className="text-black">
-                      Last Name
+                      {forms.contact.fields.lastName}
                     </Label>
                     <FormControl>
                       <Input
@@ -133,7 +139,7 @@ export default function ContactForm() {
                 render={({ field }) => (
                   <FormItem>
                     <Label htmlFor="email" className="text-black">
-                      Email
+                      {forms.contact.fields.email}
                     </Label>
                     <FormControl>
                       <Input
@@ -153,7 +159,7 @@ export default function ContactForm() {
                 render={({ field }) => (
                   <FormItem>
                     <Label htmlFor="phone" className="text-black">
-                      Phone (Optional)
+                      {forms.contact.fields.phone}
                     </Label>
                     <FormControl>
                       <Input
@@ -174,7 +180,7 @@ export default function ContactForm() {
               render={({ field }) => (
                 <FormItem>
                   <Label htmlFor="company" className="text-black">
-                    Company (Optional)
+                    {forms.contact.fields.company}
                   </Label>
                   <FormControl>
                     <Input
@@ -194,23 +200,35 @@ export default function ContactForm() {
               render={({ field }) => (
                 <FormItem>
                   <Label htmlFor="subject" className="text-black mb-1">
-                    Subject
+                    {forms.contact.fields.subject}
                   </Label>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
                       <SelectTrigger className="bg-white border-gray-300 text-black placeholder:text-gray-600">
-                        <SelectValue placeholder="Select a subject" />
+                        <SelectValue
+                          placeholder={forms.contact.subjectPlaceholder}
+                        />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="general">General Inquiry</SelectItem>
-                      <SelectItem value="sales">Sales Question</SelectItem>
-                      <SelectItem value="support">Technical Support</SelectItem>
-                      <SelectItem value="partnership">
-                        Partnership Opportunity
+                      <SelectItem value="general">
+                        {forms.contact.subjects.general}
                       </SelectItem>
-                      <SelectItem value="media">Media Inquiry</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="sales">
+                        {forms.contact.subjects.sales}
+                      </SelectItem>
+                      <SelectItem value="support">
+                        {forms.contact.subjects.support}
+                      </SelectItem>
+                      <SelectItem value="partnership">
+                        {forms.contact.subjects.partnership}
+                      </SelectItem>
+                      <SelectItem value="media">
+                        {forms.contact.subjects.media}
+                      </SelectItem>
+                      <SelectItem value="other">
+                        {forms.contact.subjects.other}
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -224,13 +242,13 @@ export default function ContactForm() {
               render={({ field }) => (
                 <FormItem>
                   <Label htmlFor="message" className="text-black">
-                    Message
+                    {forms.contact.fields.message}
                   </Label>
                   <FormControl>
                     <Textarea
                       id="message"
                       className="bg-white border-gray-300 text-black placeholder:text-gray-600 min-h-[120px]"
-                      placeholder="Tell us how we can help you..."
+                      placeholder={forms.contact.messagePlaceholder}
                       {...field}
                     />
                   </FormControl>
@@ -244,16 +262,16 @@ export default function ContactForm() {
               className="w-full bg-black hover:bg-gray-800 text-lg py-3"
               disabled={isPending}
             >
-              {isPending ? "Sending..." : "Send Message"}
+              {isPending ? forms.contact.submitting : forms.contact.submit}
             </Button>
             <p className="text-gray-600 text-sm text-center">
-              We typically respond within 24 hours during business days.
+              {forms.contact.helper}
             </p>
             {formStatus === "success" && (
-              <SuccessMessage message="Request submitted successfully!" />
+              <SuccessMessage message={forms.feedback.success} />
             )}
             {formStatus === "error" && (
-              <ErrorMessage message="There was an error submitting the form." />
+              <ErrorMessage message={forms.feedback.error} />
             )}
           </form>
         </FormContainer>

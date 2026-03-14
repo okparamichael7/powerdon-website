@@ -1,0 +1,104 @@
+{
+  "hero": {
+    "title": "Vergroot je merkbereik",
+    "description": "Of je nu een nieuw product introduceert, een campagne lanceert of merkbekendheid opbouwt: onze laadstations bieden premium advertentiekansen met gegarandeerde aandacht.",
+    "cta": "Offerte aanvragen",
+    "fallbackAlt": "POWERDON laadstation met digitale advertentie voor Music is Universal"
+  },
+  "reasons": [
+    {
+      "title": "Hoge zichtbaarheid",
+      "description": "Je merk krijgt een premium positie op onze laadstations, op ooghoogte tijdens laadsessies van 45 tot 60 minuten."
+    },
+    {
+      "title": "Gericht bereik",
+      "description": "Bereik doelgroepen op drukbezochte locaties zoals luchthavens, winkelcentra, conferenties en evenementen waar jouw ideale klanten samenkomen."
+    },
+    {
+      "title": "Flexibele advertentiecampagnes",
+      "description": "In tegenstelling tot statische banners kunnen advertenties tijdens het evenement direct worden aangepast. Denk aan tijdgebonden boodschappen zoals booth-reminders of lanceringen."
+    },
+    {
+      "title": "Premium locaties",
+      "description": "Strategische plaatsing op locaties met veel bezoekers zorgt ervoor dat je boodschap terechtkomt bij betrokken doelgroepen in omgevingen waar zij echt tijd doorbrengen."
+    }
+  ],
+  "formatsTitle": "Advertentieformaten",
+  "formats": [
+    {
+      "title": "Digitaal display",
+      "description": "Hoge resolutie digitale schermen op ieder laadstation voor merkcontent, video en interactieve advertenties.",
+      "bullets": [
+        "HD-displays in full color",
+        "Ondersteuning voor video en animatie",
+        "Realtime content-updates",
+        "Interactieve touchmogelijkheden"
+      ]
+    },
+    {
+      "title": "Branded stations",
+      "description": "Volledige branding van stations met je bedrijfskleuren, logo en boodschap voor maximale merkbeleving.",
+      "bullets": [
+        "Aangepaste kleurenschema's",
+        "Logo- en QR-code-integratie voor campagnes",
+        "Uniek merkcontactmoment op het juiste moment",
+        "Aangepaste welkomstboodschappen"
+      ]
+    }
+  ],
+  "packagesTitle": "Advertentiepakketten",
+  "packages": [
+    {
+      "name": "Starter",
+      "price": "€1.000 / event",
+      "badge": null,
+      "bullets": [
+        "Tot 10 stationplaatsingen over het evenemententerrein",
+        "Digitale schermadvertenties tijdens laadsessies",
+        "Analytics op impressies en engagementtijd",
+        "Geschat 50.000+ impressies per evenement",
+        "Perfect voor kleine tot middelgrote festivals en merkpilots"
+      ]
+    },
+    {
+      "name": "Professional",
+      "price": "€3.500 / event",
+      "badge": "AANRADER",
+      "bullets": [
+        "Tot 25 stations met jouw digitale advertenties",
+        "Mogelijkheid voor branded station wraps",
+        "Tot 150.000 gerichte impressies",
+        "A/B-testondersteuning voor meerdere creatives",
+        "Onze populairste optie voor middelgrote en grote festivals"
+      ]
+    },
+    {
+      "name": "Pilot Testing",
+      "price": "Prijs op maat",
+      "badge": "STARTUP FRIENDLY",
+      "bullets": [
+        "3 tot 5 stations voor kleine events en startups",
+        "Flexibele prijs op basis van eventgrootte en budget",
+        "Basis digitale schermadvertenties",
+        "Tot 25.000 impressies per evenement",
+        "Ideaal om onze diensten te testen op startup-events"
+      ],
+      "cta": "Samenwerken"
+    }
+  ],
+  "pilot": {
+    "title": "Interesse in Pilot Testing?",
+    "description": "Perfect voor startups en kleine events die onze advertentieoplossingen willen testen. Ontvang een prijs op maat voor jouw budget en eventgrootte.",
+    "bullets": [
+      "Geen langdurige verplichtingen",
+      "Gratis consult en setupbegeleiding",
+      "Uitgebreide performance-analytics inbegrepen"
+    ],
+    "cta": "Start je campagne nu",
+    "response": "Ontvang binnen 24 uur een voorstel op maat"
+  },
+  "quotePage": {
+    "title": "Campagneofferte aanvragen",
+    "description": "Vertel ons over je advertentiedoelen en wij maken een campagnevoorstel op maat voor jouw merk."
+  }
+}

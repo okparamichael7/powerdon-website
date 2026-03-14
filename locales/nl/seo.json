@@ -1,0 +1,121 @@
+{
+  "site": {
+    "description": "Snel opladen en directe zichtbaarheid in een compacte vorm. Premium draagbare laadstations met ingebouwde ledschermen voor evenementen, festivals en drukbezochte locaties. Reserveer stations of adverteer met PowerDon.",
+    "keywords": [
+      "draagbare laadstations",
+      "powerbank verhuur",
+      "laadoplossingen voor evenementen",
+      "festival opladen",
+      "ledscherm advertenties",
+      "mobiel opladen",
+      "laadstations Nederland",
+      "stroomoplossingen voor evenementen",
+      "draagbare powerbanks",
+      "snel opladen",
+      "digital signage",
+      "event technologie"
+    ]
+  },
+  "pages": {
+    "home": {
+      "title": "PowerDon",
+      "description": "Snel opladen en directe zichtbaarheid in een compacte vorm. Premium draagbare laadstations met ingebouwde ledschermen voor evenementen, festivals en drukbezochte locaties.",
+      "keywords": [
+        "draagbare laadstations",
+        "opladen op evenementen",
+        "laadstations Nederland"
+      ]
+    },
+    "about": {
+      "title": "Over Ons - Onze missie bij PowerDon",
+      "description": "Ontdek de missie van PowerDon om batterijstress weg te nemen met betrouwbare, toegankelijke en snelle laadoplossingen. Lees meer over onze waarden: innovatie, duurzaamheid, community en kwaliteit.",
+      "keywords": [
+        "over PowerDon",
+        "laadstation bedrijf",
+        "missie",
+        "duurzaam opladen",
+        "event technologie bedrijf",
+        "Nederlandse laadoplossingen"
+      ]
+    },
+    "advertising": {
+      "title": "Adverteren op PowerDon - Vergroot je merkbereik",
+      "description": "Adverteer op PowerDon-laadstations met opvallende digitale displays. Bereik betrokken doelgroepen op evenementen, festivals en drukbezochte locaties. Flexibele campagnes met realtime updates.",
+      "keywords": [
+        "adverteren op laadstations",
+        "digital signage advertenties",
+        "event advertising",
+        "ledscherm advertenties",
+        "merkzichtbaarheid",
+        "event marketing",
+        "festival advertenties",
+        "gerichte advertenties"
+      ]
+    },
+    "advertisingQuote": {
+      "title": "Advertentieofferte aanvragen - PowerDon",
+      "description": "Vraag een maatwerkofferte aan voor je campagne op PowerDon-laadstations. Ontvang prijzen voor digitale schermadvertenties, branded stations en event partnerships.",
+      "keywords": [
+        "advertentie offerte",
+        "prijzen laadstation advertenties",
+        "event advertising tarieven",
+        "prijzen digital signage"
+      ]
+    },
+    "contact": {
+      "title": "Contact - Neem contact op met PowerDon",
+      "description": "Neem contact op met PowerDon voor vragen over laadstations, advertentiemogelijkheden of partnerships. Bereik ons via e-mail, telefoon of het contactformulier.",
+      "keywords": [
+        "contact PowerDon",
+        "ondersteuning laadstations",
+        "klantenservice",
+        "zakelijke aanvragen",
+        "partnership contact"
+      ]
+    },
+    "reserve": {
+      "title": "Laadstations reserveren - Partner met PowerDon",
+      "description": "Reserveer PowerDon-laadstations voor je evenement of festival. Geen investering vooraf nodig. Genereer extra omzet, houd bezoekers verbonden en verbeter de eventervaring.",
+      "keywords": [
+        "laadstations reserveren",
+        "laadstations voor evenementen",
+        "festival opladen",
+        "laadstations huren",
+        "stroomoplossingen voor evenementen",
+        "partner met PowerDon"
+      ]
+    },
+    "reserveForm": {
+      "title": "Reserveringsformulier laadstation - PowerDon",
+      "description": "Vul het formulier in om PowerDon-laadstations voor je evenement te reserveren. Ontvang binnen 24 uur een voorstel op maat.",
+      "keywords": [
+        "reserveringsformulier laadstation",
+        "event boeking",
+        "reservering laadstation"
+      ]
+    },
+    "privacy": {
+      "title": "Privacybeleid - PowerDon",
+      "description": "Privacybeleid van PowerDon. Lees hoe we je persoonsgegevens verzamelen, gebruiken en beschermen volgens de AVG en Nederlandse privacywetgeving.",
+      "keywords": [
+        "privacybeleid",
+        "gegevensbescherming",
+        "AVG",
+        "privacyverklaring"
+      ]
+    },
+    "terms": {
+      "title": "Gebruiksvoorwaarden - PowerDon",
+      "description": "Gebruiksvoorwaarden van PowerDon. Lees onze voorwaarden voor het gebruik van PowerDon-laadstations, powerbankverhuur en aanverwante diensten.",
+      "keywords": [
+        "gebruiksvoorwaarden",
+        "algemene voorwaarden",
+        "gebruikersovereenkomst",
+        "juridische voorwaarden"
+      ]
+    }
+  },
+  "schema": {
+    "serviceDescription": "Premium draagbare laadstations met ingebouwde ledschermen voor evenementen, festivals en drukbezochte locaties. Snelle laadoplossingen met advertentiemogelijkheden."
+  }
+}

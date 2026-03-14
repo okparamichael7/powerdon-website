@@ -1,0 +1,64 @@
+{
+  "languageSwitcher": {
+    "label": "Taal",
+    "en": "EN",
+    "nl": "NL",
+    "english": "Engels",
+    "dutch": "Nederlands"
+  },
+  "header": {
+    "close": "Sluiten",
+    "menu": "Menu",
+    "logoAlt": "PowerDon-logo",
+    "prelaunch": "PowerDon zit momenteel in de testfase. Doe mee met ons pre-launch programma voor exclusieve vroege toegang en pilotkansen.",
+    "navigation": {
+      "reserve": "Reserveer station",
+      "advertising": "Adverteren",
+      "company": "Het bedrijf",
+      "contact": "Contact"
+    }
+  },
+  "stickySublines": {
+    "advertisingCta": "Adverteren op PowerDon",
+    "reserveCta": "Reserveer een station"
+  },
+  "pageStickyHeader": {
+    "advertising": "Adverteren",
+    "reserve": "Reserveer station",
+    "logoAlt": "PowerDon"
+  },
+  "footer": {
+    "logoAlt": "POWERDON",
+    "business": {
+      "kvk": "KvK: 86755080",
+      "vat": "BTW: NL003946515B25"
+    },
+    "navigation": {
+      "home": "HOME",
+      "reserve": "RESERVEER STATION",
+      "advertising": "ADVERTEREN",
+      "about": "OVER ONS",
+      "contact": "CONTACT"
+    },
+    "social": {
+      "instagram": "INSTAGRAM",
+      "facebook": "FACEBOOK",
+      "linkedin": "LINKEDIN",
+      "twitter": "TWITTER"
+    },
+    "toast": {
+      "title": "{platform}-link volgt binnenkort!",
+      "description": "We werken aan het koppelen van onze socialmediakanalen. Houd ons in de gaten.",
+      "action": "Begrepen"
+    },
+    "copyright": "© 2025 PowerDon",
+    "legal": {
+      "terms": "Gebruiksvoorwaarden",
+      "privacy": "Privacybeleid"
+    }
+  },
+  "backLinks": {
+    "advertising": "Terug naar Adverteren",
+    "reserve": "Terug naar Reserveer Station"
+  }
+}

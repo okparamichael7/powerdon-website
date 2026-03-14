@@ -1,14 +1,9 @@
-import { Metadata } from "next";
-import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+import { getLocalizedPageMetadata } from "@/lib/seo-page";
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Reserve Station Form - PowerDon",
-  description:
-    "Fill out the form to reserve PowerDon charging stations for your event. Get a custom proposal within 24 hours.",
-  keywords: ["reserve station form", "event booking", "charging station reservation"],
-  path: "/reserve/form",
-  noindex: true, // Form pages typically shouldn't be indexed
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return getLocalizedPageMetadata("reserveForm", { noindex: true });
+}
 
 export default function ReserveFormLayout({
   children,

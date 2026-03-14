@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MarqueeText } from "./magicui/marquee-text";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 import { motion, AnimatePresence } from "framer-motion";
 import { CgMenuGridO } from "react-icons/cg";
 
@@ -17,6 +18,8 @@ interface StickyHeaderProps {
 export function StickyHeader({ isMenuOpen, setIsMenuOpen }: StickyHeaderProps) {
   const [isSticky, setIsSticky] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { href, namespace } = useTranslation();
+  const copy = namespace("common");
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -64,7 +67,9 @@ export function StickyHeader({ isMenuOpen, setIsMenuOpen }: StickyHeaderProps) {
               className="flex items-center space-x-2"
             >
               <X className="w-4 h-4 text-white" />
-              <span className="text-white text-sm font-medium">Close</span>
+              <span className="text-white text-sm font-medium">
+                {copy.header.close}
+              </span>
             </button>
 
             {/* Nav Links */}
@@ -75,28 +80,28 @@ export function StickyHeader({ isMenuOpen, setIsMenuOpen }: StickyHeaderProps) {
               className="mt-6 space-y-4"
             >
               <Link
-                href="/reserve"
+                href={href("/reserve")}
                 className="block text-white text-sm font-medium"
               >
-                Reserve station
+                {copy.header.navigation.reserve}
               </Link>
               <Link
-                href="/advertising"
+                href={href("/advertising")}
                 className="block text-white text-sm font-medium"
               >
-                Advertising
+                {copy.header.navigation.advertising}
               </Link>
               <Link
-                href="/about"
+                href={href("/about")}
                 className="block text-white text-sm font-medium"
               >
-                The company
+                {copy.header.navigation.company}
               </Link>
               <Link
-                href="/contact"
+                href={href("/contact")}
                 className="block text-white text-sm font-medium"
               >
-                Contact
+                {copy.header.navigation.contact}
               </Link>
             </motion.nav>
           </motion.div>
@@ -107,44 +112,28 @@ export function StickyHeader({ isMenuOpen, setIsMenuOpen }: StickyHeaderProps) {
       <header className="transition-all duration-300 ease-in-out z-40 fixed top-0 left-0 right-0 bg-blue-900/95 backdrop-blur-md border-b border-blue-700/50">
         <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 lg:px-6 lg:py-6 bg-white">
           {/* Logo - Responsive sizing */}
-          <Link href="/" className="flex items-center space-x-3">
+          <Link href={href("/")} className="flex items-center space-x-3">
             <Image
               src="/images/powerdon-logo-black.png"
-              alt="Powerdon Logo"
+              alt={copy.header.logoAlt}
               width={200}
               height={60}
               className="h-6 sm:h-8 w-auto transition-all duration-300"
             />
           </Link>
 
-          {/* Pre-launch Banner - Responsive visibility */}
-          <div
-            className={cn(
-              "relative max-w-xl overflow-hidden",
-              "hidden md:block" // Show on sm screens and up
-            )}
-          >
-            <MarqueeText pauseOnHover className="[--duration:20s]">
-              <div className={cn("text-black text-xs font-medium")}>
-                PowerDon is currently in testing phase - Join our pre-launch
-                program for exclusive early access. Be part of our pilot
-                program.
-              </div>
-            </MarqueeText>
-          </div>
-
           {/* Menu Button - Responsive sizing */}
-          <div className="w-[80px] sm:w-[100px] flex justify-end">
+          <div className="flex items-center justify-end gap-3">
             <motion.button
               layoutId="menu"
               onClick={() => setIsMenuOpen(true)}
               className={cn(
                 "flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#989899] !rounded-md shadow-sm text-white text-xs tracking-wide",
-                isMenuOpen && "invisible"
+                isMenuOpen && "invisible",
               )}
             >
               <CgMenuGridO className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
-              <span>Menu</span>
+              <span>{copy.header.menu}</span>
             </motion.button>
           </div>
         </div>

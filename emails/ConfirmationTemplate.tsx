@@ -12,6 +12,8 @@ import {
   Hr,
   Img,
 } from "@react-email/components";
+import { defaultLocale, localizePath, type Locale } from "@/lib/i18n/config";
+import type { Messages } from "@/lib/i18n/messages/en";
 
 type FormType = "contact" | "advertising" | "partnership" | "pilot-testing";
 
@@ -25,72 +27,37 @@ interface Props {
   submissionData: SubmissionData;
   customMessage?: string;
   requestId?: string;
+  locale?: Locale;
+  messages: Messages["emails"];
 }
 
-const formConfig = {
+const visualConfig = {
   contact: {
-    title: "Contact Inquiry",
     icon: "💬",
-    description: "We've received your message and will get back to you soon.",
-    responseTime: "within 24 hours",
-    nextSteps: [
-      "Our team will review your inquiry",
-      "We'll respond to your message within 24 hours",
-      "A specialist will reach out to discuss your needs",
-    ],
-    ctaText: "Explore Our Solutions",
-    ctaUrl: "/",
-    accentColor: "#3b82f6", // blue-500
+    accentColor: "#3b82f6",
   },
   advertising: {
-    title: "Campaign Quote Request",
     icon: "📈",
-    description:
-      "Thank you for your interest in PowerDon's advertising solutions.",
-    responseTime: "within 24 hours",
-    nextSteps: [
-      "Our advertising team will review your requirements",
-      "We'll create a custom campaign proposal",
-      "A dedicated account manager will present the strategy",
-      "Campaign launch within 1 week of approval",
-    ],
-    ctaText: "View Advertising Packages",
-    ctaUrl: "/advertising",
-    accentColor: "#00d4ff", // electric accent
+    accentColor: "#00d4ff",
   },
   partnership: {
-    title: "Partnership Application",
     icon: "🤝",
-    description:
-      "We're excited about the possibility of partnering with your event.",
-    responseTime: "within 48 hours",
-    nextSteps: [
-      "Our partnership team will review your application",
-      "We'll create a custom partnership proposal",
-      "Schedule a discovery call to discuss details",
-      "Finalize partnership agreement and logistics",
-    ],
-    ctaText: "Learn About Partnerships",
-    ctaUrl: "/reserve",
-    accentColor: "#00ff88", // neon accent
+    accentColor: "#00ff88",
   },
   "pilot-testing": {
-    title: "Pilot Testing Request",
     icon: "🚀",
-    description:
-      "Thank you for your interest in our startup-friendly pilot program.",
-    responseTime: "within 24 hours",
-    nextSteps: [
-      "Our pilot program team will review your request",
-      "We'll prepare a custom quote based on your needs",
-      "Schedule a free consultation call",
-      "Quick setup and launch of your pilot campaign",
-    ],
-    ctaText: "View Pilot Program",
-    ctaUrl: "/advertising",
-    accentColor: "#2563eb", // blue-600
+    accentColor: "#2563eb",
   },
 };
+
+function interpolate(
+  template: string,
+  values: Record<string, string | number>,
+) {
+  return Object.entries(values).reduce((result, [key, value]) => {
+    return result.replaceAll(`{${key}}`, String(value));
+  }, template);
+}
 
 export const ConfirmationTemplate = ({
   firstName,
@@ -98,26 +65,28 @@ export const ConfirmationTemplate = ({
   submissionData,
   customMessage,
   requestId,
+  locale = defaultLocale,
+  messages,
 }: Props) => {
-  const config = formConfig[formType] || {
-    title: "Contact Inquiry",
-    icon: "💬",
-    description: "We've received your message and will get back to you soon.",
-    responseTime: "within 24 hours",
-    nextSteps: [
-      "Our team will review your inquiry",
-      "We'll respond to your message within 24 hours",
-      "A specialist will reach out to discuss your needs",
-    ],
-    ctaText: "Explore Our Solutions",
-    ctaUrl: "/",
-    accentColor: "#3b82f6", // blue-500
-  };
+  const content = {
+    contact: messages.confirmation.forms.contact,
+    advertising: messages.confirmation.forms.advertising,
+    partnership: messages.confirmation.forms.partnership,
+    "pilot-testing": messages.confirmation.forms.pilotTesting,
+  }[formType];
+  const visual = visualConfig[formType];
+  const localeTag = locale === "nl" ? "nl-NL" : "en-US";
+  const submittedAt = new Intl.DateTimeFormat(localeTag, {
+    dateStyle: "full",
+    timeStyle: "short",
+  }).format(new Date());
 
   return (
-    <Html lang="en">
+    <Html lang={locale}>
       <Head />
-      <Preview>Confirmation: {config.title} - PowerDon</Preview>
+      <Preview>
+        {interpolate(messages.confirmation.preview, { title: content.title })}
+      </Preview>
       <Body style={main}>
         <Container style={container}>
           {/* Gradient Header */}
@@ -139,29 +108,33 @@ export const ConfirmationTemplate = ({
 
           {/* Confirmation Section */}
           <Section style={confirmationSection}>
-            <div style={iconCircle(config.accentColor)}>
+            <div style={iconCircle(visual.accentColor)}>
               <Text style={checkIcon}>✓</Text>
             </div>
-            <Heading style={h1}>Thank you, {firstName}!</Heading>
+            <Heading style={h1}>
+              {interpolate(messages.confirmation.thankYou, { name: firstName })}
+            </Heading>
             <Text style={subtitle}>
-              Your {config.title.toLowerCase()} has been received
+              {interpolate(messages.confirmation.received, {
+                title: content.title.toLowerCase(),
+              })}
             </Text>
           </Section>
 
           {/* Message Card */}
-          <Section style={messageCard(config.accentColor)}>
+          <Section style={messageCard(visual.accentColor)}>
             <div style={iconContainer}>
-              <Text style={formIcon}>{config.icon}</Text>
+              <Text style={formIcon}>{visual.icon}</Text>
             </div>
-            <Text style={messageTitle}>{config.title}</Text>
+            <Text style={messageTitle}>{content.title}</Text>
             <Text style={messageDescription}>
-              {customMessage || config.description}
+              {customMessage || content.description}
             </Text>
           </Section>
 
           {/* Submission Summary */}
           <Section style={summaryCard}>
-            <Text style={cardTitle}>Submission Summary</Text>
+            <Text style={cardTitle}>{messages.confirmation.summary}</Text>
             <div style={summaryGrid}>
               {Object.entries(submissionData || {}).map(([key, value]) => {
                 if (!value) return null;
@@ -175,48 +148,49 @@ export const ConfirmationTemplate = ({
             </div>
             <div style={timestampContainer}>
               <Text style={timestamp}>
-                Submitted on{" "}
-                {new Date().toLocaleDateString("en-US", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
+                {interpolate(messages.confirmation.submittedOn, {
+                  date: submittedAt,
                 })}
               </Text>
               {requestId && (
                 <Text style={requestIdText}>
-                  Reference ID: <strong>{requestId}</strong>
+                  {interpolate(messages.confirmation.reference, {
+                    id: requestId,
+                  })}
                 </Text>
               )}
             </div>
           </Section>
 
           {/* Next Steps */}
-          <Section style={nextStepsCard(config.accentColor)}>
-            <Text style={cardTitle}>What happens next?</Text>
+          <Section style={nextStepsCard(visual.accentColor)}>
+            <Text style={cardTitle}>{messages.confirmation.nextSteps}</Text>
             <div style={stepsContainer}>
-              {config.nextSteps.map((step, index) => (
+              {content.nextSteps.map((step, index) => (
                 <div key={index} style={stepItem}>
-                  <div style={stepNumber(config.accentColor)}>{index + 1}</div>
+                  <div style={stepNumber(visual.accentColor)}>{index + 1}</div>
                   <Text style={stepText}>{step}</Text>
                 </div>
               ))}
             </div>
             <div style={responseTimeContainer}>
               <Text style={responseTime}>
-                ⚡ Expected response time:{" "}
-                <strong>{config.responseTime}</strong>
+                ⚡{" "}
+                {interpolate(messages.confirmation.responseTime, {
+                  time: content.responseTime,
+                })}
               </Text>
             </div>
           </Section>
 
           {/* CTA Section */}
           <Section style={ctaSection}>
-            <Text style={ctaTitle}>While you wait, explore more</Text>
-            <Link href={config.ctaUrl} style={ctaButton(config.accentColor)}>
-              {config.ctaText}
+            <Text style={ctaTitle}>{messages.confirmation.explore}</Text>
+            <Link
+              href={localizePath(content.ctaUrl, locale)}
+              style={ctaButton(visual.accentColor)}
+            >
+              {content.ctaText}
             </Link>
           </Section>
 
@@ -253,19 +227,14 @@ export const ConfirmationTemplate = ({
                 />
               </Link>
             </div> */}
-            <Text style={footerTitle}>Need immediate assistance?</Text>
+            <Text style={footerTitle}>{messages.confirmation.assistance}</Text>
             <Text style={footerText}>
-              Email us at{" "}
-              <Link href="mailto:support@powerdon.com" style={footerLink}>
-                support@powerdon.nl
-              </Link>{" "}
-              or call{" "}
-              <Link href="tel:+316130713536" style={footerLink}>
-                +31 (06)130713536
-              </Link>
+              {messages.confirmation.assistanceText}
             </Text>
             <Text style={footerCopyright}>
-              © {new Date().getFullYear()} PowerDon. All rights reserved.
+              {interpolate(messages.confirmation.copyright, {
+                year: new Date().getFullYear(),
+              })}
             </Text>
           </Section>
         </Container>

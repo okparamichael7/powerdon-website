@@ -7,6 +7,8 @@ import {
   PilotTestingNotificationTemplate,
   QuoteNotificationTemplate,
 } from "@/emails";
+import { getTranslations } from "@/lib/i18n/getTranslations";
+import { defaultLocale, type Locale } from "@/lib/i18n/config";
 import { generateRequestId } from "./utils";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -39,18 +41,24 @@ export async function sendContactEmail(values: any) {
 }
 
 // CONTACT confirmation email
-export async function sendContactConfirmationEmail(values: any) {
+export async function sendContactConfirmationEmail(
+  values: any,
+  locale: Locale = defaultLocale,
+) {
   try {
     const { firstName, email, ...submissionData } = values;
+    const messages = await getTranslations(locale);
 
     const { data, error } = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
       to: email,
-      subject: "Thank you for contacting us 💬",
+      subject: `${messages.emails.subjects.contact} 💬`,
       react: ConfirmationTemplate({
         firstName,
         formType: "contact",
         submissionData,
+        locale,
+        messages: messages.emails,
       }),
     });
 
@@ -62,7 +70,10 @@ export async function sendContactConfirmationEmail(values: any) {
 }
 
 // Partnership Email to Admin
-export async function sendPartnershipEmail(values: any) {
+export async function sendPartnershipEmail(
+  values: any,
+  locale: Locale = defaultLocale,
+) {
   try {
     const requestId = generateRequestId("PTN");
     const {
@@ -72,6 +83,7 @@ export async function sendPartnershipEmail(values: any) {
       phone,
       eventName,
       eventDate,
+      address,
       location,
       attendees,
       eventType,
@@ -91,6 +103,7 @@ export async function sendPartnershipEmail(values: any) {
         phone,
         eventName,
         eventDate,
+        address,
         location,
         attendees,
         eventType,
@@ -101,15 +114,18 @@ export async function sendPartnershipEmail(values: any) {
     if (adminEmail.error) throw new Error("Failed to send admin email");
 
     // Send confirmation to user
+    const messages = await getTranslations(locale);
     const confirmationEmail = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
       to: email,
-      subject: `[${requestId}] Your partnership request 🤝`,
+      subject: `[${requestId}] ${messages.emails.subjects.partnership} 🤝`,
       react: ConfirmationTemplate({
         firstName: organizer,
         formType: "partnership",
         submissionData: values,
         requestId,
+        locale,
+        messages: messages.emails,
       }),
     });
 
@@ -123,7 +139,10 @@ export async function sendPartnershipEmail(values: any) {
 }
 
 // Advertising / Quote Email to Admin
-export async function sendAdvertisingEmail(values: any) {
+export async function sendAdvertisingEmail(
+  values: any,
+  locale: Locale = defaultLocale,
+) {
   try {
     const requestId = generateRequestId("CAM");
     const {
@@ -160,15 +179,18 @@ export async function sendAdvertisingEmail(values: any) {
     if (adminEmail.error) throw new Error("Failed to send admin email");
 
     // Send confirmation to user
+    const messages = await getTranslations(locale);
     const confirmationEmail = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
       to: email,
-      subject: `[${requestId}] We've received your quote request 📈`,
+      subject: `[${requestId}] ${messages.emails.subjects.advertising} 📈`,
       react: ConfirmationTemplate({
         firstName: contact,
         formType: "advertising",
         submissionData: values,
         requestId,
+        locale,
+        messages: messages.emails,
       }),
     });
 
@@ -182,7 +204,10 @@ export async function sendAdvertisingEmail(values: any) {
 }
 
 // Pilot Testing Email
-export async function sendPilotTestingEmail(values: any) {
+export async function sendPilotTestingEmail(
+  values: any,
+  locale: Locale = defaultLocale,
+) {
   try {
     const requestId = generateRequestId("PLT");
     const {
@@ -219,15 +244,18 @@ export async function sendPilotTestingEmail(values: any) {
     if (adminEmail.error) throw new Error("Failed to send admin email");
 
     // Send confirmation to user
+    const messages = await getTranslations(locale);
     const confirmationEmail = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
       to: email,
-      subject: `[${requestId}] Pilot testing request received 🚀`,
+      subject: `[${requestId}] ${messages.emails.subjects.pilotTesting} 🚀`,
       react: ConfirmationTemplate({
         firstName: contact,
         formType: "pilot-testing",
         submissionData: values,
         requestId,
+        locale,
+        messages: messages.emails,
       }),
     });
 

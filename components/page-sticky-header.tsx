@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 
 interface PageStickyHeaderProps {
   currentPage: "advertising" | "reserve";
@@ -10,6 +11,8 @@ interface PageStickyHeaderProps {
 
 export function PageStickyHeader({ currentPage }: PageStickyHeaderProps) {
   const [showHeader, setShowHeader] = useState(false);
+  const { href, namespace } = useTranslation();
+  const copy = namespace("common");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,11 +30,11 @@ export function PageStickyHeader({ currentPage }: PageStickyHeaderProps) {
   }
 
   const handleAdvertisingClick = () => {
-    window.location.href = "/advertising";
+    window.location.href = href("/advertising");
   };
 
   const handleReserveClick = () => {
-    window.location.href = "/reserve";
+    window.location.href = href("/reserve");
   };
 
   return (
@@ -48,7 +51,7 @@ export function PageStickyHeader({ currentPage }: PageStickyHeaderProps) {
         <div className="flex items-center space-x-3">
           <Image
             src="/images/powerdon-logo.png"
-            alt="Powerdon"
+            alt={copy.pageStickyHeader.logoAlt}
             width={120}
             height={36}
             className="h-6 w-auto brightness-0 invert hidden sm:block"
@@ -73,7 +76,7 @@ export function PageStickyHeader({ currentPage }: PageStickyHeaderProps) {
               animationDuration: "0ms",
             }}
           >
-            Advertising
+            {copy.pageStickyHeader.advertising}
           </Button>
 
           <Button
@@ -90,7 +93,7 @@ export function PageStickyHeader({ currentPage }: PageStickyHeaderProps) {
               animationDuration: "0ms",
             }}
           >
-            Reserve Station
+            {copy.pageStickyHeader.reserve}
           </Button>
         </div>
       </div>

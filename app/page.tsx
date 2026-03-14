@@ -2,26 +2,18 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import Image from "next/image";
 import { StickyHeader } from "@/components/sticky-header";
 import { StickySublines } from "@/components/sticky-sublines";
 import { Footer } from "@/components/footer";
 import { Card, CardContent } from "@/components/ui/card";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 import { trackButtonClick, trackVideoPlay } from "@/lib/analytics";
 
 export default function PowerdonLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showNotification, setShowNotification] = useState(true);
-  const [animationStep, setAnimationStep] = useState(0);
   const [logoLoaded, setLogoLoaded] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimationStep((prev) => (prev + 1) % 4);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
+  const { href, namespace } = useTranslation();
+  const copy = namespace("home");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -32,13 +24,13 @@ export default function PowerdonLanding() {
 
   // Instant navigation handlers
   const handleAdvertisingClick = () => {
-    trackButtonClick("Advertising on Powerdon");
-    window.location.href = "/advertising";
+    trackButtonClick("home_advertising_cta");
+    window.location.href = href("/advertising");
   };
 
   const handleReserveClick = () => {
-    trackButtonClick("Reserve a station");
-    window.location.href = "/reserve";
+    trackButtonClick("home_reserve_cta");
+    window.location.href = href("/reserve");
   };
 
   return (
@@ -97,7 +89,7 @@ export default function PowerdonLanding() {
                 : "opacity-0 translate-y-4"
             }`}
           >
-            Fast charging & Instant visibility
+            {copy.hero.title}
           </h1>
           <h2
             className={`text-4xl lg:text-6xl font-light text-gray-900 mb-6 leading-tight transition-all duration-1000 ease-out delay-1200 text-left tracking-[-0.005em] ${
@@ -106,7 +98,7 @@ export default function PowerdonLanding() {
                 : "opacity-0 translate-y-4"
             }`}
           >
-            In one compact form
+            {copy.hero.subtitle}
           </h2>
         </div>
 
@@ -121,14 +113,14 @@ export default function PowerdonLanding() {
             className="bg-black text-white hover:bg-gray-800 px-8 py-3 transform hover:scale-105 transition-all duration-200 font-normal"
             style={{ animationDuration: "0ms" }}
           >
-            Advertising on Powerdon
+            {copy.hero.advertisingCta}
           </Button>
           <Button
             onClick={handleReserveClick}
             className="bg-black text-white hover:bg-gray-800 px-8 py-3 transform hover:scale-105 transition-all duration-200 font-normal"
             style={{ animationDuration: "0ms" }}
           >
-            Reserve a station
+            {copy.hero.reserveCta}
           </Button>
         </div>
 
@@ -155,10 +147,13 @@ export default function PowerdonLanding() {
               style={{ marginLeft: "8px", marginRight: "8px" }}
               width={1200}
               height={600}
-              onPlay={() => trackVideoPlay("Product Trailer - Desktop")}
+              onPlay={() => trackVideoPlay("home_product_trailer_desktop")}
             >
-              <source src="/videos/trailer-full-res-landscape.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
+              <source
+                src="/videos/trailer-full-res-landscape.mp4"
+                type="video/mp4"
+              />
+              {copy.hero.desktopVideoFallback}
             </video>
 
             {/* Mobile Video - Shown only on mobile < 450px */}
@@ -171,147 +166,113 @@ export default function PowerdonLanding() {
               style={{ marginLeft: "8px", marginRight: "8px" }}
               width={600}
               height={1200}
-              onPlay={() => trackVideoPlay("Product Trailer - Mobile")}
+              onPlay={() => trackVideoPlay("home_product_trailer_mobile")}
             >
-              <source src="/videos/trailer-full-res-landscape.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
+              <source
+                src="/videos/trailer-full-res-landscape.mp4"
+                type="video/mp4"
+              />
+              {copy.hero.mobileVideoFallback}
             </video>
           </div>
         </div>
 
-        {/* Animated 3D Wireframe Illustration */}
         <div className="mb-12 relative"></div>
 
-        {/* Section Title */}
         <h2 className="font-light mr-0 text-4xl pr-6 tracking-[-0.005em] text-gray-900 mt-[120px] text-left w-full px-6 mb-14">
-          Your ultimate partner for events, experiences, and exposure
+          {copy.introTitle}
         </h2>
 
-        {/* Feature Cards */}
         <div className="grid md:grid-cols-3 gap-8 w-full px-6">
-          <Card className="bg-white border border-gray-200 overflow-hidden shadow-lg">
-            <CardContent className="p-0">
-              <div className="w-full h-48 mb-7">
-                <img
-                  src="/images/happy-attendees.png"
-                  alt="Seamless Event Support"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="px-6 pb-6">
-                <h3 className="text-xl font-semibold text-black text-left mb-2">
-                  Discover Dual Purpose Design
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem] text-left">
-                  Power banks with built-in LED screen — perfect for promoting, phone charging, and designed for mobility.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border border-gray-200 overflow-hidden shadow-lg">
-            <CardContent className="p-0">
-              <div className="w-full h-48 mb-7">
-                <img
-                  src="/images/free-digital-signage.png"
-                  alt="Brand Exposure"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="px-6 pb-6">
-                <h3 className="text-xl font-semibold text-black text-left mb-2">
-                  Brand Exposure
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem] text-left">
-                 Transform every charge into a marketing moment. Our LED screen puts the torch on your brand — bright, bold, and impossible to ignore.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border border-gray-200 overflow-hidden shadow-lg">
-            <CardContent className="p-0">
-              <div className="w-full h-48 mb-7">
-                <img
-                  src="/images/revenue-share.png"
-                  alt="Fast Charging"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="px-6 pb-6">
-                <h3 className="text-xl font-semibold text-black text-left mb-2">
-                  Fast Charging
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed leading-[1.20rem] text-left">
-                  Stay connected with fast, dependable charging stations —
-                  compatible with every device, anywhere. No outlets? No problem.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+          {copy.featureCards.map((feature, index) => (
+            <Card
+              key={feature.title}
+              className="bg-white border border-gray-200 overflow-hidden shadow-lg"
+            >
+              <CardContent className="p-0">
+                <div className="w-full h-48 mb-7">
+                  <img
+                    src={
+                      [
+                        "/images/happy-attendees.png",
+                        "/images/free-digital-signage.png",
+                        "/images/revenue-share.png",
+                      ][index]
+                    }
+                    alt={feature.imageAlt}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="px-6 pb-6">
+                  <h3 className="text-xl font-semibold text-black text-left mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm text-left">
+                    {feature.description}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
-        {/* Product Images Section */}
         <div className="w-full px-2 mt-[125px] mb-0">
           <div className="grid grid-cols-1 max-[450px]:grid-cols-1 min-[450px]:grid-cols-2 gap-8 w-full my-16">
             <div className="w-full">
               <img
                 src="/images/powerbanks.png"
-                alt="POWERDON portable power banks and charging accessories"
+                alt={copy.gallery.firstAlt}
                 className="w-full h-auto rounded-lg shadow-lg object-cover"
               />
             </div>
             <div className="w-full">
               <img
                 src="/images/charger-on-event.png"
-                alt="POWERDON charging station at event showing schedule display"
+                alt={copy.gallery.secondAlt}
                 className="w-full h-auto rounded-lg shadow-lg object-cover"
               />
             </div>
           </div>
         </div>
 
-        {/* Extra content to demonstrate scrolling */}
         <div className="mt-32 w-full px-6 mb-[164px]">
           <h2 className="font-light text-left text-black text-4xl mb-14">
-            Why choose PowerDon?
+            {copy.whyChoose.title}
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white bg-opacity-80 border-gray-200 p-8 rounded-lg backdrop-blur-sm shadow-lg shadow-blue-100/50 py-8 px-8">
               <div className="w-full h-32 flex items-center justify-center mb-6">
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Reliable%20network-qSD7tF4J8AWBKU3vWpnmde4hwJckJl.png"
-                  alt="Reliable Network"
+                  alt={copy.whyChoose.items[0].imageAlt}
                   className="object-contain w-24 h-24"
                 />
               </div>
               <h3 className="text-xl font-semibold text-black text-left mb-2">
-                Premium Brand Visibility
+                {copy.whyChoose.items[0].title}
               </h3>
               <p className="text-gray-600 text-left pr-14">
-                Amplify your brand impact with smart, high-traffic advertising
-                  placements that captivate audiences.
+                {copy.whyChoose.items[0].description}
               </p>
             </div>
             <div className="bg-white bg-opacity-80 border-gray-200 p-8 rounded-lg backdrop-blur-sm shadow-lg shadow-blue-100/50 px-8 py-[24pxpx]">
               <div className="w-full h-32 flex items-center justify-center mb-6">
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Fast%20charging-VnDLRKFqJDjVinSCIlJvpSrrGOnjsy.png"
-                  alt="Fast Charging"
+                  alt={copy.whyChoose.items[1].imageAlt}
                   className="object-contain w-[90px] h-[90px]"
                 />
               </div>
               <h3 className="text-xl font-semibold text-black text-left mb-2">
-                Portal & Fast Charging
+                {copy.whyChoose.items[1].title}
               </h3>
               <p className="text-gray-600 text-left pr-14">
-                Attendees can capture and share their experience without the fear of running out of power.
+                {copy.whyChoose.items[1].description}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Add Footer before closing main div */}
         <Footer />
       </main>
     </div>

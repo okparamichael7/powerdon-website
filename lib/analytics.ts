@@ -19,12 +19,12 @@ import { track } from "@vercel/analytics";
  * @param properties - Optional event properties
  *
  * @example
- * trackEvent('button_click', { button: 'Reserve Station' });
- * trackEvent('form_submit', { form: 'Contact Form' });
+ * trackEvent("button_click", { button: "reserve_station_cta" });
+ * trackEvent("form_submit", { form: "contact_form" });
  */
 export function trackEvent(
   name: string,
-  properties?: Record<string, string | number | boolean>
+  properties?: Record<string, string | number | boolean>,
 ) {
   // Only track in browser environment
   if (typeof window === "undefined") {

@@ -1,0 +1,124 @@
+{
+  "feedback": {
+    "success": "Aanvraag succesvol verzonden!",
+    "error": "Er is een fout opgetreden bij het verzenden van het formulier.",
+    "invalid": "Ongeldige gegevens",
+    "internalError": "Interne serverfout"
+  },
+  "validation": {
+    "companyRequired": "Bedrijfsnaam is verplicht",
+    "contactRequired": "Contactpersoon is verplicht",
+    "invalidEmail": "Ongeldig e-mailadres",
+    "phoneRequired": "Telefoonnummer is verplicht",
+    "firstNameRequired": "Voornaam is verplicht",
+    "lastNameRequired": "Achternaam is verplicht",
+    "subjectRequired": "Selecteer een onderwerp",
+    "messageRequired": "Bericht is verplicht",
+    "organizerRequired": "Eventorganisator is verplicht",
+    "eventNameRequired": "Eventnaam is verplicht",
+    "addressRequired": "Locatieadres is verplicht",
+    "pilotGoalsRequired": "Beschrijf je testdoelen"
+  },
+  "contact": {
+    "title": "Stuur ons een bericht",
+    "fields": {
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "email": "E-mail",
+      "phone": "Telefoon (optioneel)",
+      "company": "Bedrijf (optioneel)",
+      "subject": "Onderwerp",
+      "message": "Bericht"
+    },
+    "subjectPlaceholder": "Selecteer een onderwerp",
+    "subjects": {
+      "general": "Algemene vraag",
+      "sales": "Salesvraag",
+      "support": "Technische ondersteuning",
+      "partnership": "Partnershipmogelijkheid",
+      "media": "Mediavraag",
+      "other": "Overig"
+    },
+    "messagePlaceholder": "Vertel ons hoe we je kunnen helpen...",
+    "submit": "Bericht verzenden",
+    "submitting": "Verzenden...",
+    "helper": "We reageren doorgaans binnen 24 uur op werkdagen.",
+    "successResponse": "Bericht succesvol verzonden"
+  },
+  "campaign": {
+    "fields": {
+      "company": "Bedrijfsnaam *",
+      "contact": "Contactpersoon *",
+      "email": "E-mail *",
+      "phone": "Telefoon *",
+      "industry": "Branche",
+      "budget": "Budgetrange van het event",
+      "timeline": "Campagnetijdlijn",
+      "targetLocations": "Doellocaties",
+      "goals": "Campagnedoelen & vereisten",
+      "collaboration": "Dit is een samenwerkingsaanvraag (geen campagneaanvraag)"
+    },
+    "placeholders": {
+      "industry": "Selecteer je branche",
+      "budget": "Selecteer een budgetrange",
+      "timeline": "bijv. eenmalig event, terugkerende events",
+      "targetLocations": "bijv. luchthavens, winkelcentra, events, festivals, specifieke steden",
+      "goals": "Vertel ons over je marketingdoelen, doelgroep, creatieve vereisten en hoe succes eruitziet voor deze campagne..."
+    },
+    "options": {
+      "industries": [
+        "Technologie",
+        "Retail",
+        "Financiën",
+        "Gezondheidszorg",
+        "Automotive",
+        "Overig"
+      ],
+      "budgets": ["Onder €1.000", "€1.000 - €3.500", "€3.500 - €6.000"]
+    },
+    "nextStepsTitle": "Wat gebeurt er hierna?",
+    "nextSteps": [
+      "We beoordelen je aanvraag binnen 24 uur",
+      "Ons team maakt een campagnevoorstel op maat",
+      "We plannen een call om de strategie te presenteren",
+      "Na akkoord lanceren we je campagne binnen 1 week"
+    ],
+    "submit": "Campagnevoorstel aanvragen",
+    "submitting": "Versturen...",
+    "legal": "Door dit formulier te versturen ga je akkoord met onze servicevoorwaarden en privacyverklaring.",
+    "successResponse": "Campagneaanvraag succesvol verzonden"
+  },
+  "reserve": {
+    "fields": {
+      "organizer": "Eventorganisator/bedrijf *",
+      "contact": "Contactpersoon *",
+      "email": "E-mail *",
+      "phone": "Telefoon *",
+      "eventName": "Eventnaam *",
+      "eventDate": "Eventdatum",
+      "address": "Locatieadres *",
+      "location": "Eventlocatie",
+      "attendees": "Verwacht aantal bezoekers",
+      "eventType": "Type event",
+      "additionalInfo": "Aanvullende informatie"
+    },
+    "placeholders": {
+      "address": "Straat, huisnummer, postcode, plaats, land",
+      "location": "Stad, land",
+      "attendees": "bijv. 5000",
+      "eventType": "bijv. muziekfestival, conferentie, beurs",
+      "additionalInfo": "Vertel ons over je event, doelgroep, huidige sponsoren en eventuele specifieke vereisten voor laadstations..."
+    },
+    "nextStepsTitle": "Wat gebeurt er hierna?",
+    "nextSteps": [
+      "We beoordelen je aanvraag binnen 48 uur",
+      "Ons team maakt een partnershipvoorstel op maat",
+      "We plannen een gesprek om de details te bespreken",
+      "Na akkoord verzorgen wij de volledige setup en logistiek"
+    ],
+    "submit": "Aanvraag verzenden",
+    "submitting": "Versturen...",
+    "legal": "Door dit formulier te versturen ga je akkoord met onze servicevoorwaarden en privacyverklaring.",
+    "successResponse": "Aanvraag succesvol verzonden"
+  }
+}

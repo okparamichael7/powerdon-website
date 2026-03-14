@@ -1,13 +1,9 @@
-import { Metadata } from "next";
-import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+import { getLocalizedPageMetadata } from "@/lib/seo-page";
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Privacy Policy - PowerDon",
-  description:
-    "PowerDon Privacy Policy. Learn how we collect, use, and protect your personal information in compliance with GDPR and Dutch data protection laws.",
-  keywords: ["privacy policy", "data protection", "GDPR", "privacy statement"],
-  path: "/privacy",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  return getLocalizedPageMetadata("privacy");
+}
 
 export default function PrivacyLayout({
   children,

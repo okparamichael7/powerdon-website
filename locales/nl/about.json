@@ -1,0 +1,42 @@
+{
+  "hero": {
+    "title": "Onze missie",
+    "subtitle": "bij PowerDon",
+    "imageAlt": "POWERDON-logo in reliëf op oppervlak"
+  },
+  "mission": "Wij nemen de stress van lege batterijen weg met betrouwbare, toegankelijke en snelle laadoplossingen op de plekken waar mensen samenkomen, werken en beleven. Verbonden blijven mag geen luxe zijn. Het moet moeiteloos en altijd beschikbaar zijn.",
+  "stats": [
+    { "value": "15+", "label": "laadstations" },
+    { "value": "20+", "label": "lopende campagnes" },
+    { "value": "94%", "label": "verbetering in uptime" }
+  ],
+  "valuesTitle": "Onze waarden",
+  "values": [
+    {
+      "title": "Innovatie",
+      "description": "Wij verleggen continu de grenzen van laadtechnologie om snellere en efficiëntere oplossingen te leveren, en brengen diezelfde mentaliteit naar reclame die bezoekers bereikt op het juiste moment.",
+      "imageAlt": "Innovatie"
+    },
+    {
+      "title": "Duurzaamheid",
+      "description": "Duurzaamheid is geen trend maar een standaard. PowerDon helpt je evenement meer waarde te leveren met schonere energie en meetbare HD-schermcampagnes die beter presteren dan statische banners.",
+      "imageAlt": "Duurzaamheid"
+    },
+    {
+      "title": "Community",
+      "description": "Wij bouwen verbindingen tussen mensen, merken en communities via ons gedeelde laadnetwerk, met contextbewuste plaatsingen die lokale bedrijven helpen klanten te bereiken met relevante aanbiedingen.",
+      "imageAlt": "Community"
+    },
+    {
+      "title": "Kwaliteit",
+      "description": "Wij hanteren de hoogste standaarden in productkwaliteit, service en gebruikservaring, ondersteund door sterke creatie, merkveiligheid en meetbare resultaten.",
+      "imageAlt": "Kwaliteit"
+    }
+  ],
+  "cta": {
+    "title": "Klaar om jouw volgende event van stroom te voorzien?",
+    "description": "Sluit je aan bij organisatoren en merken die PowerDon vertrouwen om hun publiek verbonden en betrokken te houden.",
+    "reserve": "Reserveer een station",
+    "advertise": "Adverteer met ons"
+  }
+}

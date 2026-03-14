@@ -1,4 +1,11 @@
 import { Metadata } from "next";
+import {
+  defaultLocale,
+  getOpenGraphLocale,
+  localizePath,
+  locales,
+  type Locale,
+} from "@/lib/i18n/config";
 
 /**
  * SEO Configuration and Utilities
@@ -8,8 +15,6 @@ import { Metadata } from "next";
 // Base URL - Update this to your production domain
 export const siteConfig = {
   name: "PowerDon",
-  description:
-    "Fast charging and instant visibility in one compact form. Premium portable charging stations with built-in LED screens for events, festivals, and high-traffic locations. Reserve stations or advertise with PowerDon.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://powerdon.nl",
   ogImage: "/images/powerdon-logo-black.png",
   links: {
@@ -45,6 +50,7 @@ export const siteConfig = {
  * Generate metadata for pages
  */
 export function generateMetadata({
+  locale = defaultLocale,
   title,
   description,
   keywords,
@@ -54,6 +60,7 @@ export function generateMetadata({
   nofollow = false,
   type = "website",
 }: {
+  locale?: Locale;
   title?: string;
   description?: string;
   keywords?: string[];
@@ -63,12 +70,12 @@ export function generateMetadata({
   nofollow?: boolean;
   type?: "website" | "article";
 }): Metadata {
-  const pageTitle = title
-    ? `${title} | ${siteConfig.name}`
-    : `${siteConfig.name} - ${siteConfig.description.split(".")[0]}`;
-  const pageDescription = description || siteConfig.description;
+  const pageTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
+  const pageDescription = description || "";
   const pageImage = image || `${siteConfig.url}${siteConfig.ogImage}`;
-  const pageUrl = `${siteConfig.url}${path}`;
+  const pagePath = localizePath(path || "/", locale);
+  const canonicalPath = locale === defaultLocale ? path || "/" : pagePath;
+  const pageUrl = `${siteConfig.url}${canonicalPath === "/" ? "" : canonicalPath}`;
 
   const robots = {
     index: !noindex,
@@ -92,7 +99,10 @@ export function generateMetadata({
     robots: robots as Metadata["robots"],
     openGraph: {
       type,
-      locale: "en_US",
+      locale: getOpenGraphLocale(locale),
+      alternateLocale: locales
+        .filter((value) => value !== locale)
+        .map((value) => getOpenGraphLocale(value)),
       url: pageUrl,
       title: pageTitle,
       description: pageDescription,
@@ -115,6 +125,13 @@ export function generateMetadata({
     },
     alternates: {
       canonical: pageUrl,
+      languages: Object.fromEntries(
+        locales.map((value) => {
+          const localized = localizePath(path || "/", value);
+          const url = `${siteConfig.url}${localized === "/" ? "" : localized}`;
+          return [value, url];
+        }),
+      ),
     },
     metadataBase: new URL(siteConfig.url),
     verification: {
@@ -220,8 +237,7 @@ export function getServiceSchema() {
       "@type": "Country",
       name: "Netherlands",
     },
-    description:
-      "Premium portable charging stations with built-in LED screens for events, festivals, and high-traffic locations. Fast charging solutions with advertising opportunities.",
+    description: "",
     offers: {
       "@type": "Offer",
       priceCurrency: "EUR",

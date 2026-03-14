@@ -25,19 +25,23 @@ import {
 } from "@/components/ui/form";
 import SuccessMessage from "@/components/success-message";
 import ErrorMessage from "@/components/error-message";
-import { campaignSchema } from "@/schema";
+import { createCampaignSchema, campaignSchema } from "@/schema";
 import { campaign, CampaignFormData } from "@/app/actions/campaign";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useTranslation } from "@/lib/i18n/useTranslation";
 import { trackFormSubmit, trackConversion } from "@/lib/analytics";
 
 export default function CampaignForm() {
   const [isPending, startTransition] = useTransition();
   const [formStatus, setFormStatus] = useState<"success" | "error" | null>(
-    null
+    null,
   );
+  const { locale, namespace } = useTranslation();
+  const forms = namespace("forms");
+  const schema = createCampaignSchema(forms.validation);
 
   const form = useForm<z.infer<typeof campaignSchema>>({
-    resolver: zodResolver(campaignSchema),
+    resolver: zodResolver(schema),
     defaultValues: {
       company: "",
       contact: "",
@@ -55,16 +59,16 @@ export default function CampaignForm() {
   // Handle form submission
   const onSubmit = async (values: CampaignFormData) => {
     startTransition(() => {
-      campaign(values)
+      campaign(values, locale)
         .then((data) => {
           if (data.success) {
             setFormStatus("success");
-            trackFormSubmit("Campaign Form");
+            trackFormSubmit("campaign_form");
             trackConversion(
               values.isCollaboration
-                ? "Collaboration Inquiry"
-                : "Campaign Quote Request",
-              1
+                ? "collaboration_inquiry"
+                : "campaign_quote_request",
+              1,
             );
 
             // Clear form
@@ -98,7 +102,7 @@ export default function CampaignForm() {
                 render={({ field }) => (
                   <FormItem>
                     <Label htmlFor="company" className="text-black">
-                      Company name *
+                      {forms.campaign.fields.company}
                     </Label>
                     <FormControl>
                       <Input
@@ -117,7 +121,7 @@ export default function CampaignForm() {
                 render={({ field }) => (
                   <FormItem>
                     <Label htmlFor="contact" className="text-black">
-                      Contact person *
+                      {forms.campaign.fields.contact}
                     </Label>
                     <FormControl>
                       <Input
@@ -139,7 +143,7 @@ export default function CampaignForm() {
                 render={({ field }) => (
                   <FormItem>
                     <Label htmlFor="email" className="text-black">
-                      Email *
+                      {forms.campaign.fields.email}
                     </Label>
                     <FormControl>
                       <Input
@@ -159,7 +163,7 @@ export default function CampaignForm() {
                 render={({ field }) => (
                   <FormItem>
                     <Label htmlFor="phone" className="text-black">
-                      Phone *
+                      {forms.campaign.fields.phone}
                     </Label>
                     <FormControl>
                       <Input
@@ -180,21 +184,35 @@ export default function CampaignForm() {
               render={({ field }) => (
                 <FormItem>
                   <Label htmlFor="industry" className="text-black">
-                    Industry
+                    {forms.campaign.fields.industry}
                   </Label>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
                       <SelectTrigger className="bg-white border-gray-300 text-black mt-1">
-                        <SelectValue placeholder="Select your industry" />
+                        <SelectValue
+                          placeholder={forms.campaign.placeholders.industry}
+                        />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="consumer goods">Technology</SelectItem>
-                      <SelectItem value="E-commerce/retail">Retail</SelectItem>
-                      <SelectItem value="event">Finance</SelectItem>
-                      <SelectItem value="Health & Wellness">Healthcare</SelectItem>
-                      <SelectItem value="beauty & cosmetic services">Automotive</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="consumer goods">
+                        {forms.campaign.options.industries[0]}
+                      </SelectItem>
+                      <SelectItem value="E-commerce/retail">
+                        {forms.campaign.options.industries[1]}
+                      </SelectItem>
+                      <SelectItem value="event">
+                        {forms.campaign.options.industries[2]}
+                      </SelectItem>
+                      <SelectItem value="Health & Wellness">
+                        {forms.campaign.options.industries[3]}
+                      </SelectItem>
+                      <SelectItem value="beauty & cosmetic services">
+                        {forms.campaign.options.industries[4]}
+                      </SelectItem>
+                      <SelectItem value="other">
+                        {forms.campaign.options.industries[5]}
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -209,21 +227,25 @@ export default function CampaignForm() {
                 render={({ field }) => (
                   <FormItem>
                     <Label htmlFor="budget" className="text-black">
-                      Event budget range
+                      {forms.campaign.fields.budget}
                     </Label>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger className="bg-white border-gray-300 text-black mt-1">
-                          <SelectValue placeholder="Select budget range" />
+                          <SelectValue
+                            placeholder={forms.campaign.placeholders.budget}
+                          />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="under-2500">Under €1,000</SelectItem>
+                        <SelectItem value="under-2500">
+                          {forms.campaign.options.budgets[0]}
+                        </SelectItem>
                         <SelectItem value="1,000-3,500">
-                          €1000 - €3500
+                          {forms.campaign.options.budgets[1]}
                         </SelectItem>
                         <SelectItem value="7500-15000">
-                          €3,500 - €6,000
+                          {forms.campaign.options.budgets[2]}
                         </SelectItem>
                       </SelectContent>
                     </Select>
@@ -237,13 +259,13 @@ export default function CampaignForm() {
                 render={({ field }) => (
                   <FormItem>
                     <Label htmlFor="timeline" className="text-black">
-                      Campaign timeline
+                      {forms.campaign.fields.timeline}
                     </Label>
                     <FormControl>
                       <Input
                         id="timeline"
                         className="bg-white border-gray-300 text-black mt-1"
-                        placeholder="e.g. single event, repeated events"
+                        placeholder={forms.campaign.placeholders.timeline}
                         {...field}
                       />
                     </FormControl>
@@ -270,7 +292,7 @@ export default function CampaignForm() {
                       htmlFor="collaboration"
                       className="text-black text-sm cursor-pointer"
                     >
-                      This is a collaboration inquiry (not a campaign request)
+                      {forms.campaign.fields.collaboration}
                     </Label>
                   </div>
                   <FormMessage />
@@ -284,13 +306,13 @@ export default function CampaignForm() {
               render={({ field }) => (
                 <FormItem>
                   <Label htmlFor="target-locations" className="text-black">
-                    Target locations
+                    {forms.campaign.fields.targetLocations}
                   </Label>
                   <FormControl>
                     <Input
                       id="target-locations"
                       className="bg-white border-gray-300 text-black mt-1"
-                      placeholder="e.g. Airports, Malls, Events, Festivals, Specific cities"
+                      placeholder={forms.campaign.placeholders.targetLocations}
                       {...field}
                     />
                   </FormControl>
@@ -305,13 +327,13 @@ export default function CampaignForm() {
               render={({ field }) => (
                 <FormItem>
                   <Label htmlFor="goals" className="text-black mb-1.5 text-sm">
-                    Campaign goals &amp; requirements
+                    {forms.campaign.fields.goals}
                   </Label>
                   <FormControl>
                     <Textarea
                       id="goals"
                       className="bg-white border-gray-300 min-h-[120px] mb-10 ml-0 mt-1 text-black"
-                      placeholder="Tell us about your marketing objectives, target audience, creative requirements, and what success looks like for your campaign..."
+                      placeholder={forms.campaign.placeholders.goals}
                       {...field}
                     />
                   </FormControl>
@@ -322,15 +344,12 @@ export default function CampaignForm() {
 
             <div className="bg-blue-50 p-4 rounded-lg mb-10 pb-[18px]">
               <h4 className="text-black font-semibold mb-2">
-                What happens next?
+                {forms.campaign.nextStepsTitle}
               </h4>
               <ul className="text-gray-600 text-sm space-y-1">
-                <li>• We'll review your requirements within 24 hours</li>
-                <li>• Our team will create a custom campaign proposal</li>
-                <li>• We'll schedule a call to present the strategy</li>
-                <li>
-                  • Upon approval, we'll launch your campaign within 1 week
-                </li>
+                {forms.campaign.nextSteps.map((step) => (
+                  <li key={step}>• {step}</li>
+                ))}
               </ul>
             </div>
 
@@ -339,17 +358,16 @@ export default function CampaignForm() {
               className="w-full bg-black hover:bg-gray-800 py-3 text-sm my-5"
               disabled={isPending}
             >
-              {isPending ? "Submitting..." : "Request campaign proposal"}
+              {isPending ? forms.campaign.submitting : forms.campaign.submit}
             </Button>
             <p className="text-center text-slate-400 my-[0] text-xs">
-              By submitting this form, you agree to our terms of service and
-              privacy policy.
+              {forms.campaign.legal}
             </p>
             {formStatus === "success" && (
-              <SuccessMessage message="Request submitted successfully!" />
+              <SuccessMessage message={forms.feedback.success} />
             )}
             {formStatus === "error" && (
-              <ErrorMessage message="There was an error submitting the form." />
+              <ErrorMessage message={forms.feedback.error} />
             )}
           </form>
         </FormContainer>

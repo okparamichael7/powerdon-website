@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "title": "Neem contact op",
+    "description": "Heb je vragen over onze laadstations of wil je meedoen aan onze testfase en pre-launch? We horen graag van je."
+  },
+  "infoTitle": "Contactinformatie",
+  "info": {
+    "email": {
+      "title": "E-mail",
+      "lines": ["support@powerdon.nl", "branding@powerdon.nl"]
+    },
+    "phone": {
+      "title": "Telefoon",
+      "lines": ["+31 (06)13071536", "Ma-vr 9:00-18:00 CEST"]
+    },
+    "address": {
+      "title": "Adres",
+      "lines": ["Luzacstraat 7A01", "3038 VT, Rotterdam"]
+    },
+    "hours": {
+      "title": "Openingstijden",
+      "lines": [
+        "Maandag - vrijdag: 09:00 - 18:00",
+        "Zaterdag: 09:00 - 23:00",
+        "Zondag: Gesloten"
+      ]
+    }
+  },
+  "quickContact": {
+    "title": "Snel contact",
+    "cardTitle": "Sales aanvragen",
+    "description": "Interesse in adverteren of stations reserveren voor je event?",
+    "cta": "Contact Sales"
+  },
+  "faqTitle": "Veelgestelde vragen",
+  "faqs": [
+    {
+      "question": "Hoe snel kunnen jullie stations voor mijn event plaatsen?",
+      "answer": "Voor standaard setups hebben we meestal 2 tot 3 weken voorbereiding nodig. Bij spoed kunnen we versneld leveren binnen 48 tot 72 uur."
+    },
+    {
+      "question": "Welke apparaten ondersteunen jullie stations?",
+      "answer": "Onze stations ondersteunen alle grote smartphonemerken, tablets en USB-apparaten met meerdere kabeltypes zoals Lightning, USB-C en Micro-USB."
+    },
+    {
+      "question": "Bieden jullie analytics voor advertentiecampagnes?",
+      "answer": "Ja. We leveren uitgebreide analytics zoals impressies, engagementtijd, demografie en locatieprestaties."
+    },
+    {
+      "question": "Wat is inbegrepen in jullie supportpakket?",
+      "answer": "Alle pakketten bevatten setup, monitoring, onderhoud en 24/7 technische support. Hogere pakketten bevatten dedicated accountmanagement en maatwerkintegraties."
+    }
+  ]
+}

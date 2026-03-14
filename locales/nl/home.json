@@ -1,0 +1,47 @@
+{
+  "hero": {
+    "title": "Snel opladen & directe zichtbaarheid",
+    "subtitle": "In één compacte vorm",
+    "advertisingCta": "Adverteren op PowerDon",
+    "reserveCta": "Reserveer een station",
+    "desktopVideoFallback": "Je browser ondersteunt de videotag niet.",
+    "mobileVideoFallback": "Je browser ondersteunt de videotag niet."
+  },
+  "introTitle": "Jouw ultieme partner voor evenementen, beleving en exposure",
+  "featureCards": [
+    {
+      "title": "Ontdek een ontwerp met dubbele functie",
+      "description": "Powerbanks met ingebouwd ledscherm, perfect voor promotie en opladen, ontworpen voor mobiliteit.",
+      "imageAlt": "Naadloze eventondersteuning"
+    },
+    {
+      "title": "Merkzichtbaarheid",
+      "description": "Verander elk laadmoment in een marketingmoment. Ons ledscherm zet jouw merk in de spotlight: helder, krachtig en niet te missen.",
+      "imageAlt": "Merkzichtbaarheid"
+    },
+    {
+      "title": "Snel opladen",
+      "description": "Blijf verbonden met snelle, betrouwbare laadstations die elk apparaat ondersteunen, overal. Geen stopcontact? Geen probleem.",
+      "imageAlt": "Snel opladen"
+    }
+  ],
+  "gallery": {
+    "firstAlt": "POWERDON draagbare powerbanks en laadaccessoires",
+    "secondAlt": "POWERDON laadstation op evenement met schemaweergave"
+  },
+  "whyChoose": {
+    "title": "Waarom kiezen voor PowerDon?",
+    "items": [
+      {
+        "title": "Premium merkzichtbaarheid",
+        "description": "Vergroot de impact van je merk met slimme advertentieposities op drukbezochte plekken die de aandacht vasthouden.",
+        "imageAlt": "Betrouwbaar netwerk"
+      },
+      {
+        "title": "Portaal & snel opladen",
+        "description": "Bezoekers kunnen hun ervaring delen zonder bang te zijn dat hun batterij leegraakt.",
+        "imageAlt": "Snel opladen"
+      }
+    ]
+  }
+}

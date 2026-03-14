@@ -1,0 +1,61 @@
+{
+  "hero": {
+    "title": "Werk samen met PowerDon",
+    "description": "Vertrouw op ons voor het plaatsen van premium laadstations op jouw festival of event. Verhoog de bezoekerservaring en genereer extra omzet zonder kosten vooraf.",
+    "cta": "Reserveer station"
+  },
+  "gallery": {
+    "firstAlt": "POWERDON draagbare powerbanks en laadaccessoires",
+    "secondAlt": "POWERDON laadstation op evenement met schemaweergave"
+  },
+  "benefits": [
+    {
+      "title": "Blije bezoekers",
+      "description": "Houd festivalbezoekers verbonden en betrokken. Minder lege telefoons betekent betere social coverage en bezoekers die langer blijven.",
+      "imageAlt": "Blije bezoekers"
+    },
+    {
+      "title": "Gratis digital signage",
+      "description": "Promoot het eventprogramma, sponsoren en aankondigingen op onze opvallende digitale schermen als onderdeel van de samenwerking.",
+      "imageAlt": "Gratis digital signage"
+    },
+    {
+      "title": "Omzetdeling",
+      "description": "Verdien aan elke verhuurde powerbank en maak van opladen een extra inkomstenbron voor je festival.",
+      "imageAlt": "Omzetdeling"
+    }
+  ],
+  "usps": [
+    {
+      "title": "Geen investering vooraf",
+      "description": "Geen opstartkosten, installatiekosten of huur van apparatuur. Wij regelen alles van installatie tot onderhoud."
+    },
+    {
+      "title": "Altijd actief",
+      "description": "Rond-de-klok monitoring en support zorgen ervoor dat je bezoekers nooit zonder stroom zitten."
+    },
+    {
+      "title": "Sterkere eventreputatie",
+      "description": "Moeiteloos opladen en connectiviteit positioneren jouw event als georganiseerd, innovatief en bezoeker-eerst."
+    },
+    {
+      "title": "Vrijheid om te bewegen",
+      "description": "Bezoekers kunnen onderweg opladen en het event blijven ontdekken zonder onderbrekingen."
+    }
+  ],
+  "pilot": {
+    "title": "Interesse in Pilot Testing?",
+    "description": "Perfect voor startups en kleine events die onze advertentieoplossingen willen testen. Ontvang een prijs op maat voor jouw budget en eventgrootte.",
+    "bullets": [
+      "Geen langdurige verplichtingen",
+      "Gratis consult en setupbegeleiding",
+      "Blije bezoekers, hogere beoordelingen"
+    ],
+    "cta": "Geef je event vandaag nog power",
+    "response": "Ontvang binnen 24 uur een voorstel op maat"
+  },
+  "formPage": {
+    "title": "Samenwerking aanvragen",
+    "description": "Vertel ons over je event en wij maken een partnershipvoorstel op maat voor jouw situatie."
+  }
+}
