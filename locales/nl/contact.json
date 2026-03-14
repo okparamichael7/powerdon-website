@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Neem contact op",
-    "description": "Heb je vragen over onze laadstations of wil je meedoen aan onze testfase en pre-launch? We horen graag van je."
+    "description": "Heb je vragen over onze laadstations of wil je meer weten over onze testfase en pre-launch? We horen graag van je."
   },
   "infoTitle": "Contactinformatie",
   "info": {
@@ -11,7 +11,7 @@
     },
     "phone": {
       "title": "Telefoon",
-      "lines": ["+31 (06)13071536", "Ma-vr 9:00-18:00 CEST"]
+      "lines": ["+31 (06)13071536", "Ma-vr 09:00 - 18:00"]
     },
     "address": {
       "title": "Adres",
@@ -20,35 +20,35 @@
     "hours": {
       "title": "Openingstijden",
       "lines": [
-        "Maandag - vrijdag: 09:00 - 18:00",
+        "Maandag t/m vrijdag: 09:00 - 18:00",
         "Zaterdag: 09:00 - 23:00",
-        "Zondag: Gesloten"
+        "Zondag: gesloten"
       ]
     }
   },
   "quickContact": {
-    "title": "Snel contact",
-    "cardTitle": "Sales aanvragen",
-    "description": "Interesse in adverteren of stations reserveren voor je event?",
-    "cta": "Contact Sales"
+    "title": "Direct contact",
+    "cardTitle": "Commerciële vragen",
+    "description": "Interesse in adverteren of in laadstations voor jouw evenement?",
+    "cta": "Neem contact op met sales"
   },
   "faqTitle": "Veelgestelde vragen",
   "faqs": [
     {
-      "question": "Hoe snel kunnen jullie stations voor mijn event plaatsen?",
-      "answer": "Voor standaard setups hebben we meestal 2 tot 3 weken voorbereiding nodig. Bij spoed kunnen we versneld leveren binnen 48 tot 72 uur."
+      "question": "Hoe snel kunnen jullie laadstations voor mijn evenement plaatsen?",
+      "answer": "Voor een standaardplaatsing hebben we meestal 2 tot 3 weken voorbereiding nodig. Heb je haast, dan kunnen we in veel gevallen binnen 48 tot 72 uur schakelen."
     },
     {
       "question": "Welke apparaten ondersteunen jullie stations?",
-      "answer": "Onze stations ondersteunen alle grote smartphonemerken, tablets en USB-apparaten met meerdere kabeltypes zoals Lightning, USB-C en Micro-USB."
+      "answer": "Onze stations ondersteunen de meeste smartphones, tablets en andere USB-apparaten. Denk aan aansluitingen zoals Lightning, USB-C en Micro-USB."
     },
     {
-      "question": "Bieden jullie analytics voor advertentiecampagnes?",
-      "answer": "Ja. We leveren uitgebreide analytics zoals impressies, engagementtijd, demografie en locatieprestaties."
+      "question": "Krijg ik inzicht in de prestaties van een advertentiecampagne?",
+      "answer": "Ja. We delen heldere inzichten, zoals impressies, kijktijd en prestaties per locatie."
     },
     {
       "question": "Wat is inbegrepen in jullie supportpakket?",
-      "answer": "Alle pakketten bevatten setup, monitoring, onderhoud en 24/7 technische support. Hogere pakketten bevatten dedicated accountmanagement en maatwerkintegraties."
+      "answer": "Alle pakketten bevatten plaatsing, monitoring, onderhoud en technische ondersteuning. In uitgebreidere trajecten bieden we daarnaast vast accountmanagement en maatwerkoplossingen."
     }
   ]
 }

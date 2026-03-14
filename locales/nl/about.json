@@ -2,40 +2,40 @@
   "hero": {
     "title": "Onze missie",
     "subtitle": "bij PowerDon",
-    "imageAlt": "POWERDON-logo in reliëf op oppervlak"
+    "imageAlt": "PowerDon-logo in reliëf"
   },
-  "mission": "Wij nemen de stress van lege batterijen weg met betrouwbare, toegankelijke en snelle laadoplossingen op de plekken waar mensen samenkomen, werken en beleven. Verbonden blijven mag geen luxe zijn. Het moet moeiteloos en altijd beschikbaar zijn.",
+  "mission": "We nemen de stress van een lege batterij weg met betrouwbare, toegankelijke en snelle laadoplossingen op de plekken waar mensen samenkomen, werken en genieten. Verbonden blijven hoort vanzelfsprekend te zijn: moeiteloos, betrouwbaar en altijd binnen handbereik.",
   "stats": [
     { "value": "15+", "label": "laadstations" },
-    { "value": "20+", "label": "lopende campagnes" },
-    { "value": "94%", "label": "verbetering in uptime" }
+    { "value": "20+", "label": "actieve campagnes" },
+    { "value": "94%", "label": "hogere uptime" }
   ],
-  "valuesTitle": "Onze waarden",
+  "valuesTitle": "Waar we voor staan",
   "values": [
     {
       "title": "Innovatie",
-      "description": "Wij verleggen continu de grenzen van laadtechnologie om snellere en efficiëntere oplossingen te leveren, en brengen diezelfde mentaliteit naar reclame die bezoekers bereikt op het juiste moment.",
+      "description": "We verleggen voortdurend de grenzen van laadtechnologie om sneller en slimmer opladen mogelijk te maken. Diezelfde vernieuwingsdrang zetten we in voor campagnes die bezoekers op precies het juiste moment bereiken.",
       "imageAlt": "Innovatie"
     },
     {
       "title": "Duurzaamheid",
-      "description": "Duurzaamheid is geen trend maar een standaard. PowerDon helpt je evenement meer waarde te leveren met schonere energie en meetbare HD-schermcampagnes die beter presteren dan statische banners.",
+      "description": "Duurzaamheid is voor ons geen extraatje, maar de norm. Met schonere stroomoplossingen en digitale schermcampagnes helpen we evenementen impact te maken met minder verspilling.",
       "imageAlt": "Duurzaamheid"
     },
     {
-      "title": "Community",
-      "description": "Wij bouwen verbindingen tussen mensen, merken en communities via ons gedeelde laadnetwerk, met contextbewuste plaatsingen die lokale bedrijven helpen klanten te bereiken met relevante aanbiedingen.",
-      "imageAlt": "Community"
+      "title": "Verbondenheid",
+      "description": "We brengen mensen, merken en communities samen via ons laadnetwerk. Met relevante schermcommunicatie creëren we waardevolle momenten voor bezoekers én lokale ondernemers.",
+      "imageAlt": "Verbondenheid"
     },
     {
       "title": "Kwaliteit",
-      "description": "Wij hanteren de hoogste standaarden in productkwaliteit, service en gebruikservaring, ondersteund door sterke creatie, merkveiligheid en meetbare resultaten.",
+      "description": "We leggen de lat hoog voor productkwaliteit, service en gebruikservaring. Dat zie je terug in alles: van hardware en uitvoering tot creatieve uitwerking en meetbare resultaten.",
       "imageAlt": "Kwaliteit"
     }
   ],
   "cta": {
-    "title": "Klaar om jouw volgende event van stroom te voorzien?",
-    "description": "Sluit je aan bij organisatoren en merken die PowerDon vertrouwen om hun publiek verbonden en betrokken te houden.",
+    "title": "Klaar om je volgende evenement van stroom te voorzien?",
+    "description": "Sluit je aan bij organisatoren en merken die op PowerDon vertrouwen om hun publiek opgeladen, verbonden en betrokken te houden.",
     "reserve": "Reserveer een station",
     "advertise": "Adverteer met ons"
   }

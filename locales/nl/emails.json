@@ -1,75 +1,75 @@
 {
   "subjects": {
     "contact": "Bedankt voor je bericht",
-    "partnership": "Je partnershipaanvraag",
+    "partnership": "We hebben je aanvraag voor samenwerking ontvangen",
     "advertising": "We hebben je offerteaanvraag ontvangen",
-    "pilotTesting": "Pilot testing-aanvraag ontvangen"
+    "pilotTesting": "We hebben je pilotaanvraag ontvangen"
   },
   "confirmation": {
-    "preview": "Bevestiging: {title} - PowerDon",
+    "preview": "Bevestiging van je aanvraag: {title} | PowerDon",
     "thankYou": "Bedankt, {name}!",
-    "received": "Je {title} is ontvangen",
-    "summary": "Overzicht van je aanvraag",
+    "received": "We hebben je {title} in goede orde ontvangen.",
+    "summary": "Samenvatting van je aanvraag",
     "submittedOn": "Verzonden op {date}",
-    "reference": "Referentie-ID: {id}",
+    "reference": "Referentienummer: {id}",
     "nextSteps": "Wat gebeurt er hierna?",
     "responseTime": "Verwachte reactietijd: {time}",
-    "explore": "Ontdek intussen meer",
-    "assistance": "Direct hulp nodig?",
-    "assistanceText": "Mail naar support@powerdon.nl of bel +31 (06)130713536",
+    "explore": "Kijk in de tussentijd gerust verder",
+    "assistance": "Hulp nodig?",
+    "assistanceText": "Mail ons via support@powerdon.nl of bel ons op +31 (06)130713536.",
     "copyright": "© {year} PowerDon. Alle rechten voorbehouden.",
     "forms": {
       "contact": {
         "title": "Contactaanvraag",
-        "description": "We hebben je bericht ontvangen en komen snel bij je terug.",
+        "description": "We hebben je bericht ontvangen en komen zo snel mogelijk bij je terug.",
         "responseTime": "binnen 24 uur",
         "nextSteps": [
-          "Ons team beoordeelt je aanvraag",
-          "We reageren binnen 24 uur",
-          "Een specialist neemt contact op om je vraag te bespreken"
+          "Ons team bekijkt je bericht",
+          "Je ontvangt binnen 24 uur een reactie",
+          "Als het nodig is, neemt een specialist contact met je op"
         ],
         "ctaText": "Bekijk onze oplossingen",
         "ctaUrl": "/"
       },
       "advertising": {
-        "title": "Campagneofferteaanvraag",
+        "title": "Aanvraag voor campagneofferte",
         "description": "Bedankt voor je interesse in de advertentieoplossingen van PowerDon.",
         "responseTime": "binnen 24 uur",
         "nextSteps": [
-          "Ons advertentieteam beoordeelt je aanvraag",
+          "Ons advertentieteam neemt je aanvraag door",
           "We maken een campagnevoorstel op maat",
-          "Een accountmanager presenteert de strategie",
-          "Lancering binnen 1 week na akkoord"
+          "Een accountmanager licht de aanpak toe",
+          "Na akkoord kunnen we binnen een week van start"
         ],
         "ctaText": "Bekijk advertentiepakketten",
         "ctaUrl": "/advertising"
       },
       "partnership": {
-        "title": "Partnershipaanvraag",
-        "description": "We zijn enthousiast over de mogelijkheid om met jouw event samen te werken.",
+        "title": "Aanvraag voor samenwerking",
+        "description": "Fijn dat je een samenwerking met PowerDon overweegt voor jouw evenement.",
         "responseTime": "binnen 48 uur",
         "nextSteps": [
-          "Ons partnershipteam beoordeelt je aanvraag",
-          "We maken een partnershipvoorstel op maat",
-          "We plannen een discovery call om details te bespreken",
-          "We ronden de samenwerking en logistiek af"
+          "Ons team bekijkt je aanvraag",
+          "We maken een voorstel op maat voor de samenwerking",
+          "We plannen een kennismakingsgesprek om de details te bespreken",
+          "Daarna werken we de samenwerking en logistiek verder uit"
         ],
-        "ctaText": "Meer over partnerships",
+        "ctaText": "Meer over samenwerkingen",
         "ctaUrl": "/reserve"
       },
       "pilotTesting": {
-        "title": "Pilot Testing-aanvraag",
-        "description": "Bedankt voor je interesse in ons startupvriendelijke pilotprogramma.",
+        "title": "Pilotaanvraag",
+        "description": "Bedankt voor je interesse in ons pilotprogramma voor startende merken en kleinere evenementen.",
         "responseTime": "binnen 24 uur",
         "nextSteps": [
-          "Ons pilotteam beoordeelt je aanvraag",
+          "Ons pilotteam neemt je aanvraag door",
           "We bereiden een offerte op maat voor",
-          "We plannen een gratis consult",
-          "Snelle setup en lancering van je pilotcampagne"
+          "We plannen een vrijblijvend gesprek",
+          "Daarna kunnen we snel starten met je pilot"
         ],
         "ctaText": "Bekijk het pilotprogramma",
         "ctaUrl": "/advertising",
-        "customMessage": "We helpen je graag om onze oplossingen te testen met flexibele, startupvriendelijke opties."
+        "customMessage": "We denken graag mee over een toegankelijke pilot die past bij jouw situatie."
       }
     }
   }

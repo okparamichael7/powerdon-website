@@ -10,11 +10,11 @@
     "close": "Sluiten",
     "menu": "Menu",
     "logoAlt": "PowerDon-logo",
-    "prelaunch": "PowerDon zit momenteel in de testfase. Doe mee met ons pre-launch programma voor exclusieve vroege toegang en pilotkansen.",
+    "prelaunch": "PowerDon bevindt zich momenteel in de testfase. Meld je aan voor het pre-launchprogramma en krijg als een van de eersten toegang tot exclusieve pilotkansen.",
     "navigation": {
-      "reserve": "Reserveer station",
+      "reserve": "Reserveer een station",
       "advertising": "Adverteren",
-      "company": "Het bedrijf",
+      "company": "Over ons",
       "contact": "Contact"
     }
   },
@@ -24,7 +24,7 @@
   },
   "pageStickyHeader": {
     "advertising": "Adverteren",
-    "reserve": "Reserveer station",
+    "reserve": "Reserveer een station",
     "logoAlt": "PowerDon"
   },
   "footer": {
@@ -35,7 +35,7 @@
     },
     "navigation": {
       "home": "HOME",
-      "reserve": "RESERVEER STATION",
+      "reserve": "RESERVEER EEN STATION",
       "advertising": "ADVERTEREN",
       "about": "OVER ONS",
       "contact": "CONTACT"
@@ -48,8 +48,8 @@
     },
     "toast": {
       "title": "{platform}-link volgt binnenkort!",
-      "description": "We werken aan het koppelen van onze socialmediakanalen. Houd ons in de gaten.",
-      "action": "Begrepen"
+      "description": "We werken momenteel aan onze socialmediakanalen. Houd ons in de gaten.",
+      "action": "Oké"
     },
     "copyright": "© 2025 PowerDon",
     "legal": {
@@ -58,7 +58,7 @@
     }
   },
   "backLinks": {
-    "advertising": "Terug naar Adverteren",
-    "reserve": "Terug naar Reserveer Station"
+    "advertising": "Terug naar adverteren",
+    "reserve": "Terug naar stations reserveren"
   }
 }

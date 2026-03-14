@@ -1,45 +1,45 @@
 {
   "hero": {
-    "title": "Snel opladen & directe zichtbaarheid",
-    "subtitle": "In één compacte vorm",
+    "title": "Moeiteloos opladen & maximale zichtbaarheid",
+    "subtitle": "samengebracht in één slimme oplossing",
     "advertisingCta": "Adverteren op PowerDon",
     "reserveCta": "Reserveer een station",
     "desktopVideoFallback": "Je browser ondersteunt de videotag niet.",
     "mobileVideoFallback": "Je browser ondersteunt de videotag niet."
   },
-  "introTitle": "Jouw ultieme partner voor evenementen, beleving en exposure",
+  "introTitle": "De partner voor evenementen, beleving en merkzichtbaarheid",
   "featureCards": [
     {
-      "title": "Ontdek een ontwerp met dubbele functie",
-      "description": "Powerbanks met ingebouwd ledscherm, perfect voor promotie en opladen, ontworpen voor mobiliteit.",
-      "imageAlt": "Naadloze eventondersteuning"
+      "title": "Slim ontwerp met dubbele functie",
+      "description": "Powerbanks met een ingebouwd ledscherm: ideaal om op te laden en tegelijk je merk op een stijlvolle, opvallende manier zichtbaar te maken.",
+      "imageAlt": "Evenementondersteuning"
     },
     {
-      "title": "Merkzichtbaarheid",
-      "description": "Verander elk laadmoment in een marketingmoment. Ons ledscherm zet jouw merk in de spotlight: helder, krachtig en niet te missen.",
+      "title": "Zichtbaarheid voor je merk",
+      "description": "Maak van elk laadmoment een waardevol contactmoment. Het ledscherm zet je merk letterlijk in de spotlight: helder, opvallend en niet te missen.",
       "imageAlt": "Merkzichtbaarheid"
     },
     {
       "title": "Snel opladen",
-      "description": "Blijf verbonden met snelle, betrouwbare laadstations die elk apparaat ondersteunen, overal. Geen stopcontact? Geen probleem.",
+      "description": "Blijf bereikbaar met snelle, betrouwbare laadstations die geschikt zijn voor vrijwel elk apparaat. Geen stopcontact in de buurt? Geen probleem.",
       "imageAlt": "Snel opladen"
     }
   ],
   "gallery": {
-    "firstAlt": "POWERDON draagbare powerbanks en laadaccessoires",
-    "secondAlt": "POWERDON laadstation op evenement met schemaweergave"
+    "firstAlt": "PowerDon-powerbanks en laadaccessoires",
+    "secondAlt": "PowerDon-laadstation op een evenement met schermweergave"
   },
   "whyChoose": {
     "title": "Waarom kiezen voor PowerDon?",
     "items": [
       {
-        "title": "Premium merkzichtbaarheid",
-        "description": "Vergroot de impact van je merk met slimme advertentieposities op drukbezochte plekken die de aandacht vasthouden.",
+        "title": "Sterke merkzichtbaarheid",
+        "description": "Vergroot je merkimpact met slimme plaatsingen op drukbezochte locaties waar je boodschap langdurig aandacht trekt.",
         "imageAlt": "Betrouwbaar netwerk"
       },
       {
-        "title": "Portaal & snel opladen",
-        "description": "Bezoekers kunnen hun ervaring delen zonder bang te zijn dat hun batterij leegraakt.",
+        "title": "Snel laden, altijd bereikbaar",
+        "description": "Bezoekers blijven bereikbaar en delen hun ervaring ononderbroken, zonder zich zorgen te maken over een lege batterij.",
         "imageAlt": "Snel opladen"
       }
     ]

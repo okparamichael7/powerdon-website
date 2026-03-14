@@ -1,25 +1,25 @@
 {
   "site": {
-    "description": "Snel opladen en directe zichtbaarheid in een compacte vorm. Premium draagbare laadstations met ingebouwde ledschermen voor evenementen, festivals en drukbezochte locaties. Reserveer stations of adverteer met PowerDon.",
+    "description": "Moeiteloos laden en sterke merkzichtbaarheid in één slimme oplossing. PowerDon biedt hoogwaardige laadstations met ingebouwde ledschermen voor evenementen, festivals en drukbezochte locaties. Reserveer een station of zet PowerDon in als advertentiemedium.",
     "keywords": [
       "draagbare laadstations",
-      "powerbank verhuur",
+      "powerbankverhuur",
       "laadoplossingen voor evenementen",
-      "festival opladen",
-      "ledscherm advertenties",
+      "opladen op festivals",
+      "ledschermadvertenties",
       "mobiel opladen",
       "laadstations Nederland",
       "stroomoplossingen voor evenementen",
       "draagbare powerbanks",
-      "snel opladen",
-      "digital signage",
-      "event technologie"
+      "snel laden",
+      "digitale schermreclame",
+      "eventtechnologie"
     ]
   },
   "pages": {
     "home": {
       "title": "PowerDon",
-      "description": "Snel opladen en directe zichtbaarheid in een compacte vorm. Premium draagbare laadstations met ingebouwde ledschermen voor evenementen, festivals en drukbezochte locaties.",
+      "description": "Moeiteloos laden en sterke merkzichtbaarheid in één slimme oplossing. PowerDon biedt hoogwaardige laadstations met ingebouwde ledschermen voor evenementen, festivals en drukbezochte locaties.",
       "keywords": [
         "draagbare laadstations",
         "opladen op evenementen",
@@ -28,54 +28,54 @@
     },
     "about": {
       "title": "Over Ons - Onze missie bij PowerDon",
-      "description": "Ontdek de missie van PowerDon om batterijstress weg te nemen met betrouwbare, toegankelijke en snelle laadoplossingen. Lees meer over onze waarden: innovatie, duurzaamheid, community en kwaliteit.",
+      "description": "Ontdek hoe PowerDon batterijstress wegneemt met betrouwbare, toegankelijke en snelle laadoplossingen. Lees meer over onze visie op innovatie, duurzaamheid, verbondenheid en kwaliteit.",
       "keywords": [
         "over PowerDon",
         "laadstation bedrijf",
         "missie",
         "duurzaam opladen",
-        "event technologie bedrijf",
+        "bedrijf in eventtechnologie",
         "Nederlandse laadoplossingen"
       ]
     },
     "advertising": {
       "title": "Adverteren op PowerDon - Vergroot je merkbereik",
-      "description": "Adverteer op PowerDon-laadstations met opvallende digitale displays. Bereik betrokken doelgroepen op evenementen, festivals en drukbezochte locaties. Flexibele campagnes met realtime updates.",
+      "description": "Adverteer via PowerDon-laadstations met opvallende digitale schermen. Bereik betrokken doelgroepen op evenementen, festivals en andere drukbezochte locaties, met campagnes die je realtime kunt aanpassen.",
       "keywords": [
         "adverteren op laadstations",
-        "digital signage advertenties",
-        "event advertising",
-        "ledscherm advertenties",
+        "digitale schermadvertenties",
+        "adverteren op evenementen",
+        "ledschermadvertenties",
         "merkzichtbaarheid",
-        "event marketing",
-        "festival advertenties",
+        "eventmarketing",
+        "festivaladvertenties",
         "gerichte advertenties"
       ]
     },
     "advertisingQuote": {
       "title": "Advertentieofferte aanvragen - PowerDon",
-      "description": "Vraag een maatwerkofferte aan voor je campagne op PowerDon-laadstations. Ontvang prijzen voor digitale schermadvertenties, branded stations en event partnerships.",
+      "description": "Vraag een offerte op maat aan voor jouw campagne op PowerDon-laadstations. Ontvang een voorstel voor digitale schermadvertenties, stations in jouw huisstijl en samenwerkingen met evenementen.",
       "keywords": [
-        "advertentie offerte",
-        "prijzen laadstation advertenties",
-        "event advertising tarieven",
-        "prijzen digital signage"
+        "advertentieofferte",
+        "prijzen voor laadstationadvertenties",
+        "tarieven voor eventadvertising",
+        "prijzen voor digitale schermreclame"
       ]
     },
     "contact": {
       "title": "Contact - Neem contact op met PowerDon",
-      "description": "Neem contact op met PowerDon voor vragen over laadstations, advertentiemogelijkheden of partnerships. Bereik ons via e-mail, telefoon of het contactformulier.",
+      "description": "Neem contact op met PowerDon voor vragen over laadstations, advertentiemogelijkheden of samenwerkingen. Je bereikt ons via e-mail, telefoon of het contactformulier.",
       "keywords": [
         "contact PowerDon",
         "ondersteuning laadstations",
         "klantenservice",
         "zakelijke aanvragen",
-        "partnership contact"
+        "contact voor samenwerkingen"
       ]
     },
     "reserve": {
       "title": "Laadstations reserveren - Partner met PowerDon",
-      "description": "Reserveer PowerDon-laadstations voor je evenement of festival. Geen investering vooraf nodig. Genereer extra omzet, houd bezoekers verbonden en verbeter de eventervaring.",
+      "description": "Reserveer PowerDon-laadstations voor jouw evenement of festival. Zonder investering vooraf houd je bezoekers bereikbaar en creëer je tegelijk extra omzet.",
       "keywords": [
         "laadstations reserveren",
         "laadstations voor evenementen",
@@ -87,10 +87,10 @@
     },
     "reserveForm": {
       "title": "Reserveringsformulier laadstation - PowerDon",
-      "description": "Vul het formulier in om PowerDon-laadstations voor je evenement te reserveren. Ontvang binnen 24 uur een voorstel op maat.",
+      "description": "Vul het formulier in om PowerDon-laadstations voor jouw evenement aan te vragen. Je ontvangt binnen 24 uur een voorstel op maat.",
       "keywords": [
         "reserveringsformulier laadstation",
-        "event boeking",
+        "evenement aanvragen",
         "reservering laadstation"
       ]
     },
@@ -116,6 +116,6 @@
     }
   },
   "schema": {
-    "serviceDescription": "Premium draagbare laadstations met ingebouwde ledschermen voor evenementen, festivals en drukbezochte locaties. Snelle laadoplossingen met advertentiemogelijkheden."
+    "serviceDescription": "Hoogwaardige laadstations met ingebouwde ledschermen voor evenementen, festivals en drukbezochte locaties. Slimme laadoplossingen met krachtige advertentiemogelijkheden."
   }
 }

@@ -9,8 +9,8 @@
       {
         "title": "1. Inleiding",
         "paragraphs": [
-          "PowerDon B.V. verwerkt persoonsgegevens om zijn laad-, advertentie- en eventdiensten betrouwbaar en veilig te kunnen leveren.",
-          "In dit beleid leggen we uit welke informatie we verzamelen, waarom we die gebruiken, hoe lang we die bewaren en welke rechten je hebt onder de AVG en de toepasselijke Nederlandse privacywetgeving."
+          "PowerDon B.V. verwerkt persoonsgegevens om laadoplossingen, advertentiediensten en diensten voor evenementen betrouwbaar en veilig te kunnen leveren.",
+          "In dit beleid leggen we uit welke gegevens we verzamelen, waarom we die gebruiken, hoe lang we ze bewaren en welke rechten je hebt op grond van de AVG en de toepasselijke Nederlandse privacywetgeving."
         ]
       },
       {
@@ -34,11 +34,11 @@
           {
             "title": "3.1 Informatie die je zelf verstrekt",
             "paragraphs": [
-              "We verzamelen informatie die je actief met ons deelt wanneer je een formulier invult, een offerte aanvraagt, een station reserveert, contact opneemt met support of een samenwerking aanvraagt."
+              "We verzamelen informatie die je actief met ons deelt wanneer je een formulier invult, een offerte aanvraagt, een station reserveert, contact opneemt met onze support of een samenwerking aanvraagt."
             ],
             "list": [
-              "Naam, bedrijfsnaam, e-mailadres, telefoonnummer en eventgegevens",
-              "Commerciele voorkeuren zoals campagnedoelen, budgetindicaties en gevraagde diensten",
+              "Naam, bedrijfsnaam, e-mailadres, telefoonnummer en gegevens over het evenement",
+              "Commerciële voorkeuren, zoals campagnedoelen, budgetindicaties en aangevraagde diensten",
               "Berichten, bijlagen of andere details die je met ons team deelt"
             ]
           },
@@ -50,7 +50,7 @@
             "list": [
               "IP-adres, browsertype, apparaatgegevens en globale locatie",
               "Bekeken pagina's, herkomstbron, sessieduur en interactiegebeurtenissen",
-              "Operationele logs die nodig zijn voor beveiliging, diagnose en verbetering van de dienstverlening"
+              "Operationele logs die nodig zijn voor beveiliging, diagnose en verbetering van onze dienstverlening"
             ]
           },
           {
@@ -59,9 +59,9 @@
               "We kunnen ook beperkte informatie ontvangen van dienstverleners en partners die ons helpen bij het uitvoeren van onze activiteiten."
             ],
             "list": [
-              "Analytics- en hostingproviders",
+              "Partijen voor analytics en hosting",
               "E-mailleveranciers en CRM-tools",
-              "Venue-, event- of campagnepartners die een project bij ons introduceren"
+              "Locatie-, evenement- of campagnepartners die een project bij ons onder de aandacht brengen"
             ]
           }
         ]
@@ -69,11 +69,11 @@
       {
         "title": "4. Waarom we persoonsgegevens gebruiken",
         "paragraphs": [
-          "We gebruiken persoonsgegevens alleen wanneer daar een geldige wettelijke grondslag en een duidelijk zakelijk doel voor bestaat."
+          "We gebruiken persoonsgegevens alleen als daarvoor een geldige wettelijke grondslag en een duidelijk zakelijk doel bestaat."
         ],
         "list": [
           "Om vragen te beantwoorden, offertes op te stellen en reserveringen of samenwerkingsaanvragen te beheren",
-          "Om support te bieden en te communiceren over lopende projecten of campagnes",
+          "Om ondersteuning te bieden en te communiceren over lopende projecten of campagnes",
           "Om websiteprestaties te monitoren, misbruik te voorkomen en onze diensten te verbeteren",
           "Om marketingcommunicatie te versturen wanneer toestemming is gegeven of een andere grondslag van toepassing is",
           "Om te voldoen aan wettelijke verplichtingen, boekhoudregels en gerechtvaardigde bedrijfsbelangen"
@@ -82,26 +82,26 @@
       {
         "title": "5. Delen met derden en verwerkers",
         "paragraphs": [
-          "We verkopen geen persoonsgegevens. We delen informatie alleen wanneer dat nodig is om onze diensten te leveren of aan wettelijke verplichtingen te voldoen."
+          "We verkopen geen persoonsgegevens. We delen informatie alleen als dat nodig is om onze diensten te leveren of om aan wettelijke verplichtingen te voldoen."
         ],
         "list": [
-          "Infrastructuur-, hosting-, analytics- en formulierverwerkende partijen",
-          "E-mail-, klantcommunicatie- en transactionele notificatieproviders",
+          "Partijen voor infrastructuur, hosting, analytics en formulierverwerking",
+          "Partijen voor e-mail, klantcommunicatie en transactionele notificaties",
           "Adviseurs, betaal- of compliancepartners en overheidsinstanties wanneer dat wettelijk verplicht is"
         ]
       },
       {
         "title": "6. Bewaartermijnen en internationale doorgifte",
         "paragraphs": [
-          "We bewaren persoonsgegevens niet langer dan nodig voor het doel waarvoor ze zijn verzameld, inclusief opvolging, wettelijke, fiscale en administratieve verplichtingen.",
-          "Als we leveranciers buiten de Europese Economische Ruimte inzetten, gebruiken we passende waarborgen zoals contractuele bescherming en beveiligingsverplichtingen van de leverancier."
+          "We bewaren persoonsgegevens niet langer dan nodig is voor het doel waarvoor ze zijn verzameld, waaronder opvolging, wettelijke verplichtingen en fiscale of administratieve bewaarplichten.",
+          "Als we leveranciers buiten de Europese Economische Ruimte inschakelen, zorgen we voor passende waarborgen, zoals contractuele bescherming en beveiligingsafspraken."
         ]
       },
       {
         "title": "7. Cookies, analytics en marketing",
         "paragraphs": [
-          "Onze website gebruikt essenti ele technologieen om de site goed te laten werken en kan analytics- of marketingtools gebruiken om prestaties en vraag te begrijpen.",
-          "Wanneer dat vereist is, vragen we toestemming voordat we niet-essentiele technologieen plaatsen. Je kunt ook browserinstellingen of vergelijkbare apparaatinstellingen beheren."
+          "Onze website gebruikt essentiële technologieën om goed te functioneren en kan analytics- of marketingtools gebruiken om prestaties en gebruik beter te begrijpen.",
+          "Als dat wettelijk verplicht is, vragen we eerst toestemming voordat we niet-essentiële technologieën plaatsen. Je kunt daarnaast browserinstellingen of vergelijkbare apparaatinstellingen beheren."
         ]
       },
       {
@@ -110,9 +110,9 @@
           "Afhankelijk van de situatie kun je recht hebben op inzage, correctie, verwijdering, beperking of overdraagbaarheid van je persoonsgegevens en kun je bezwaar maken tegen bepaalde verwerkingen."
         ],
         "list": [
-          "Inzage vragen in de gegevens die we van je hebben",
-          "Ons vragen onjuiste of onvolledige informatie te corrigeren",
-          "Verwijdering vragen wanneer we de gegevens niet meer nodig hebben of de wet dat toelaat",
+          "Inzage vragen in de gegevens die we van je verwerken",
+          "Ons vragen om onjuiste of onvolledige gegevens te corrigeren",
+          "Verwijdering vragen wanneer we de gegevens niet meer nodig hebben of wanneer de wet dat toestaat",
           "Toestemming intrekken voor optionele verwerkingen zoals marketingcommunicatie",
           "Een klacht indienen bij de Autoriteit Persoonsgegevens als je denkt dat je rechten zijn geschonden"
         ]
@@ -127,7 +127,7 @@
       {
         "title": "10. Contact",
         "paragraphs": [
-          "Vragen over dit Privacybeleid of verzoeken over je persoonsgegevens kun je sturen naar privacy@powerdon.com. Voor algemene commerciele vragen kun je ook het contactformulier op deze website gebruiken."
+          "Vragen over dit privacybeleid of verzoeken over je persoonsgegevens kun je sturen naar privacy@powerdon.com. Voor algemene commerciële vragen kun je ook het contactformulier op deze website gebruiken."
         ]
       }
     ]
@@ -142,25 +142,25 @@
       {
         "title": "1. Reikwijdte",
         "paragraphs": [
-          "Deze Gebruiksvoorwaarden zijn van toepassing op je toegang tot en gebruik van de PowerDon-website, laadoplossingen, advertentiemogelijkheden en aanverwante zakelijke diensten.",
+          "Deze gebruiksvoorwaarden zijn van toepassing op je toegang tot en gebruik van de PowerDon-website, laadoplossingen, advertentiemogelijkheden en aanverwante zakelijke diensten.",
           "Door onze diensten te gebruiken of een aanvraag via deze site in te dienen, ga je akkoord met deze voorwaarden en met ons Privacybeleid."
         ]
       },
       {
         "title": "2. Diensten",
         "paragraphs": [
-          "PowerDon levert draagbare laadinfrastructuur, samenwerkingen met events en venues, en advertentiemogelijkheden op laadassets en aanverwante mediasurfaces."
+          "PowerDon levert draagbare laadinfrastructuur, samenwerkingen met evenementen en locaties, en advertentiemogelijkheden op laadstations en aanverwante mediaschermen."
         ],
         "list": [
-          "Stationreserveringen en eventdeployments",
-          "Advertentiecampagnes en branded activaties",
-          "Commerciele aanvragen, pilotprogramma's en evaluaties van samenwerkingen"
+          "Stationreserveringen en plaatsingen op evenementen",
+          "Advertentiecampagnes en merkactivaties",
+          "Commerciële aanvragen, pilotprogramma's en verkenningen van samenwerkingen"
         ]
       },
       {
         "title": "3. Geschiktheid en accountinformatie",
         "paragraphs": [
-          "Je moet correcte en volledige informatie verstrekken wanneer je contact met ons opneemt, een offerte aanvraagt of een commerci ele relatie aangaat.",
+          "Je moet correcte en volledige informatie verstrekken wanneer je contact met ons opneemt, een offerte aanvraagt of een commerciële relatie met ons aangaat.",
           "Als toegangsgegevens of projectportalen beschikbaar worden gesteld, ben je verantwoordelijk voor het beveiligen daarvan en voor activiteiten die onder jouw account plaatsvinden."
         ]
       },
@@ -170,20 +170,20 @@
           {
             "title": "4.1 Niet-bindende websiteaanvragen",
             "paragraphs": [
-              "Een formulierinzending, contactaanvraag of offerteaanvraag leidt niet automatisch tot een bindende overeenkomst. Een project wordt pas bindend na schriftelijke bevestiging of een ondertekende commerci ele overeenkomst."
+              "Een formulierinzending, contactaanvraag of offerteaanvraag leidt niet automatisch tot een bindende overeenkomst. Een project is pas bindend na schriftelijke bevestiging of een ondertekende commerciële overeenkomst."
             ]
           },
           {
-            "title": "4.2 Commerciele voorwaarden",
+            "title": "4.2 Commerciële voorwaarden",
             "paragraphs": [
-              "Projectomvang, prijzen, planning, annuleringsvoorwaarden en leveringsafspraken worden per opdracht afzonderlijk bevestigd."
+              "Projectomvang, prijzen, planning, annuleringsvoorwaarden en leveringsafspraken worden per opdracht afzonderlijk vastgelegd."
             ]
           },
           {
             "title": "4.3 Verantwoordelijkheden van de klant",
             "list": [
-              "Correcte venue-, campagne- en operationele informatie verstrekken",
-              "Meewerken aan redelijke plaatsings-, branding- en veiligheidsvereisten",
+              "Correcte informatie over locatie, campagne en operatie aanleveren",
+              "Meewerken aan redelijke eisen rond plaatsing, merkuitingen en veiligheid",
               "Voorstellen, artwork en planningen tijdig beoordelen en goedkeuren"
             ]
           }
@@ -204,28 +204,28 @@
         "title": "6. Vergoedingen, betaling en schade",
         "paragraphs": [
           "Tenzij anders is overeengekomen in een aparte overeenkomst, moeten gefactureerde bedragen binnen de afgesproken betalingstermijn worden voldaan. Te late betaling kan leiden tot opschorting, incassomaatregelen of extra kosten voor zover wettelijk toegestaan.",
-          "Je kunt aansprakelijk zijn voor verlies of schade als gevolg van misbruik van PowerDon-apparatuur, branded materialen of eventinfrastructuur die onder jouw beheer valt."
+          "Je kunt aansprakelijk zijn voor verlies of schade als gevolg van misbruik van PowerDon-apparatuur, merkmaterialen of evenementinfrastructuur die onder jouw beheer valt."
         ]
       },
       {
         "title": "7. Intellectuele eigendom",
         "paragraphs": [
-          "Alle intellectuele eigendomsrechten op de website, branding, ontwerpen, copy, software en operationele materialen blijven eigendom van PowerDon of zijn licentiegevers, tenzij schriftelijk anders is overeengekomen.",
-          "Materiaal dat door de klant wordt aangeleverd blijft eigendom van de klant, maar je verleent ons de rechten die nodig zijn om dat materiaal te beoordelen, aan te passen en te gebruiken voor het aangevraagde project."
+          "Alle intellectuele eigendomsrechten op de website, merkuitingen, ontwerpen, teksten, software en operationele materialen blijven eigendom van PowerDon of zijn licentiegevers, tenzij schriftelijk anders is overeengekomen.",
+          "Materiaal dat door de klant wordt aangeleverd blijft eigendom van de klant. Je verleent ons wel de rechten die nodig zijn om dat materiaal te beoordelen, aan te passen en te gebruiken voor het aangevraagde project."
         ]
       },
       {
         "title": "8. Beschikbaarheid en aansprakelijkheid",
         "paragraphs": [
-          "We streven naar accurate informatie en betrouwbare dienstverlening, maar we kunnen geen ononderbroken beschikbaarheid van de website of iedere operationele inzet garanderen.",
+          "We streven naar betrouwbare dienstverlening en actuele informatie, maar we kunnen geen ononderbroken beschikbaarheid van de website of iedere operationele inzet garanderen.",
           "Voor zover wettelijk toegestaan is PowerDon niet aansprakelijk voor indirecte of gevolgschade, waaronder winstderving, gegevensverlies, goodwillverlies of eventonderbreking. Onze directe aansprakelijkheid is beperkt tot het bedrag dat voor de betreffende dienst is betaald, tenzij dwingend recht anders bepaalt."
         ]
       },
       {
-        "title": "9. Be einding en opschorting",
+        "title": "9. Beëindiging en opschorting",
         "paragraphs": [
           "We kunnen de toegang tot onze website, diensten of projectwerk opschorten of weigeren bij misbruik, wanbetaling, onrechtmatige activiteiten of een wezenlijke schending van overeengekomen voorwaarden.",
-          "Beeindiging laat rechten en verplichtingen onverlet die naar hun aard van kracht blijven nadat de relatie eindigt."
+          "Beëindiging laat rechten en verplichtingen onverlet die naar hun aard van kracht blijven nadat de relatie is geëindigd."
         ]
       },
       {

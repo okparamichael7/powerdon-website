@@ -1,61 +1,61 @@
 {
   "hero": {
-    "title": "Werk samen met PowerDon",
-    "description": "Vertrouw op ons voor het plaatsen van premium laadstations op jouw festival of event. Verhoog de bezoekerservaring en genereer extra omzet zonder kosten vooraf.",
-    "cta": "Reserveer station"
+    "title": "Word partner van PowerDon",
+    "description": "Laat PowerDon-laadstations plaatsen op jouw festival of evenement. Zo versterk je de bezoekerservaring én creëer je extra omzet, zonder investering vooraf.",
+    "cta": "Reserveer een station"
   },
   "gallery": {
-    "firstAlt": "POWERDON draagbare powerbanks en laadaccessoires",
-    "secondAlt": "POWERDON laadstation op evenement met schemaweergave"
+    "firstAlt": "PowerDon-powerbanks en laadaccessoires",
+    "secondAlt": "PowerDon-laadstation op een evenement met schermweergave"
   },
   "benefits": [
     {
-      "title": "Blije bezoekers",
-      "description": "Houd festivalbezoekers verbonden en betrokken. Minder lege telefoons betekent betere social coverage en bezoekers die langer blijven.",
-      "imageAlt": "Blije bezoekers"
+      "title": "Meer tevreden bezoekers",
+      "description": "Houd bezoekers bereikbaar en betrokken. Minder lege telefoons betekent meer gedeelde momenten, meer social content en bezoekers die langer blijven.",
+      "imageAlt": "Tevreden bezoekers"
     },
     {
-      "title": "Gratis digital signage",
-      "description": "Promoot het eventprogramma, sponsoren en aankondigingen op onze opvallende digitale schermen als onderdeel van de samenwerking.",
-      "imageAlt": "Gratis digital signage"
+      "title": "Digitale schermen inbegrepen",
+      "description": "Gebruik onze digitale schermen om programma-updates, sponsoren en belangrijke mededelingen zichtbaar te maken tijdens het evenement.",
+      "imageAlt": "Digitale schermen inbegrepen"
     },
     {
       "title": "Omzetdeling",
-      "description": "Verdien aan elke verhuurde powerbank en maak van opladen een extra inkomstenbron voor je festival.",
+      "description": "Verdien mee aan elke verhuurde powerbank en maak van opladen een extra inkomstenbron voor je festival of evenement.",
       "imageAlt": "Omzetdeling"
     }
   ],
   "usps": [
     {
       "title": "Geen investering vooraf",
-      "description": "Geen opstartkosten, installatiekosten of huur van apparatuur. Wij regelen alles van installatie tot onderhoud."
+      "description": "Geen opstartkosten, plaatsingskosten of huur van apparatuur. Wij regelen alles, van installatie tot onderhoud."
     },
     {
       "title": "Altijd actief",
-      "description": "Rond-de-klok monitoring en support zorgen ervoor dat je bezoekers nooit zonder stroom zitten."
+      "description": "Monitoring en ondersteuning zorgen ervoor dat je bezoekers niet zonder stroom komen te zitten."
     },
     {
-      "title": "Sterkere eventreputatie",
-      "description": "Moeiteloos opladen en connectiviteit positioneren jouw event als georganiseerd, innovatief en bezoeker-eerst."
+      "title": "Een sterker imago voor je evenement",
+      "description": "Moeiteloos opladen en goede connectiviteit laten zien dat jouw evenement goed georganiseerd, vooruitstrevend en gastvrij is."
     },
     {
       "title": "Vrijheid om te bewegen",
-      "description": "Bezoekers kunnen onderweg opladen en het event blijven ontdekken zonder onderbrekingen."
+      "description": "Bezoekers kunnen onderweg opladen en het evenement blijven ontdekken zonder onderbrekingen."
     }
   ],
   "pilot": {
-    "title": "Interesse in Pilot Testing?",
-    "description": "Perfect voor startups en kleine events die onze advertentieoplossingen willen testen. Ontvang een prijs op maat voor jouw budget en eventgrootte.",
+    "title": "Interesse in een pilot?",
+    "description": "Ideaal voor startende organisatoren en kleinere evenementen die PowerDon eerst op kleine schaal willen ervaren. Je ontvangt een voorstel op maat dat past bij je budget en formaat.",
     "bullets": [
       "Geen langdurige verplichtingen",
-      "Gratis consult en setupbegeleiding",
-      "Blije bezoekers, hogere beoordelingen"
+      "Gratis advies en begeleiding bij de opstart",
+      "Meer gemak voor bezoekers en een sterkere totaalbeleving"
     ],
-    "cta": "Geef je event vandaag nog power",
+    "cta": "Bekijk de mogelijkheden",
     "response": "Ontvang binnen 24 uur een voorstel op maat"
   },
   "formPage": {
-    "title": "Samenwerking aanvragen",
-    "description": "Vertel ons over je event en wij maken een partnershipvoorstel op maat voor jouw situatie."
+    "title": "Vraag een samenwerking aan",
+    "description": "Vertel ons meer over je evenement en we maken een voorstel op maat dat aansluit bij jouw wensen en ambities."
   }
 }
