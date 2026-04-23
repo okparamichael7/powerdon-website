@@ -44,6 +44,7 @@ export const enMessages = {
         advertising: "ADVERTISING",
         about: "ABOUT",
         contact: "CONTACT",
+        affiliate: "AFFILIATE DASHBOARD",
       },
       social: {
         instagram: "INSTAGRAM",
