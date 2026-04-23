@@ -20,6 +20,7 @@ export const enMessages = {
         advertising: "Advertising",
         company: "The company",
         contact: "Contact",
+        affiliate: "Affiliate dashboard",
       },
     },
     stickySublines: {
@@ -625,6 +626,87 @@ export const enMessages = {
     },
   },
   legal: legalMessages,
+  affiliate: {
+    hero: {
+      badge: "AFFILIATE DASHBOARD",
+      title: "Track your events, brands & commissions",
+      description:
+        "Your personal PowerDon partner cockpit. Monitor events, brand partnerships, power bank rental commissions, and stay on top of conversations with event organisers.",
+    },
+    selector: {
+      label: "Viewing dashboard for",
+      referralCode: "Referral code",
+      joined: "Joined {date}",
+    },
+    stats: {
+      activeEvents: "Active & upcoming events",
+      brands: "Brand partnerships",
+      rentals: "Total power bank rentals",
+      earnings: "Estimated commission earned",
+    },
+    tabs: {
+      overview: "Events & Brands",
+      threads: "Email Threads",
+    },
+    events: {
+      title: "Events you are powering",
+      description:
+        "All events where your referred stations are deployed, including the rental commission percentage negotiated for each event.",
+      columns: {
+        event: "Event",
+        date: "Date",
+        brand: "Brand",
+        rentals: "Rentals",
+        price: "Rental price",
+        commission: "Your %",
+        earnings: "Est. earnings",
+        status: "Status",
+      },
+      statusLabels: {
+        upcoming: "Upcoming",
+        active: "Live",
+        completed: "Completed",
+      },
+      empty: "No events assigned to this affiliate yet.",
+    },
+    brands: {
+      title: "Brands leveraging PowerDon via you",
+      description:
+        "Brands routed through your affiliate relationship. Each brand uses PowerDon's charging + LED ad placements at the events you manage.",
+      empty: "No brand partnerships yet.",
+    },
+    threads: {
+      title: "Affiliate ↔ Organiser correspondence",
+      description:
+        "Admin view of all email threads between affiliates and event organisers. Use this to audit deal terms, follow-ups, and unresolved requests.",
+      listTitle: "Conversations",
+      empty: "No conversations for this affiliate yet.",
+      selectPrompt: "Select a thread to read the full correspondence.",
+      participants: "Participants",
+      event: "Event",
+      status: "Status",
+      statusLabels: {
+        open: "Open",
+        "awaiting-reply": "Awaiting reply",
+        closed: "Closed",
+      },
+      roles: {
+        affiliate: "Affiliate",
+        organiser: "Organiser",
+      },
+      composer: {
+        placeholder:
+          "Write a note or reply on behalf of PowerDon (admin-only)...",
+        send: "Send reply",
+        disclaimer:
+          "Admin-only view. Replies are logged against this thread and not sent automatically.",
+      },
+    },
+    commission: {
+      formula:
+        "{rentals} rentals × €{price} × {percent}% = €{total}",
+    },
+  },
   seo: {
     site: {
       description:
@@ -727,6 +809,17 @@ export const enMessages = {
           "reserve station form",
           "event booking",
           "charging station reservation",
+        ],
+      },
+      affiliate: {
+        title: "Affiliate Dashboard - PowerDon",
+        description:
+          "Private dashboard for PowerDon affiliates. View your assigned events, brand partnerships, power bank rental commissions, and correspondence with event organisers.",
+        keywords: [
+          "affiliate dashboard",
+          "PowerDon affiliate",
+          "commission tracking",
+          "event partnerships",
         ],
       },
       privacy: {

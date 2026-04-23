@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "badge": "AFFILIATE-DASHBOARD",
+    "title": "Volg je evenementen, merken en commissies",
+    "description": "Jouw persoonlijke PowerDon-partnercockpit. Bekijk evenementen, merksamenwerkingen, commissies op powerbank-verhuur en blijf op de hoogte van gesprekken met organisatoren."
+  },
+  "selector": {
+    "label": "Dashboard voor",
+    "referralCode": "Affiliate-code",
+    "joined": "Aangesloten op {date}"
+  },
+  "stats": {
+    "activeEvents": "Actieve & aankomende evenementen",
+    "brands": "Merkpartners",
+    "rentals": "Totaal aantal verhuringen",
+    "earnings": "Geschatte commissie"
+  },
+  "tabs": {
+    "overview": "Evenementen & Merken",
+    "threads": "E-mailthreads"
+  },
+  "events": {
+    "title": "Evenementen die jij aandrijft",
+    "description": "Alle evenementen waar jouw doorverwezen stations staan, inclusief het afgesproken commissiepercentage per evenement.",
+    "columns": {
+      "event": "Evenement",
+      "date": "Datum",
+      "brand": "Merk",
+      "rentals": "Verhuringen",
+      "price": "Huurprijs",
+      "commission": "Jouw %",
+      "earnings": "Geschatte commissie",
+      "status": "Status"
+    },
+    "statusLabels": {
+      "upcoming": "Aankomend",
+      "active": "Live",
+      "completed": "Afgerond"
+    },
+    "empty": "Nog geen evenementen toegewezen aan deze affiliate."
+  },
+  "brands": {
+    "title": "Merken die via jou PowerDon gebruiken",
+    "description": "Merken die via jouw affiliate-relatie lopen. Elk merk gebruikt PowerDon's oplaad- en LED-advertenties op de evenementen die jij beheert.",
+    "empty": "Nog geen merksamenwerkingen."
+  },
+  "threads": {
+    "title": "Affiliate ↔ Organisator-correspondentie",
+    "description": "Adminweergave van alle e-mailthreads tussen affiliates en evenementorganisatoren. Gebruik dit om dealvoorwaarden, opvolging en openstaande verzoeken te controleren.",
+    "listTitle": "Gesprekken",
+    "empty": "Nog geen gesprekken voor deze affiliate.",
+    "selectPrompt": "Selecteer een thread om de volledige correspondentie te lezen.",
+    "participants": "Deelnemers",
+    "event": "Evenement",
+    "status": "Status",
+    "statusLabels": {
+      "open": "Open",
+      "awaiting-reply": "Wacht op reactie",
+      "closed": "Afgesloten"
+    },
+    "roles": {
+      "affiliate": "Affiliate",
+      "organiser": "Organisator"
+    },
+    "composer": {
+      "placeholder": "Schrijf een notitie of reactie namens PowerDon (alleen admin)...",
+      "send": "Reactie versturen",
+      "disclaimer": "Alleen-adminweergave. Reacties worden aan deze thread gekoppeld en niet automatisch verstuurd."
+    }
+  },
+  "commission": {
+    "formula": "{rentals} verhuringen × €{price} × {percent}% = €{total}"
+  }
+}
