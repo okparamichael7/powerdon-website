@@ -1,6 +1,7 @@
 import common from "@/locales/nl/common.json";
 import about from "@/locales/nl/about.json";
 import advertising from "@/locales/nl/advertising.json";
+import affiliate from "@/locales/nl/affiliate.json";
 import contact from "@/locales/nl/contact.json";
 import emails from "@/locales/nl/emails.json";
 import forms from "@/locales/nl/forms.json";
@@ -13,6 +14,7 @@ import type { Messages } from "@/lib/i18n/messages/en";
 export const nlMessages = {
   about,
   advertising,
+  affiliate,
   common,
   contact,
   emails,

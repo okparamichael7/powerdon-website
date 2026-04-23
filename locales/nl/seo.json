@@ -94,6 +94,16 @@
         "reservering laadstation"
       ]
     },
+    "affiliate": {
+      "title": "Affiliate-dashboard - PowerDon",
+      "description": "Privé-dashboard voor PowerDon-affiliates. Bekijk je toegewezen evenementen, merksamenwerkingen, commissies op powerbank-verhuur en correspondentie met organisatoren.",
+      "keywords": [
+        "affiliate-dashboard",
+        "PowerDon-affiliate",
+        "commissie volgen",
+        "evenementpartners"
+      ]
+    },
     "privacy": {
       "title": "Privacybeleid - PowerDon",
       "description": "Privacybeleid van PowerDon. Lees hoe we je persoonsgegevens verzamelen, gebruiken en beschermen volgens de AVG en Nederlandse privacywetgeving.",
