@@ -1,3 +1,7 @@
+// Fixtures for the affiliate dashboard UI. Swap these helpers for real data
+// fetchers (e.g. Vercel Postgres / a CMS / a partner API) without touching
+// the components — components only depend on the exported types and helpers.
+
 export type AffiliateEvent = {
   id: string;
   name: string;

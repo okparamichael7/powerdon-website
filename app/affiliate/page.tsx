@@ -55,6 +55,10 @@ function formatDate(iso: string, locale: string) {
   );
 }
 
+function formatDateISO(iso: string) {
+  return iso.slice(0, 10);
+}
+
 function statusTone(status: AffiliateEvent["status"]) {
   switch (status) {
     case "active":
@@ -153,7 +157,10 @@ export default function AffiliateDashboardPage() {
                 value={affiliate.id}
                 onValueChange={(value) => setAffiliateId(value)}
               >
-                <SelectTrigger className="w-full md:w-64">
+                <SelectTrigger
+                  aria-label={copy.selector.label}
+                  className="w-full md:w-64"
+                >
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -184,22 +191,22 @@ export default function AffiliateDashboardPage() {
 
         <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-12">
           <StatCard
-            icon={<CalendarDays className="h-5 w-5" />}
+            icon={<CalendarDays className="h-5 w-5" aria-hidden="true" />}
             label={copy.stats.activeEvents}
             value={String(stats.activeEvents)}
           />
           <StatCard
-            icon={<Handshake className="h-5 w-5" />}
+            icon={<Handshake className="h-5 w-5" aria-hidden="true" />}
             label={copy.stats.brands}
             value={String(stats.brandCount)}
           />
           <StatCard
-            icon={<Zap className="h-5 w-5" />}
+            icon={<Zap className="h-5 w-5" aria-hidden="true" />}
             label={copy.stats.rentals}
             value={stats.totalRentals.toLocaleString(locale)}
           />
           <StatCard
-            icon={<TrendingUp className="h-5 w-5" />}
+            icon={<TrendingUp className="h-5 w-5" aria-hidden="true" />}
             label={copy.stats.earnings}
             value={formatCurrency(stats.totalEarnings, locale)}
           />
@@ -259,12 +266,17 @@ export default function AffiliateDashboardPage() {
                                 {event.name}
                               </div>
                               <div className="flex items-center gap-1 text-xs text-gray-500">
-                                <MapPin className="h-3 w-3" />
+                                <MapPin
+                                  className="h-3 w-3"
+                                  aria-hidden="true"
+                                />
                                 {event.location}
                               </div>
                             </TableCell>
                             <TableCell className="text-sm text-gray-700">
-                              {formatDate(event.date, locale)}
+                              <time dateTime={formatDateISO(event.date)}>
+                                {formatDate(event.date, locale)}
+                              </time>
                             </TableCell>
                             <TableCell className="text-sm text-gray-700">
                               {brand?.name ?? "—"}

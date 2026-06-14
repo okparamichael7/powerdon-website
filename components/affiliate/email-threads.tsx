@@ -100,12 +100,13 @@ export function EmailThreads({ threads, locale }: Props) {
                 <li key={thread.id}>
                   <button
                     type="button"
+                    aria-pressed={isActive}
                     onClick={() => {
                       setActiveThreadId(thread.id);
                       setDraft("");
                     }}
                     className={cn(
-                      "w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors",
+                      "w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
                       isActive && "bg-blue-50/60",
                     )}
                   >
@@ -126,9 +127,12 @@ export function EmailThreads({ threads, locale }: Props) {
                         {lastMessage.body}
                       </p>
                     )}
-                    <p className="text-[10px] uppercase tracking-wide text-gray-400 mt-2">
+                    <time
+                      dateTime={thread.lastActivityAt}
+                      className="block text-[10px] uppercase tracking-wide text-gray-400 mt-2"
+                    >
                       {formatDateTime(thread.lastActivityAt, locale)}
-                    </p>
+                    </time>
                   </button>
                 </li>
               );
@@ -184,28 +188,33 @@ export function EmailThreads({ threads, locale }: Props) {
             <CardContent className="p-0">
               <ul className="divide-y divide-gray-100">
                 {activeThread.messages.map((message) => (
-                  <li key={message.id} className="p-6 space-y-2">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <div className="flex items-center gap-2">
-                        {roleBadge(
-                          message.from,
-                          copy.roles.affiliate,
-                          copy.roles.organiser,
-                        )}
-                        <span className="text-sm font-semibold text-gray-900">
-                          {message.authorName}
-                        </span>
-                        <span className="text-xs text-gray-500">
-                          &lt;{message.authorEmail}&gt;
-                        </span>
-                      </div>
-                      <span className="text-xs text-gray-400">
-                        {formatDateTime(message.sentAt, locale)}
-                      </span>
-                    </div>
-                    <p className="text-sm text-gray-700 whitespace-pre-line leading-relaxed">
-                      {message.body}
-                    </p>
+                  <li key={message.id}>
+                    <article className="p-6 space-y-2">
+                      <header className="flex flex-wrap items-center justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          {roleBadge(
+                            message.from,
+                            copy.roles.affiliate,
+                            copy.roles.organiser,
+                          )}
+                          <span className="text-sm font-semibold text-gray-900">
+                            {message.authorName}
+                          </span>
+                          <span className="text-xs text-gray-500">
+                            &lt;{message.authorEmail}&gt;
+                          </span>
+                        </div>
+                        <time
+                          dateTime={message.sentAt}
+                          className="text-xs text-gray-400"
+                        >
+                          {formatDateTime(message.sentAt, locale)}
+                        </time>
+                      </header>
+                      <p className="text-sm text-gray-700 whitespace-pre-line leading-relaxed">
+                        {message.body}
+                      </p>
+                    </article>
                   </li>
                 ))}
               </ul>
@@ -215,6 +224,7 @@ export function EmailThreads({ threads, locale }: Props) {
                   value={draft}
                   onChange={(event) => setDraft(event.target.value)}
                   placeholder={copy.composer.placeholder}
+                  aria-label={copy.composer.placeholder}
                   rows={4}
                 />
                 <div className="flex flex-wrap items-center justify-between gap-2">
