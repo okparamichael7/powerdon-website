@@ -1,9 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/lib/i18n/useTranslation";
@@ -22,42 +20,24 @@ function formatDateTime(iso: string, locale: string) {
   }).format(date);
 }
 
-function statusBadge(status: EmailThread["status"], label: string) {
-  const tone =
-    status === "awaiting-reply"
-      ? "bg-amber-100 text-amber-900 border-amber-200"
-      : status === "closed"
-        ? "bg-gray-100 text-gray-700 border-gray-200"
-        : "bg-emerald-100 text-emerald-900 border-emerald-200";
-
-  return (
-    <Badge
-      variant="outline"
-      className={cn("font-medium tracking-wide uppercase text-[10px]", tone)}
-    >
-      {label}
-    </Badge>
-  );
+function statusColor(status: EmailThread["status"]) {
+  switch (status) {
+    case "awaiting-reply":
+      return "text-gray-900";
+    case "open":
+      return "text-gray-500";
+    case "closed":
+    default:
+      return "text-gray-400";
+  }
 }
 
-function roleBadge(
+function roleLabel(
   role: ThreadMessage["from"],
   labelAffiliate: string,
   labelOrganiser: string,
 ) {
-  const isAffiliate = role === "affiliate";
-  return (
-    <span
-      className={cn(
-        "inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide",
-        isAffiliate
-          ? "bg-blue-100 text-blue-800"
-          : "bg-purple-100 text-purple-800",
-      )}
-    >
-      {isAffiliate ? labelAffiliate : labelOrganiser}
-    </span>
-  );
+  return role === "affiliate" ? labelAffiliate : labelOrganiser;
 }
 
 export function EmailThreads({ threads, locale }: Props) {
@@ -74,176 +54,161 @@ export function EmailThreads({ threads, locale }: Props) {
   );
 
   if (threads.length === 0) {
-    return (
-      <Card className="bg-white border-gray-200">
-        <CardContent className="p-8 text-center text-gray-500">
-          {copy.empty}
-        </CardContent>
-      </Card>
-    );
+    return <p className="text-sm text-gray-400">{copy.empty}</p>;
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[340px_1fr]">
-      <Card className="bg-white border-gray-200 h-fit">
-        <CardHeader className="pb-3">
-          <CardTitle className="text-sm font-semibold uppercase tracking-wide text-gray-500">
-            {copy.listTitle}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-0">
-          <ul className="divide-y divide-gray-100">
-            {threads.map((thread) => {
-              const isActive = thread.id === activeThreadId;
-              const lastMessage = thread.messages[thread.messages.length - 1];
-              return (
-                <li key={thread.id}>
-                  <button
-                    type="button"
-                    aria-pressed={isActive}
-                    onClick={() => {
-                      setActiveThreadId(thread.id);
-                      setDraft("");
-                    }}
+    <div className="grid gap-12 lg:grid-cols-[300px_1fr]">
+      <aside>
+        <p className="mb-6 text-[11px] uppercase tracking-[0.16em] text-gray-400">
+          {copy.listTitle}
+        </p>
+        <ul className="divide-y divide-gray-100 border-t border-gray-100">
+          {threads.map((thread) => {
+            const isActive = thread.id === activeThreadId;
+            return (
+              <li key={thread.id}>
+                <button
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => {
+                    setActiveThreadId(thread.id);
+                    setDraft("");
+                  }}
+                  className={cn(
+                    "w-full py-5 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2",
+                    isActive ? "text-gray-900" : "text-gray-500",
+                  )}
+                >
+                  <p
                     className={cn(
-                      "w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
-                      isActive && "bg-blue-50/60",
+                      "line-clamp-2 text-sm",
+                      isActive ? "font-medium text-gray-900" : "text-gray-700",
                     )}
                   >
-                    <div className="flex items-start justify-between gap-3">
-                      <p className="font-medium text-sm text-gray-900 line-clamp-2">
-                        {thread.subject}
-                      </p>
-                      {statusBadge(
-                        thread.status,
-                        copy.statusLabels[thread.status],
-                      )}
-                    </div>
-                    <p className="text-xs text-gray-500 mt-1">
-                      {thread.organiserName}
-                    </p>
-                    {lastMessage && (
-                      <p className="text-xs text-gray-400 mt-1 line-clamp-1">
-                        {lastMessage.body}
-                      </p>
-                    )}
+                    {thread.subject}
+                  </p>
+                  <p className="mt-1 text-xs text-gray-400">
+                    {thread.organiserName}
+                  </p>
+                  <div className="mt-3 flex items-center gap-3 text-[11px] uppercase tracking-[0.14em]">
+                    <span className={statusColor(thread.status)}>
+                      {copy.statusLabels[thread.status]}
+                    </span>
                     <time
                       dateTime={thread.lastActivityAt}
-                      className="block text-[10px] uppercase tracking-wide text-gray-400 mt-2"
+                      className="text-gray-400"
                     >
                       {formatDateTime(thread.lastActivityAt, locale)}
                     </time>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </CardContent>
-      </Card>
+                  </div>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </aside>
 
-      <Card className="bg-white border-gray-200">
+      <section>
         {!activeThread ? (
-          <CardContent className="p-8 text-center text-gray-500">
-            {copy.selectPrompt}
-          </CardContent>
+          <p className="text-sm text-gray-400">{copy.selectPrompt}</p>
         ) : (
           <>
-            <CardHeader className="border-b border-gray-100">
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <CardTitle className="text-lg font-semibold text-gray-900">
-                    {activeThread.subject}
-                  </CardTitle>
-                  <p className="text-xs text-gray-500 mt-1">
-                    {copy.event}: {activeThread.eventName}
-                  </p>
-                </div>
-                {statusBadge(
-                  activeThread.status,
-                  copy.statusLabels[activeThread.status],
+            <header className="border-b border-gray-100 pb-8">
+              <p
+                className={cn(
+                  "text-[11px] uppercase tracking-[0.16em]",
+                  statusColor(activeThread.status),
                 )}
-              </div>
-              <div className="grid sm:grid-cols-2 gap-3 mt-4 text-xs text-gray-600">
+              >
+                {copy.statusLabels[activeThread.status]}
+              </p>
+              <h3 className="mt-3 text-2xl font-light tracking-tight text-gray-900">
+                {activeThread.subject}
+              </h3>
+              <p className="mt-2 text-sm text-gray-500">
+                {activeThread.eventName}
+              </p>
+              <dl className="mt-6 grid gap-6 sm:grid-cols-2">
                 <div>
-                  <p className="text-[10px] uppercase tracking-wide text-gray-400">
+                  <dt className="text-[11px] uppercase tracking-[0.16em] text-gray-400">
                     {copy.roles.affiliate}
-                  </p>
-                  <p className="font-medium text-gray-800">
+                  </dt>
+                  <dd className="mt-1.5 text-sm text-gray-900">
                     {activeThread.affiliateName}
-                  </p>
+                  </dd>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-wide text-gray-400">
+                  <dt className="text-[11px] uppercase tracking-[0.16em] text-gray-400">
                     {copy.roles.organiser}
-                  </p>
-                  <p className="font-medium text-gray-800">
+                  </dt>
+                  <dd className="mt-1.5 text-sm text-gray-900">
                     {activeThread.organiserName}
-                  </p>
-                  <p className="text-gray-500">
+                  </dd>
+                  <dd className="text-xs text-gray-400">
                     {activeThread.organiserEmail}
-                  </p>
+                  </dd>
                 </div>
-              </div>
-            </CardHeader>
-            <CardContent className="p-0">
-              <ul className="divide-y divide-gray-100">
-                {activeThread.messages.map((message) => (
-                  <li key={message.id}>
-                    <article className="p-6 space-y-2">
-                      <header className="flex flex-wrap items-center justify-between gap-2">
-                        <div className="flex items-center gap-2">
-                          {roleBadge(
+              </dl>
+            </header>
+
+            <ol className="divide-y divide-gray-100">
+              {activeThread.messages.map((message) => (
+                <li key={message.id}>
+                  <article className="py-8">
+                    <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                      <div className="flex items-baseline gap-3">
+                        <span className="text-[11px] uppercase tracking-[0.16em] text-gray-400">
+                          {roleLabel(
                             message.from,
                             copy.roles.affiliate,
                             copy.roles.organiser,
                           )}
-                          <span className="text-sm font-semibold text-gray-900">
-                            {message.authorName}
-                          </span>
-                          <span className="text-xs text-gray-500">
-                            &lt;{message.authorEmail}&gt;
-                          </span>
-                        </div>
-                        <time
-                          dateTime={message.sentAt}
-                          className="text-xs text-gray-400"
-                        >
-                          {formatDateTime(message.sentAt, locale)}
-                        </time>
-                      </header>
-                      <p className="text-sm text-gray-700 whitespace-pre-line leading-relaxed">
-                        {message.body}
-                      </p>
-                    </article>
-                  </li>
-                ))}
-              </ul>
+                        </span>
+                        <span className="text-sm font-medium text-gray-900">
+                          {message.authorName}
+                        </span>
+                      </div>
+                      <time
+                        dateTime={message.sentAt}
+                        className="text-xs text-gray-400"
+                      >
+                        {formatDateTime(message.sentAt, locale)}
+                      </time>
+                    </header>
+                    <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-gray-700">
+                      {message.body}
+                    </p>
+                  </article>
+                </li>
+              ))}
+            </ol>
 
-              <div className="border-t border-gray-100 p-6 space-y-3">
-                <Textarea
-                  value={draft}
-                  onChange={(event) => setDraft(event.target.value)}
-                  placeholder={copy.composer.placeholder}
-                  aria-label={copy.composer.placeholder}
-                  rows={4}
-                />
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="text-xs text-gray-400">
-                    {copy.composer.disclaimer}
-                  </p>
-                  <Button
-                    type="button"
-                    disabled={draft.trim().length === 0}
-                    className="bg-black text-white hover:bg-gray-800"
-                  >
-                    {copy.composer.send}
-                  </Button>
-                </div>
+            <div className="border-t border-gray-100 pt-8">
+              <Textarea
+                value={draft}
+                onChange={(event) => setDraft(event.target.value)}
+                placeholder={copy.composer.placeholder}
+                aria-label={copy.composer.placeholder}
+                rows={4}
+                className="resize-none border-0 border-b border-gray-200 rounded-none px-0 shadow-none focus-visible:ring-0 focus-visible:border-gray-900"
+              />
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+                <p className="text-xs text-gray-400">
+                  {copy.composer.disclaimer}
+                </p>
+                <Button
+                  type="button"
+                  disabled={draft.trim().length === 0}
+                  className="bg-gray-900 text-white hover:bg-gray-800 disabled:bg-gray-200 disabled:text-gray-400"
+                >
+                  {copy.composer.send}
+                </Button>
               </div>
-            </CardContent>
+            </div>
           </>
         )}
-      </Card>
+      </section>
     </div>
   );
 }
