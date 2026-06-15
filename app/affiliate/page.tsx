@@ -1,8 +1,17 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import {
+  CalendarDays,
+  Handshake,
+  MapPin,
+  TrendingUp,
+  Zap,
+} from "lucide-react";
 import { StickyHeader } from "@/components/sticky-header";
 import { Footer } from "@/components/footer";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -10,6 +19,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { EmailThreads } from "@/components/affiliate/email-threads";
 import { useTranslation } from "@/lib/i18n/useTranslation";
@@ -42,15 +59,15 @@ function formatDateISO(iso: string) {
   return iso.slice(0, 10);
 }
 
-function statusColor(status: AffiliateEvent["status"]) {
+function statusTone(status: AffiliateEvent["status"]) {
   switch (status) {
     case "active":
-      return "text-gray-900";
+      return "bg-emerald-100 text-emerald-900 border-emerald-200";
     case "upcoming":
-      return "text-gray-500";
+      return "bg-blue-100 text-blue-900 border-blue-200";
     case "completed":
     default:
-      return "text-gray-400";
+      return "bg-gray-100 text-gray-700 border-gray-200";
   }
 }
 
@@ -100,248 +117,257 @@ export default function AffiliateDashboardPage() {
   }, [affiliateEvents, affiliateBrands]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-gray-100">
       <StickyHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
-      <main className="mx-auto max-w-6xl px-6 pt-32 pb-24">
-        <section className="mb-24">
-          <p className="text-[11px] tracking-[0.2em] uppercase text-gray-400">
+      <main className="container mx-auto px-6 py-12 pt-32">
+        <section className="mb-10">
+          <Badge
+            variant="outline"
+            className="text-[10px] tracking-widest font-semibold text-blue-700 border-blue-200 bg-blue-50"
+          >
             {copy.hero.badge}
-          </p>
-          <h1 className="mt-6 text-4xl md:text-5xl font-light tracking-tight text-gray-900">
+          </Badge>
+          <h1 className="text-3xl lg:text-5xl font-light text-black mt-4">
             {copy.hero.title}
           </h1>
-          <p className="mt-6 max-w-2xl text-base text-gray-500 leading-relaxed">
+          <p className="text-gray-600 max-w-3xl mt-4 text-base lg:text-lg">
             {copy.hero.description}
           </p>
         </section>
 
-        <section className="mb-20 flex flex-col gap-6 border-t border-gray-100 pt-8 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-[11px] tracking-[0.2em] uppercase text-gray-400">
-              {copy.selector.label}
-            </p>
-            <p className="mt-2 text-2xl font-medium text-gray-900">
-              {affiliate.name}
-            </p>
-            <p className="mt-1 text-sm text-gray-500">{affiliate.email}</p>
-            <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-xs text-gray-400">
-              <span>
-                {copy.selector.referralCode}{" "}
-                <span className="font-mono text-gray-700">
-                  {affiliate.referralCode}
-                </span>
-              </span>
-              <span>
-                {copy.selector.joined.replace(
-                  "{date}",
-                  formatDate(affiliate.joinedAt, locale),
-                )}
-              </span>
+        <Card className="mb-10 border-gray-200 bg-white shadow-sm">
+          <CardContent className="flex flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black text-white text-lg font-semibold">
+                {affiliate.avatarInitials}
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wide text-gray-500">
+                  {copy.selector.label}
+                </p>
+                <p className="text-xl font-semibold text-gray-900">
+                  {affiliate.name}
+                </p>
+                <p className="text-sm text-gray-500">{affiliate.email}</p>
+              </div>
             </div>
-          </div>
-          <Select
-            value={affiliate.id}
-            onValueChange={(value) => setAffiliateId(value)}
-          >
-            <SelectTrigger
-              aria-label={copy.selector.label}
-              className="w-full border-0 border-b border-gray-200 rounded-none px-0 shadow-none focus:ring-0 focus:ring-offset-0 md:w-64"
-            >
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {affiliates.map((item) => (
-                <SelectItem key={item.id} value={item.id}>
-                  {item.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </section>
+            <div className="flex flex-col gap-3 md:items-end">
+              <Select
+                value={affiliate.id}
+                onValueChange={(value) => setAffiliateId(value)}
+              >
+                <SelectTrigger
+                  aria-label={copy.selector.label}
+                  className="w-full md:w-64"
+                >
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {affiliates.map((item) => (
+                    <SelectItem key={item.id} value={item.id}>
+                      {item.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <div className="flex flex-wrap gap-3 text-xs text-gray-500 md:justify-end">
+                <span>
+                  {copy.selector.referralCode}:{" "}
+                  <span className="font-mono font-semibold text-gray-800">
+                    {affiliate.referralCode}
+                  </span>
+                </span>
+                <span>
+                  {copy.selector.joined.replace(
+                    "{date}",
+                    formatDate(affiliate.joinedAt, locale),
+                  )}
+                </span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-        <section
-          aria-label="Summary"
-          className="mb-24 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-gray-100 pt-10 md:grid-cols-4"
-        >
-          <Stat
+        <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-12">
+          <StatCard
+            icon={<CalendarDays className="h-5 w-5" aria-hidden="true" />}
             label={copy.stats.activeEvents}
             value={String(stats.activeEvents)}
           />
-          <Stat
+          <StatCard
+            icon={<Handshake className="h-5 w-5" aria-hidden="true" />}
             label={copy.stats.brands}
             value={String(stats.brandCount)}
           />
-          <Stat
+          <StatCard
+            icon={<Zap className="h-5 w-5" aria-hidden="true" />}
             label={copy.stats.rentals}
             value={stats.totalRentals.toLocaleString(locale)}
           />
-          <Stat
+          <StatCard
+            icon={<TrendingUp className="h-5 w-5" aria-hidden="true" />}
             label={copy.stats.earnings}
             value={formatCurrency(stats.totalEarnings, locale)}
           />
         </section>
 
         <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="mb-16 h-auto justify-start gap-8 border-b border-gray-100 bg-transparent p-0 rounded-none w-full">
-            <TabsTrigger
-              value="overview"
-              className="rounded-none border-b-2 border-transparent bg-transparent px-0 pb-3 pt-0 text-sm font-medium text-gray-400 shadow-none transition-colors data-[state=active]:border-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 data-[state=active]:shadow-none"
-            >
-              {copy.tabs.overview}
-            </TabsTrigger>
-            <TabsTrigger
-              value="threads"
-              className="rounded-none border-b-2 border-transparent bg-transparent px-0 pb-3 pt-0 text-sm font-medium text-gray-400 shadow-none transition-colors data-[state=active]:border-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 data-[state=active]:shadow-none"
-            >
-              {copy.tabs.threads}
-            </TabsTrigger>
+          <TabsList className="mb-6 bg-gray-100">
+            <TabsTrigger value="overview">{copy.tabs.overview}</TabsTrigger>
+            <TabsTrigger value="threads">{copy.tabs.threads}</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="overview" className="space-y-24 mt-0">
-            <section>
-              <header className="mb-10">
-                <h2 className="text-2xl font-light tracking-tight text-gray-900">
+          <TabsContent value="overview" className="space-y-10">
+            <Card className="border-gray-200 bg-white">
+              <CardHeader>
+                <CardTitle className="text-xl font-semibold text-gray-900">
                   {copy.events.title}
-                </h2>
-                <p className="mt-2 max-w-2xl text-sm text-gray-500">
+                </CardTitle>
+                <p className="text-sm text-gray-500">
                   {copy.events.description}
                 </p>
-              </header>
-
-              {affiliateEvents.length === 0 ? (
-                <p className="text-sm text-gray-400">{copy.events.empty}</p>
-              ) : (
-                <div className="-mx-2 overflow-x-auto">
-                  <table className="w-full min-w-[760px] border-collapse text-sm">
-                    <thead>
-                      <tr className="text-left text-[11px] uppercase tracking-[0.16em] text-gray-400">
-                        <th className="px-2 pb-4 font-medium">
-                          {copy.events.columns.event}
-                        </th>
-                        <th className="px-2 pb-4 font-medium">
-                          {copy.events.columns.date}
-                        </th>
-                        <th className="px-2 pb-4 font-medium">
-                          {copy.events.columns.brand}
-                        </th>
-                        <th className="px-2 pb-4 text-right font-medium">
+              </CardHeader>
+              <CardContent className="p-0 overflow-x-auto">
+                {affiliateEvents.length === 0 ? (
+                  <p className="p-6 text-center text-gray-500">
+                    {copy.events.empty}
+                  </p>
+                ) : (
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>{copy.events.columns.event}</TableHead>
+                        <TableHead>{copy.events.columns.date}</TableHead>
+                        <TableHead>{copy.events.columns.brand}</TableHead>
+                        <TableHead className="text-right">
                           {copy.events.columns.rentals}
-                        </th>
-                        <th className="px-2 pb-4 text-right font-medium">
+                        </TableHead>
+                        <TableHead className="text-right">
                           {copy.events.columns.price}
-                        </th>
-                        <th className="px-2 pb-4 text-right font-medium">
+                        </TableHead>
+                        <TableHead className="text-right">
                           {copy.events.columns.commission}
-                        </th>
-                        <th className="px-2 pb-4 text-right font-medium">
+                        </TableHead>
+                        <TableHead className="text-right">
                           {copy.events.columns.earnings}
-                        </th>
-                        <th className="px-2 pb-4 text-right font-medium">
-                          {copy.events.columns.status}
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
+                        </TableHead>
+                        <TableHead>{copy.events.columns.status}</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
                       {affiliateEvents.map((event) => {
                         const brand = getBrandById(event.brandId);
                         const earnings = estimateEventEarnings(event);
                         return (
-                          <tr
-                            key={event.id}
-                            className="border-t border-gray-100"
-                          >
-                            <td className="px-2 py-5">
+                          <TableRow key={event.id}>
+                            <TableCell>
                               <div className="font-medium text-gray-900">
                                 {event.name}
                               </div>
-                              <div className="mt-0.5 text-xs text-gray-400">
+                              <div className="flex items-center gap-1 text-xs text-gray-500">
+                                <MapPin
+                                  className="h-3 w-3"
+                                  aria-hidden="true"
+                                />
                                 {event.location}
                               </div>
-                            </td>
-                            <td className="px-2 py-5 text-gray-500">
+                            </TableCell>
+                            <TableCell className="text-sm text-gray-700">
                               <time dateTime={formatDateISO(event.date)}>
                                 {formatDate(event.date, locale)}
                               </time>
-                            </td>
-                            <td className="px-2 py-5 text-gray-500">
+                            </TableCell>
+                            <TableCell className="text-sm text-gray-700">
                               {brand?.name ?? "—"}
-                            </td>
-                            <td className="px-2 py-5 text-right tabular-nums text-gray-700">
+                            </TableCell>
+                            <TableCell className="text-right font-mono text-sm">
                               {event.rentals.toLocaleString(locale)}
-                            </td>
-                            <td className="px-2 py-5 text-right tabular-nums text-gray-500">
+                            </TableCell>
+                            <TableCell className="text-right font-mono text-sm">
                               {formatCurrency(event.rentalPrice, locale)}
-                            </td>
-                            <td className="px-2 py-5 text-right tabular-nums font-medium text-gray-900">
-                              {event.commissionPercent}%
-                            </td>
-                            <td className="px-2 py-5 text-right tabular-nums font-medium text-gray-900">
+                            </TableCell>
+                            <TableCell className="text-right">
+                              <Badge className="bg-blue-600 text-white font-semibold">
+                                {event.commissionPercent}%
+                              </Badge>
+                            </TableCell>
+                            <TableCell className="text-right font-mono font-semibold text-gray-900">
                               {formatCurrency(earnings, locale)}
-                            </td>
-                            <td
-                              className={cn(
-                                "px-2 py-5 text-right text-[11px] uppercase tracking-[0.14em]",
-                                statusColor(event.status),
-                              )}
-                            >
-                              {copy.events.statusLabels[event.status]}
-                            </td>
-                          </tr>
+                            </TableCell>
+                            <TableCell>
+                              <Badge
+                                variant="outline"
+                                className={cn(
+                                  "text-[10px] tracking-wide uppercase font-semibold",
+                                  statusTone(event.status),
+                                )}
+                              >
+                                {copy.events.statusLabels[event.status]}
+                              </Badge>
+                            </TableCell>
+                          </TableRow>
                         );
                       })}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </section>
+                    </TableBody>
+                  </Table>
+                )}
+              </CardContent>
+            </Card>
 
-            <section>
-              <header className="mb-10">
-                <h2 className="text-2xl font-light tracking-tight text-gray-900">
+            <Card className="border-gray-200 bg-white">
+              <CardHeader>
+                <CardTitle className="text-xl font-semibold text-gray-900">
                   {copy.brands.title}
-                </h2>
-                <p className="mt-2 max-w-2xl text-sm text-gray-500">
+                </CardTitle>
+                <p className="text-sm text-gray-500">
                   {copy.brands.description}
                 </p>
-              </header>
-
-              {affiliateBrands.length === 0 ? (
-                <p className="text-sm text-gray-400">{copy.brands.empty}</p>
-              ) : (
-                <ul className="divide-y divide-gray-100 border-t border-gray-100">
-                  {affiliateBrands.map((brand) => (
-                    <li
-                      key={brand.id}
-                      className="flex flex-col gap-1 py-6 md:flex-row md:items-baseline md:justify-between md:gap-12"
-                    >
-                      <div className="md:w-1/3">
-                        <p className="text-base font-medium text-gray-900">
-                          {brand.name}
-                        </p>
-                        <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-gray-400">
-                          {brand.industry}
+              </CardHeader>
+              <CardContent>
+                {affiliateBrands.length === 0 ? (
+                  <p className="p-6 text-center text-gray-500">
+                    {copy.brands.empty}
+                  </p>
+                ) : (
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {affiliateBrands.map((brand) => (
+                      <div
+                        key={brand.id}
+                        className="border border-gray-200 rounded-lg p-5 hover:border-blue-300 transition-colors"
+                      >
+                        <div className="flex items-start justify-between mb-3">
+                          <div>
+                            <p className="font-semibold text-gray-900">
+                              {brand.name}
+                            </p>
+                            <p className="text-xs uppercase tracking-wide text-gray-500">
+                              {brand.industry}
+                            </p>
+                          </div>
+                        </div>
+                        <p className="text-sm text-gray-600">
+                          {brand.description}
                         </p>
                       </div>
-                      <p className="text-sm text-gray-500 md:flex-1">
-                        {brand.description}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </section>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
           </TabsContent>
 
-          <TabsContent value="threads" className="mt-0">
-            <header className="mb-12">
-              <h2 className="text-2xl font-light tracking-tight text-gray-900">
-                {copy.threads.title}
-              </h2>
-              <p className="mt-2 max-w-2xl text-sm text-gray-500">
-                {copy.threads.description}
-              </p>
-            </header>
+          <TabsContent value="threads">
+            <Card className="border-gray-200 bg-white mb-6">
+              <CardHeader>
+                <CardTitle className="text-xl font-semibold text-gray-900">
+                  {copy.threads.title}
+                </CardTitle>
+                <p className="text-sm text-gray-500">
+                  {copy.threads.description}
+                </p>
+              </CardHeader>
+            </Card>
             <EmailThreads threads={affiliateThreads} locale={locale} />
           </TabsContent>
         </Tabs>
@@ -352,15 +378,26 @@ export default function AffiliateDashboardPage() {
   );
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+function StatCard({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+}) {
   return (
-    <div>
-      <p className="text-[11px] uppercase tracking-[0.16em] text-gray-400">
-        {label}
-      </p>
-      <p className="mt-3 text-3xl font-light tracking-tight text-gray-900">
-        {value}
-      </p>
-    </div>
+    <Card className="border-gray-200 bg-white">
+      <CardContent className="p-5 flex items-start gap-4">
+        <div className="rounded-md bg-blue-50 text-blue-700 p-2">{icon}</div>
+        <div>
+          <p className="text-xs uppercase tracking-wide text-gray-500">
+            {label}
+          </p>
+          <p className="text-2xl font-semibold text-gray-900">{value}</p>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
