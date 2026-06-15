@@ -203,12 +203,17 @@ export default function AffiliateSignupPage() {
 
               <p className="mt-12 text-sm text-gray-500">
                 {copy.pitch.moreInfoPrefix}{" "}
-                <Link
-                  href={href("/reserve")}
+                <a
+                  href="/documents/powerdon-affiliate-memorandum.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    trackButtonClick("affiliate_signup_memorandum")
+                  }
                   className="font-medium text-blue-700 underline-offset-4 hover:underline"
                 >
                   {copy.pitch.moreInfoLink}
-                </Link>
+                </a>
               </p>
             </div>
           </section>
