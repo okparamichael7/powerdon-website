@@ -707,6 +707,61 @@ export const enMessages = {
       formula:
         "{rentals} rentals × €{price} × {percent}% = €{total}",
     },
+    signup: {
+      logoAlt: "PowerDon",
+      pitch: {
+        title: "PowerDon Affiliate Program",
+        steps: [
+          {
+            emoji: "📝",
+            title: "1. Apply",
+            description:
+              "It only takes a minute to join — fill out the form and our partner team will reach out within 48 hours.",
+          },
+          {
+            emoji: "🔗",
+            title: "2. Connect events & brands",
+            description:
+              "Get your personal affiliate code and start introducing festivals, venues, and brands to PowerDon's charging stations and LED ad network.",
+          },
+          {
+            emoji: "💸",
+            title: "3. Earn on every rental",
+            description:
+              "Earn up to {bold}22% commission{/bold} on every power bank rental at your events, plus a share of advertising revenue.",
+            highlight: "No caps. No expiration. Real, recurring income.",
+          },
+        ],
+        moreInfoPrefix: "For more info,",
+        moreInfoLink: "click here",
+      },
+      form: {
+        title: "Sign Up",
+        google: "Continue with Google",
+        divider: "OR",
+        firstName: "First Name",
+        firstNamePlaceholder: "John",
+        lastName: "Last Name",
+        lastNamePlaceholder: "Doe",
+        email: "Email",
+        emailPlaceholder: "Enter your email",
+        password: "Password",
+        passwordPlaceholder: "Enter your password",
+        phone: "Phone Number",
+        phonePlaceholder: "+31 6 1234 5678",
+        notifications: "Receive notifications",
+        agreementPrefix: "I agree to",
+        agreementLink: "affiliate terms & conditions",
+        required: "*",
+        submit: "Sign Up",
+        submitting: "Creating account…",
+        signinPrompt: "Already have an account?",
+        signinLink: "Sign In",
+        successTitle: "You're in!",
+        successDescription:
+          "We've received your application. Our partner team will email you within 48 hours with next steps and your personal affiliate code.",
+      },
+    },
   },
   seo: {
     site: {
@@ -821,6 +876,17 @@ export const enMessages = {
           "PowerDon affiliate",
           "commission tracking",
           "event partnerships",
+        ],
+      },
+      affiliateSignup: {
+        title: "Join the PowerDon Affiliate Program",
+        description:
+          "Apply to become a PowerDon affiliate. Earn up to 22% recurring commission on power bank rentals at your events plus a share of advertising revenue.",
+        keywords: [
+          "PowerDon affiliate signup",
+          "affiliate program",
+          "event partnerships",
+          "power bank rental commission",
         ],
       },
       privacy: {

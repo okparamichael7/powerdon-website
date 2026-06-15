@@ -11,6 +11,7 @@ const pagePaths: Record<PageKey, string> = {
   advertising: "/advertising",
   advertisingQuote: "/advertising/quote",
   affiliate: "/affiliate",
+  affiliateSignup: "/affiliate/signup",
   contact: "/contact",
   reserve: "/reserve",
   reserveForm: "/reserve/form",

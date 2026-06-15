@@ -70,5 +70,56 @@
   },
   "commission": {
     "formula": "{rentals} verhuringen × €{price} × {percent}% = €{total}"
+  },
+  "signup": {
+    "logoAlt": "PowerDon",
+    "pitch": {
+      "title": "PowerDon Affiliate Program",
+      "steps": [
+        {
+          "emoji": "📝",
+          "title": "1. Meld je aan",
+          "description": "Het kost maar een minuut — vul het formulier in en ons partnerteam neemt binnen 48 uur contact met je op."
+        },
+        {
+          "emoji": "🔗",
+          "title": "2. Verbind evenementen & merken",
+          "description": "Ontvang je persoonlijke affiliate-code en introduceer festivals, locaties en merken bij PowerDon's laad- en LED-advertentienetwerk."
+        },
+        {
+          "emoji": "💸",
+          "title": "3. Verdien op elke verhuring",
+          "description": "Verdien tot {bold}22% commissie{/bold} op elke powerbank-verhuring op jouw evenementen, plus een deel van de advertentie-omzet.",
+          "highlight": "Geen plafond. Geen einddatum. Echte, terugkerende inkomsten."
+        }
+      ],
+      "moreInfoPrefix": "Meer weten?",
+      "moreInfoLink": "Klik hier"
+    },
+    "form": {
+      "title": "Aanmelden",
+      "google": "Doorgaan met Google",
+      "divider": "OF",
+      "firstName": "Voornaam",
+      "firstNamePlaceholder": "Sanne",
+      "lastName": "Achternaam",
+      "lastNamePlaceholder": "de Vries",
+      "email": "E-mailadres",
+      "emailPlaceholder": "Vul je e-mailadres in",
+      "password": "Wachtwoord",
+      "passwordPlaceholder": "Vul je wachtwoord in",
+      "phone": "Telefoonnummer",
+      "phonePlaceholder": "+31 6 1234 5678",
+      "notifications": "Stuur mij meldingen",
+      "agreementPrefix": "Ik ga akkoord met de",
+      "agreementLink": "voorwaarden van het affiliate-programma",
+      "required": "*",
+      "submit": "Aanmelden",
+      "submitting": "Account aanmaken…",
+      "signinPrompt": "Heb je al een account?",
+      "signinLink": "Log in",
+      "successTitle": "Je bent erbij!",
+      "successDescription": "We hebben je aanvraag ontvangen. Ons partnerteam neemt binnen 48 uur per e-mail contact met je op met de volgende stappen en je persoonlijke affiliate-code."
+    }
   }
 }
