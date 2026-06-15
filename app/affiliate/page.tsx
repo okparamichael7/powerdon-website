@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { EmailThreads } from "@/components/affiliate/email-threads";
+import { Payouts } from "@/components/affiliate/payouts";
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import {
   affiliates,
@@ -216,6 +217,7 @@ export default function AffiliateDashboardPage() {
           <TabsList className="mb-6 bg-gray-100">
             <TabsTrigger value="overview">{copy.tabs.overview}</TabsTrigger>
             <TabsTrigger value="threads">{copy.tabs.threads}</TabsTrigger>
+            <TabsTrigger value="payouts">{copy.tabs.payouts}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-10">
@@ -369,6 +371,10 @@ export default function AffiliateDashboardPage() {
               </CardHeader>
             </Card>
             <EmailThreads threads={affiliateThreads} locale={locale} />
+          </TabsContent>
+
+          <TabsContent value="payouts">
+            <Payouts />
           </TabsContent>
         </Tabs>
       </main>

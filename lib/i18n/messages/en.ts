@@ -648,6 +648,7 @@ export const enMessages = {
     tabs: {
       overview: "Events & Brands",
       threads: "Email Threads",
+      payouts: "Payouts",
     },
     events: {
       title: "Events you are powering",
@@ -706,6 +707,44 @@ export const enMessages = {
     commission: {
       formula:
         "{rentals} rentals × €{price} × {percent}% = €{total}",
+    },
+    payouts: {
+      title: "Payouts",
+      terms: {
+        title: "Payout terms",
+        cycleLabel: "Monthly / Net-7",
+        description:
+          "This month's commission will be paid next month on the 7th if the payout amount is over €50.",
+      },
+      method: {
+        title: "Selected payout method",
+        setCta: "Set Payout Method",
+        none: "No payout method set",
+        change: "Change",
+        configured: "Payouts will be sent to {detail} via {label}.",
+      },
+      empty: {
+        title: "Payouts",
+        description: "You do not have any payouts yet.",
+      },
+      filterLabel: "Filter payouts",
+      dialog: {
+        title: "Select a payout method",
+        back: "Go Back",
+        add: "Add",
+        options: {
+          paypal: {
+            label: "PayPal",
+            detailLabel: "PayPal email",
+            detailPlaceholder: "you@paypal.com",
+          },
+          bank: {
+            label: "Bank",
+            detailLabel: "IBAN",
+            detailPlaceholder: "NL00 BANK 0000 0000 00",
+          },
+        },
+      },
     },
     signup: {
       logoAlt: "PowerDon",

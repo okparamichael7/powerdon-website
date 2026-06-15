@@ -93,7 +93,7 @@ export default function AffiliateSignupPage() {
       <main className="pt-24 lg:pt-28">
         <div className="grid min-h-[calc(100vh-7rem)] lg:grid-cols-2">
           {/* LEFT — Pitch panel */}
-          <section className="relative overflow-hidden bg-gradient-to-br from-violet-50 via-purple-50 to-indigo-50 px-6 py-16 sm:px-12 lg:px-16 lg:py-24">
+          <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-blue-100/70 to-white px-6 py-16 sm:px-12 lg:px-16 lg:py-24">
             {/* Decorative isometric backdrop */}
             <div
               aria-hidden="true"
@@ -113,8 +113,8 @@ export default function AffiliateSignupPage() {
                     x2="1"
                     y2="1"
                   >
-                    <stop offset="0%" stopColor="#c4b5fd" stopOpacity="0.45" />
-                    <stop offset="100%" stopColor="#a78bfa" stopOpacity="0.1" />
+                    <stop offset="0%" stopColor="#93c5fd" stopOpacity="0.45" />
+                    <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.1" />
                   </linearGradient>
                   <linearGradient
                     id="iso-stroke"
@@ -123,8 +123,8 @@ export default function AffiliateSignupPage() {
                     x2="1"
                     y2="1"
                   >
-                    <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.55" />
-                    <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.2" />
+                    <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.55" />
+                    <stop offset="100%" stopColor="#1d4ed8" stopOpacity="0.2" />
                   </linearGradient>
                 </defs>
                 <polygon
@@ -205,7 +205,7 @@ export default function AffiliateSignupPage() {
                 {copy.pitch.moreInfoPrefix}{" "}
                 <Link
                   href={href("/reserve")}
-                  className="font-medium text-violet-700 underline-offset-4 hover:underline"
+                  className="font-medium text-blue-700 underline-offset-4 hover:underline"
                 >
                   {copy.pitch.moreInfoLink}
                 </Link>
@@ -214,8 +214,8 @@ export default function AffiliateSignupPage() {
           </section>
 
           {/* RIGHT — Sign-up card */}
-          <section className="flex items-start justify-center bg-violet-50/40 px-6 py-16 sm:px-12 lg:px-16 lg:py-24">
-            <div className="w-full max-w-md rounded-3xl bg-violet-100/60 p-8 shadow-[0_8px_40px_-12px_rgba(124,58,237,0.18)] backdrop-blur-sm sm:p-10">
+          <section className="flex items-start justify-center bg-blue-50/40 px-6 py-16 sm:px-12 lg:px-16 lg:py-24">
+            <div className="w-full max-w-md rounded-3xl bg-blue-100/60 p-8 shadow-[0_8px_40px_-12px_rgba(29,78,216,0.18)] backdrop-blur-sm sm:p-10">
               {submitted ? (
                 <div className="text-center">
                   <h2 className="text-2xl font-semibold text-gray-900">
@@ -226,7 +226,7 @@ export default function AffiliateSignupPage() {
                   </p>
                   <Link
                     href={href("/affiliate")}
-                    className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-violet-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-violet-600"
+                    className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
                   >
                     {copy.pitch.title}
                   </Link>
@@ -247,9 +247,9 @@ export default function AffiliateSignupPage() {
                   </button>
 
                   <div className="my-6 flex items-center gap-4 text-[11px] uppercase tracking-[0.2em] text-gray-400">
-                    <div className="h-px flex-1 bg-violet-200" />
+                    <div className="h-px flex-1 bg-blue-200" />
                     <span>{copy.form.divider}</span>
-                    <div className="h-px flex-1 bg-violet-200" />
+                    <div className="h-px flex-1 bg-blue-200" />
                   </div>
 
                   <form className="space-y-5" onSubmit={handleSubmit}>
@@ -260,7 +260,7 @@ export default function AffiliateSignupPage() {
                           className="text-xs font-semibold text-gray-700"
                         >
                           {copy.form.firstName}{" "}
-                          <span className="text-violet-600">
+                          <span className="text-blue-700">
                             {copy.form.required}
                           </span>
                         </Label>
@@ -274,7 +274,7 @@ export default function AffiliateSignupPage() {
                           onChange={(event) =>
                             handleChange("firstName")(event.target.value)
                           }
-                          className="mt-2 h-11 rounded-xl border-violet-200 bg-white"
+                          className="mt-2 h-11 rounded-xl border-blue-200 bg-white"
                         />
                       </div>
                       <div>
@@ -283,7 +283,7 @@ export default function AffiliateSignupPage() {
                           className="text-xs font-semibold text-gray-700"
                         >
                           {copy.form.lastName}{" "}
-                          <span className="text-violet-600">
+                          <span className="text-blue-700">
                             {copy.form.required}
                           </span>
                         </Label>
@@ -297,7 +297,7 @@ export default function AffiliateSignupPage() {
                           onChange={(event) =>
                             handleChange("lastName")(event.target.value)
                           }
-                          className="mt-2 h-11 rounded-xl border-violet-200 bg-white"
+                          className="mt-2 h-11 rounded-xl border-blue-200 bg-white"
                         />
                       </div>
                     </div>
@@ -308,7 +308,7 @@ export default function AffiliateSignupPage() {
                         className="text-xs font-semibold text-gray-700"
                       >
                         {copy.form.email}{" "}
-                        <span className="text-violet-600">
+                        <span className="text-blue-700">
                           {copy.form.required}
                         </span>
                       </Label>
@@ -323,7 +323,7 @@ export default function AffiliateSignupPage() {
                         onChange={(event) =>
                           handleChange("email")(event.target.value)
                         }
-                        className="mt-2 h-11 rounded-xl border-violet-200 bg-white"
+                        className="mt-2 h-11 rounded-xl border-blue-200 bg-white"
                       />
                     </div>
 
@@ -333,7 +333,7 @@ export default function AffiliateSignupPage() {
                         className="text-xs font-semibold text-gray-700"
                       >
                         {copy.form.password}{" "}
-                        <span className="text-violet-600">
+                        <span className="text-blue-700">
                           {copy.form.required}
                         </span>
                       </Label>
@@ -349,7 +349,7 @@ export default function AffiliateSignupPage() {
                         onChange={(event) =>
                           handleChange("password")(event.target.value)
                         }
-                        className="mt-2 h-11 rounded-xl border-violet-200 bg-white"
+                        className="mt-2 h-11 rounded-xl border-blue-200 bg-white"
                       />
                     </div>
 
@@ -359,7 +359,7 @@ export default function AffiliateSignupPage() {
                         className="text-xs font-semibold text-gray-700"
                       >
                         {copy.form.phone}{" "}
-                        <span className="text-violet-600">
+                        <span className="text-blue-700">
                           {copy.form.required}
                         </span>
                       </Label>
@@ -374,7 +374,7 @@ export default function AffiliateSignupPage() {
                         onChange={(event) =>
                           handleChange("phone")(event.target.value)
                         }
-                        className="mt-2 h-11 rounded-xl border-violet-200 bg-white"
+                        className="mt-2 h-11 rounded-xl border-blue-200 bg-white"
                       />
                     </div>
 
@@ -389,7 +389,7 @@ export default function AffiliateSignupPage() {
                           onCheckedChange={(value) =>
                             handleChange("notifications")(value === true)
                           }
-                          className="border-violet-300 data-[state=checked]:bg-violet-600 data-[state=checked]:border-violet-600"
+                          className="border-blue-300 data-[state=checked]:bg-blue-700 data-[state=checked]:border-blue-700"
                         />
                         <span>{copy.form.notifications}</span>
                       </label>
@@ -404,17 +404,17 @@ export default function AffiliateSignupPage() {
                             handleChange("agreement")(value === true)
                           }
                           required
-                          className="border-violet-300 data-[state=checked]:bg-violet-600 data-[state=checked]:border-violet-600"
+                          className="border-blue-300 data-[state=checked]:bg-blue-700 data-[state=checked]:border-blue-700"
                         />
                         <span>
                           {copy.form.agreementPrefix}{" "}
                           <Link
                             href={href("/terms")}
-                            className="font-medium text-violet-700 underline-offset-4 hover:underline"
+                            className="font-medium text-blue-700 underline-offset-4 hover:underline"
                           >
                             {copy.form.agreementLink}
                           </Link>{" "}
-                          <span className="text-violet-600">
+                          <span className="text-blue-700">
                             {copy.form.required}
                           </span>
                         </span>
@@ -424,7 +424,7 @@ export default function AffiliateSignupPage() {
                     <Button
                       type="submit"
                       disabled={!canSubmit || submitting}
-                      className="h-12 w-full rounded-full bg-violet-500 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-violet-600 disabled:bg-violet-300 disabled:text-white"
+                      className="h-12 w-full rounded-full bg-blue-600 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:bg-blue-300 disabled:text-white"
                     >
                       {submitting ? copy.form.submitting : copy.form.submit}
                     </Button>
@@ -433,7 +433,7 @@ export default function AffiliateSignupPage() {
                       {copy.form.signinPrompt}{" "}
                       <Link
                         href={href("/affiliate")}
-                        className="font-semibold text-violet-700 underline-offset-4 hover:underline"
+                        className="font-semibold text-blue-700 underline-offset-4 hover:underline"
                       >
                         {copy.form.signinLink}
                       </Link>

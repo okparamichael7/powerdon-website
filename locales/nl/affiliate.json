@@ -17,7 +17,8 @@
   },
   "tabs": {
     "overview": "Evenementen & Merken",
-    "threads": "E-mailthreads"
+    "threads": "E-mailthreads",
+    "payouts": "Uitbetalingen"
   },
   "events": {
     "title": "Evenementen die jij aandrijft",
@@ -70,6 +71,43 @@
   },
   "commission": {
     "formula": "{rentals} verhuringen × €{price} × {percent}% = €{total}"
+  },
+  "payouts": {
+    "title": "Uitbetalingen",
+    "terms": {
+      "title": "Uitbetalingsvoorwaarden",
+      "cycleLabel": "Maandelijks / Net-7",
+      "description": "De commissie van deze maand wordt volgende maand op de 7e uitbetaald als het bedrag hoger is dan €50."
+    },
+    "method": {
+      "title": "Gekozen uitbetalingsmethode",
+      "setCta": "Stel uitbetalingsmethode in",
+      "none": "Nog geen uitbetalingsmethode ingesteld",
+      "change": "Wijzigen",
+      "configured": "Uitbetalingen worden verzonden naar {detail} via {label}."
+    },
+    "empty": {
+      "title": "Uitbetalingen",
+      "description": "Je hebt nog geen uitbetalingen."
+    },
+    "filterLabel": "Uitbetalingen filteren",
+    "dialog": {
+      "title": "Kies een uitbetalingsmethode",
+      "back": "Terug",
+      "add": "Toevoegen",
+      "options": {
+        "paypal": {
+          "label": "PayPal",
+          "detailLabel": "PayPal-e-mailadres",
+          "detailPlaceholder": "jij@paypal.com"
+        },
+        "bank": {
+          "label": "Bank",
+          "detailLabel": "IBAN",
+          "detailPlaceholder": "NL00 BANK 0000 0000 00"
+        }
+      }
+    }
   },
   "signup": {
     "logoAlt": "PowerDon",
