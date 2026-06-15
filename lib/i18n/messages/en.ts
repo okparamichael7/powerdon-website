@@ -746,6 +746,17 @@ export const enMessages = {
         },
       },
     },
+    login: {
+      title: "Admin sign-in",
+      description:
+        "This area is private to PowerDon admins. Enter the admin password to continue.",
+      passwordLabel: "Admin password",
+      passwordPlaceholder: "Enter password",
+      submit: "Sign in",
+      submitting: "Signing in…",
+      error: "Incorrect password. Please try again.",
+      logout: "Sign out",
+    },
     signup: {
       logoAlt: "PowerDon",
       pitch: {

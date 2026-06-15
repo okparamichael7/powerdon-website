@@ -30,6 +30,8 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { EmailThreads } from "@/components/affiliate/email-threads";
 import { Payouts } from "@/components/affiliate/payouts";
+import { logoutAction } from "@/app/affiliate/login/actions";
+import { LogOut } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import {
   affiliates,
@@ -122,19 +124,30 @@ export default function AffiliateDashboardPage() {
       <StickyHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
       <main className="container mx-auto px-6 py-12 pt-32">
-        <section className="mb-10">
-          <Badge
-            variant="outline"
-            className="text-[10px] tracking-widest font-semibold text-blue-700 border-blue-200 bg-blue-50"
-          >
-            {copy.hero.badge}
-          </Badge>
-          <h1 className="text-3xl lg:text-5xl font-light text-black mt-4">
-            {copy.hero.title}
-          </h1>
-          <p className="text-gray-600 max-w-3xl mt-4 text-base lg:text-lg">
-            {copy.hero.description}
-          </p>
+        <section className="mb-10 flex items-start justify-between gap-4">
+          <div>
+            <Badge
+              variant="outline"
+              className="text-[10px] tracking-widest font-semibold text-blue-700 border-blue-200 bg-blue-50"
+            >
+              {copy.hero.badge}
+            </Badge>
+            <h1 className="text-3xl lg:text-5xl font-light text-black mt-4">
+              {copy.hero.title}
+            </h1>
+            <p className="text-gray-600 max-w-3xl mt-4 text-base lg:text-lg">
+              {copy.hero.description}
+            </p>
+          </div>
+          <form action={logoutAction} className="shrink-0">
+            <button
+              type="submit"
+              className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+            >
+              <LogOut className="h-3.5 w-3.5" aria-hidden="true" />
+              {copy.login.logout}
+            </button>
+          </form>
         </section>
 
         <Card className="mb-10 border-gray-200 bg-white shadow-sm">

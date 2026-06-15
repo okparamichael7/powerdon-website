@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
@@ -12,6 +12,7 @@ import { StickyHeader } from "@/components/sticky-header";
 import { Footer } from "@/components/footer";
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import { trackButtonClick, trackFormSubmit } from "@/lib/analytics";
+import { affiliateSignup } from "@/app/actions/affiliate-signup";
 
 type FormState = {
   firstName: string;
@@ -54,8 +55,9 @@ function renderWithBold(
 export default function AffiliateSignupPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [form, setForm] = useState<FormState>(initialState);
-  const [submitting, setSubmitting] = useState(false);
+  const [submitting, startSubmitting] = useTransition();
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { href, namespace } = useTranslation();
   const copy = namespace("affiliate").signup;
 
@@ -75,15 +77,29 @@ export default function AffiliateSignupPage() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!canSubmit || submitting) {
+    if (!canSubmit || submitting || !form.agreement) {
       return;
     }
-    setSubmitting(true);
+    setErrorMessage(null);
     trackFormSubmit("affiliate_signup_form");
-    window.setTimeout(() => {
-      setSubmitting(false);
-      setSubmitted(true);
-    }, 700);
+    startSubmitting(async () => {
+      const result = await affiliateSignup({
+        firstName: form.firstName.trim(),
+        lastName: form.lastName.trim(),
+        email: form.email.trim(),
+        password: form.password,
+        phone: form.phone.trim(),
+        notifications: form.notifications,
+        agreement: true,
+      });
+      if ("success" in result && result.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage(
+          "error" in result ? result.error : "Something went wrong.",
+        );
+      }
+    });
   };
 
   return (
@@ -425,6 +441,15 @@ export default function AffiliateSignupPage() {
                         </span>
                       </label>
                     </div>
+
+                    {errorMessage && (
+                      <p
+                        role="alert"
+                        className="rounded-lg bg-red-50 px-3 py-2 text-xs font-medium text-red-700"
+                      >
+                        {errorMessage}
+                      </p>
+                    )}
 
                     <Button
                       type="submit"

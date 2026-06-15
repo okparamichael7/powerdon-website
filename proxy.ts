@@ -8,10 +8,15 @@ import {
   stripLocalePrefix,
 } from "@/lib/i18n/config";
 import { detectRequestLocale } from "@/lib/i18n/detectLocale";
+import {
+  AFFILIATE_SESSION_COOKIE,
+  isAffiliateProtectedPath,
+  verifyAffiliateSession,
+} from "@/lib/affiliate-auth";
 
 const publicFile = /\.(.*)$/;
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (
@@ -21,6 +26,21 @@ export function proxy(request: NextRequest) {
     publicFile.test(pathname)
   ) {
     return NextResponse.next();
+  }
+
+  if (isAffiliateProtectedPath(pathname)) {
+    const token = request.cookies.get(AFFILIATE_SESSION_COOKIE)?.value;
+    const session = await verifyAffiliateSession(token);
+    if (!session) {
+      const loginLocale = getPathLocale(pathname) ?? defaultLocale;
+      const loginUrl = request.nextUrl.clone();
+      loginUrl.pathname = localizePath("/affiliate/login", loginLocale);
+      loginUrl.searchParams.set(
+        "next",
+        request.nextUrl.pathname + request.nextUrl.search,
+      );
+      return NextResponse.redirect(loginUrl);
+    }
   }
 
   const pathLocale = getPathLocale(pathname);

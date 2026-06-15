@@ -109,6 +109,16 @@
       }
     }
   },
+  "login": {
+    "title": "Adminaanmelding",
+    "description": "Dit gedeelte is alleen voor PowerDon-admins. Vul het adminwachtwoord in om door te gaan.",
+    "passwordLabel": "Adminwachtwoord",
+    "passwordPlaceholder": "Wachtwoord",
+    "submit": "Inloggen",
+    "submitting": "Bezig met inloggen…",
+    "error": "Onjuist wachtwoord. Probeer het opnieuw.",
+    "logout": "Uitloggen"
+  },
   "signup": {
     "logoAlt": "PowerDon",
     "pitch": {
