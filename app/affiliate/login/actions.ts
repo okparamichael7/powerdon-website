@@ -35,12 +35,14 @@ export async function loginAction(
 
   const token = await createAffiliateSession("admin");
   const cookieStore = await cookies();
+  const cookieDomain = process.env.AFFILIATE_COOKIE_DOMAIN;
   cookieStore.set(AFFILIATE_SESSION_COOKIE, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     maxAge: AFFILIATE_SESSION_MAX_AGE,
     path: "/",
+    ...(cookieDomain ? { domain: cookieDomain } : {}),
   });
 
   return { ok: true, next };
@@ -48,6 +50,14 @@ export async function loginAction(
 
 export async function logoutAction(): Promise<void> {
   const cookieStore = await cookies();
-  cookieStore.delete(AFFILIATE_SESSION_COOKIE);
+  const cookieDomain = process.env.AFFILIATE_COOKIE_DOMAIN;
+  cookieStore.set(AFFILIATE_SESSION_COOKIE, "", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    maxAge: 0,
+    path: "/",
+    ...(cookieDomain ? { domain: cookieDomain } : {}),
+  });
   redirect("/affiliate/login");
 }

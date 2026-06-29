@@ -8,6 +8,7 @@ import type { Messages } from "@/lib/i18n/messages/en";
 interface I18nContextValue {
   locale: Locale;
   messages: Messages;
+  isAffiliateHost: boolean;
 }
 
 const I18nContext = createContext<I18nContextValue | null>(null);
@@ -15,14 +16,16 @@ const I18nContext = createContext<I18nContextValue | null>(null);
 export function I18nProvider({
   locale,
   messages,
+  isAffiliateHost = false,
   children,
 }: {
   locale: Locale;
   messages: Messages;
+  isAffiliateHost?: boolean;
   children: ReactNode;
 }) {
   return (
-    <I18nContext.Provider value={{ locale, messages }}>
+    <I18nContext.Provider value={{ locale, messages, isAffiliateHost }}>
       {children}
     </I18nContext.Provider>
   );
