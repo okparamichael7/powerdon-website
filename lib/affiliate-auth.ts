@@ -122,6 +122,20 @@ export async function verifyAffiliateSession(
   }
 }
 
+// Auth gating policy:
+// - In production (VERCEL_ENV === "production") the dashboard requires login.
+// - In Vercel preview deploys and local `next dev` the gate is bypassed so
+//   the team can demo + iterate without provisioning secrets.
+// - AFFILIATE_AUTH_REQUIRED=1 forces auth even in non-production (useful
+//   for testing the login flow on a preview deploy).
+// - AFFILIATE_AUTH_DISABLED=1 disables auth even in production (escape
+//   hatch; do not use casually).
+export function isAffiliateAuthRequired(): boolean {
+  if (process.env.AFFILIATE_AUTH_DISABLED === "1") return false;
+  if (process.env.AFFILIATE_AUTH_REQUIRED === "1") return true;
+  return process.env.VERCEL_ENV === "production";
+}
+
 export function isAffiliateProtectedPath(pathname: string): boolean {
   // Strip locale prefix if present (matches /nl/affiliate, /en/affiliate, /affiliate)
   const stripped = pathname.replace(/^\/(en|nl)(?=\/|$)/, "");

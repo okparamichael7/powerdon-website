@@ -10,6 +10,7 @@ import {
 import { detectRequestLocale } from "@/lib/i18n/detectLocale";
 import {
   AFFILIATE_SESSION_COOKIE,
+  isAffiliateAuthRequired,
   isAffiliateProtectedPath,
   verifyAffiliateSession,
 } from "@/lib/affiliate-auth";
@@ -58,12 +59,14 @@ export async function proxy(request: NextRequest) {
 
   // Auth gate. On the affiliate subdomain every page except /login + /signup
   // is protected. On the main host the existing /affiliate-prefixed paths
-  // are protected.
+  // are protected. The gate is only active in production deploys; preview
+  // and local dev bypass it (see lib/affiliate-auth.ts).
   const isProtectedOnAffiliateHost =
     onAffiliateHost && !isCleanPublicAffiliatePath(pathname);
   if (
-    isProtectedOnAffiliateHost ||
-    (!onAffiliateHost && isAffiliateProtectedPath(pathname))
+    isAffiliateAuthRequired() &&
+    (isProtectedOnAffiliateHost ||
+      (!onAffiliateHost && isAffiliateProtectedPath(pathname)))
   ) {
     const token = request.cookies.get(AFFILIATE_SESSION_COOKIE)?.value;
     const session = await verifyAffiliateSession(token);
