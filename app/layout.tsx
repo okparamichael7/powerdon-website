@@ -11,6 +11,8 @@ import { getTranslations } from "@/lib/i18n/getTranslations";
 import { getHtmlLang } from "@/lib/i18n/config";
 import { I18nProvider } from "@/lib/i18n/provider";
 import { generateMetadata as generateSEOMetadata, siteConfig } from "@/lib/seo";
+import { headers } from "next/headers";
+import { AFFILIATE_HOST_HEADER } from "@/lib/affiliate-host";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getRequestLocale();
@@ -31,6 +33,9 @@ export default async function RootLayout({
 }) {
   const locale = await getRequestLocale();
   const messages = await getTranslations(locale);
+  const requestHeaders = await headers();
+  const isAffiliateHost =
+    requestHeaders.get(AFFILIATE_HOST_HEADER) === "1";
   const helveticaFont = "font-helvetica";
 
   return (
@@ -42,7 +47,11 @@ export default async function RootLayout({
         />
       </head>
       <body className={helveticaFont}>
-        <I18nProvider locale={locale} messages={messages}>
+        <I18nProvider
+          locale={locale}
+          messages={messages}
+          isAffiliateHost={isAffiliateHost}
+        >
           <ThemeProvider>{children}</ThemeProvider>
         </I18nProvider>
         <Toaster />

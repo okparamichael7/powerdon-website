@@ -203,6 +203,67 @@ export async function sendAdvertisingEmail(
   }
 }
 
+// Affiliate Signup Email — plain HTML to admin + applicant ack
+export async function sendAffiliateSignupEmail(values: {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  notifications: boolean;
+}) {
+  const requestId = generateRequestId("AFF");
+  const { firstName, lastName, email, phone, notifications } = values;
+  const fromEmail = process.env.FROM_EMAIL;
+  const adminEmail = process.env.AFFILIATE_ADMIN_EMAIL ?? process.env.TO_EMAIL;
+
+  if (!fromEmail || !adminEmail) {
+    throw new Error("FROM_EMAIL or affiliate admin recipient is not configured.");
+  }
+
+  const adminHtml = `
+    <h2>New affiliate application</h2>
+    <p><strong>Reference:</strong> ${requestId}</p>
+    <ul>
+      <li><strong>Name:</strong> ${firstName} ${lastName}</li>
+      <li><strong>Email:</strong> ${email}</li>
+      <li><strong>Phone:</strong> ${phone}</li>
+      <li><strong>Notifications opt-in:</strong> ${notifications ? "Yes" : "No"}</li>
+    </ul>
+    <p>Reply directly to this thread to onboard the applicant.</p>
+  `;
+
+  const adminResult = await resend.emails.send({
+    from: `PowerDon <${fromEmail}>`,
+    to: adminEmail,
+    replyTo: email,
+    subject: `[${requestId}] New affiliate application — ${firstName} ${lastName}`,
+    html: adminHtml,
+  });
+  if (adminResult.error) {
+    throw new Error("Failed to send affiliate admin email");
+  }
+
+  const ackHtml = `
+    <p>Hi ${firstName},</p>
+    <p>Thanks for applying to the PowerDon Affiliate Program. We've received your application (reference <strong>${requestId}</strong>) and our partner team will reach out within 48 hours with next steps and your personal affiliate code.</p>
+    <p>While you wait, you can review the affiliate memorandum here:<br/>
+    <a href="https://powerdon.nl/documents/powerdon-affiliate-memorandum.pdf">powerdon.nl/documents/powerdon-affiliate-memorandum.pdf</a></p>
+    <p>— PowerDon Partner Team</p>
+  `;
+
+  const ackResult = await resend.emails.send({
+    from: `PowerDon <${fromEmail}>`,
+    to: email,
+    subject: `[${requestId}] Welcome to the PowerDon Affiliate Program 🤝`,
+    html: ackHtml,
+  });
+  if (ackResult.error) {
+    throw new Error("Failed to send affiliate confirmation email");
+  }
+
+  return { requestId, admin: adminResult.data, ack: ackResult.data };
+}
+
 // Pilot Testing Email
 export async function sendPilotTestingEmail(
   values: any,

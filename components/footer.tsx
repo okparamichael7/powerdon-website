@@ -84,6 +84,12 @@ export function Footer() {
               >
                 {copy.footer.navigation.contact}
               </Link>
+              <Link
+                href={href("/affiliate")}
+                className="block text-white hover:text-gray-300 transition-colors font-medium tracking-wide text-xs"
+              >
+                {copy.footer.navigation.affiliate}
+              </Link>
             </div>
 
             {/* Social Media Links */}

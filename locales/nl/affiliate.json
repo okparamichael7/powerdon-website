@@ -1,0 +1,173 @@
+{
+  "hero": {
+    "badge": "AFFILIATE-DASHBOARD",
+    "title": "Volg je evenementen, merken en commissies",
+    "description": "Jouw persoonlijke PowerDon-partnercockpit. Bekijk evenementen, merksamenwerkingen, commissies op powerbank-verhuur en blijf op de hoogte van gesprekken met organisatoren."
+  },
+  "selector": {
+    "label": "Dashboard voor",
+    "referralCode": "Affiliate-code",
+    "joined": "Aangesloten op {date}"
+  },
+  "stats": {
+    "activeEvents": "Actieve & aankomende evenementen",
+    "brands": "Merkpartners",
+    "rentals": "Totaal aantal verhuringen",
+    "earnings": "Geschatte commissie"
+  },
+  "tabs": {
+    "overview": "Evenementen & Merken",
+    "threads": "E-mailthreads",
+    "payouts": "Uitbetalingen"
+  },
+  "events": {
+    "title": "Evenementen die jij aandrijft",
+    "description": "Alle evenementen waar jouw doorverwezen stations staan, inclusief het afgesproken commissiepercentage per evenement.",
+    "columns": {
+      "event": "Evenement",
+      "date": "Datum",
+      "brand": "Merk",
+      "rentals": "Verhuringen",
+      "price": "Huurprijs",
+      "commission": "Jouw %",
+      "earnings": "Geschatte commissie",
+      "status": "Status"
+    },
+    "statusLabels": {
+      "upcoming": "Aankomend",
+      "active": "Live",
+      "completed": "Afgerond"
+    },
+    "empty": "Nog geen evenementen toegewezen aan deze affiliate."
+  },
+  "brands": {
+    "title": "Merken die via jou PowerDon gebruiken",
+    "description": "Merken die via jouw affiliate-relatie lopen. Elk merk gebruikt PowerDon's oplaad- en LED-advertenties op de evenementen die jij beheert.",
+    "empty": "Nog geen merksamenwerkingen."
+  },
+  "threads": {
+    "title": "Affiliate ↔ Organisator-correspondentie",
+    "description": "Adminweergave van alle e-mailthreads tussen affiliates en evenementorganisatoren. Gebruik dit om dealvoorwaarden, opvolging en openstaande verzoeken te controleren.",
+    "listTitle": "Gesprekken",
+    "empty": "Nog geen gesprekken voor deze affiliate.",
+    "selectPrompt": "Selecteer een thread om de volledige correspondentie te lezen.",
+    "participants": "Deelnemers",
+    "event": "Evenement",
+    "status": "Status",
+    "statusLabels": {
+      "open": "Open",
+      "awaiting-reply": "Wacht op reactie",
+      "closed": "Afgesloten"
+    },
+    "roles": {
+      "affiliate": "Affiliate",
+      "organiser": "Organisator"
+    },
+    "composer": {
+      "placeholder": "Schrijf een notitie of reactie namens PowerDon (alleen admin)...",
+      "send": "Reactie versturen",
+      "disclaimer": "Alleen-adminweergave. Reacties worden aan deze thread gekoppeld en niet automatisch verstuurd."
+    }
+  },
+  "commission": {
+    "formula": "{rentals} verhuringen × €{price} × {percent}% = €{total}"
+  },
+  "payouts": {
+    "title": "Uitbetalingen",
+    "terms": {
+      "title": "Uitbetalingsvoorwaarden",
+      "cycleLabel": "Maandelijks / Net-7",
+      "description": "De commissie van deze maand wordt volgende maand op de 7e uitbetaald als het bedrag hoger is dan €50."
+    },
+    "method": {
+      "title": "Gekozen uitbetalingsmethode",
+      "setCta": "Stel uitbetalingsmethode in",
+      "none": "Nog geen uitbetalingsmethode ingesteld",
+      "change": "Wijzigen",
+      "configured": "Uitbetalingen worden verzonden naar {detail} via {label}."
+    },
+    "empty": {
+      "title": "Uitbetalingen",
+      "description": "Je hebt nog geen uitbetalingen."
+    },
+    "filterLabel": "Uitbetalingen filteren",
+    "dialog": {
+      "title": "Kies een uitbetalingsmethode",
+      "back": "Terug",
+      "add": "Toevoegen",
+      "options": {
+        "paypal": {
+          "label": "PayPal",
+          "detailLabel": "PayPal-e-mailadres",
+          "detailPlaceholder": "jij@paypal.com"
+        },
+        "bank": {
+          "label": "Bank",
+          "detailLabel": "IBAN",
+          "detailPlaceholder": "NL00 BANK 0000 0000 00"
+        }
+      }
+    }
+  },
+  "login": {
+    "title": "Adminaanmelding",
+    "description": "Dit gedeelte is alleen voor PowerDon-admins. Vul het adminwachtwoord in om door te gaan.",
+    "passwordLabel": "Adminwachtwoord",
+    "passwordPlaceholder": "Wachtwoord",
+    "submit": "Inloggen",
+    "submitting": "Bezig met inloggen…",
+    "error": "Onjuist wachtwoord. Probeer het opnieuw.",
+    "logout": "Uitloggen"
+  },
+  "signup": {
+    "logoAlt": "PowerDon",
+    "pitch": {
+      "title": "PowerDon Affiliate Program",
+      "steps": [
+        {
+          "emoji": "📝",
+          "title": "1. Meld je aan",
+          "description": "Het kost maar een minuut — vul het formulier in en ons partnerteam neemt binnen 48 uur contact met je op."
+        },
+        {
+          "emoji": "🔗",
+          "title": "2. Verbind evenementen & merken",
+          "description": "Ontvang je persoonlijke affiliate-code en introduceer festivals, locaties en merken bij PowerDon's laad- en LED-advertentienetwerk."
+        },
+        {
+          "emoji": "💸",
+          "title": "3. Verdien op elke verhuring",
+          "description": "Verdien tot {bold}22% commissie{/bold} op elke powerbank-verhuring op jouw evenementen, plus een deel van de advertentie-omzet.",
+          "highlight": "Geen plafond. Geen einddatum. Echte, terugkerende inkomsten."
+        }
+      ],
+      "moreInfoPrefix": "Meer weten?",
+      "moreInfoLink": "Klik hier"
+    },
+    "form": {
+      "title": "Aanmelden",
+      "google": "Doorgaan met Google",
+      "divider": "OF",
+      "firstName": "Voornaam",
+      "firstNamePlaceholder": "Sanne",
+      "lastName": "Achternaam",
+      "lastNamePlaceholder": "de Vries",
+      "email": "E-mailadres",
+      "emailPlaceholder": "Vul je e-mailadres in",
+      "password": "Wachtwoord",
+      "passwordPlaceholder": "Vul je wachtwoord in",
+      "phone": "Telefoonnummer",
+      "phonePlaceholder": "+31 6 1234 5678",
+      "notifications": "Stuur mij meldingen",
+      "agreementPrefix": "Ik ga akkoord met de",
+      "agreementLink": "voorwaarden van het affiliate-programma",
+      "required": "*",
+      "submit": "Aanmelden",
+      "submitting": "Account aanmaken…",
+      "signinPrompt": "Heb je al een account?",
+      "signinLink": "Log in",
+      "successTitle": "Je bent erbij!",
+      "successDescription": "We hebben je aanvraag ontvangen. Ons partnerteam neemt binnen 48 uur per e-mail contact met je op met de volgende stappen en je persoonlijke affiliate-code."
+    }
+  }
+}

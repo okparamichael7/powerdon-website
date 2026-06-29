@@ -8,10 +8,22 @@ import {
   stripLocalePrefix,
 } from "@/lib/i18n/config";
 import { detectRequestLocale } from "@/lib/i18n/detectLocale";
+import {
+  AFFILIATE_SESSION_COOKIE,
+  isAffiliateAuthRequired,
+  isAffiliateProtectedPath,
+  verifyAffiliateSession,
+} from "@/lib/affiliate-auth";
+import {
+  AFFILIATE_HOST_HEADER,
+  buildAffiliatePath,
+  isAffiliateHostname,
+  parseAffiliatePath,
+} from "@/lib/affiliate-host";
 
 const publicFile = /\.(.*)$/;
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (
@@ -21,6 +33,55 @@ export function proxy(request: NextRequest) {
     publicFile.test(pathname)
   ) {
     return NextResponse.next();
+  }
+
+  const host = request.headers.get("host");
+  const onAffiliateHost = isAffiliateHostname(host);
+
+  // On affiliates.powerdon.nl, redirect anyone hitting /affiliate/* back to
+  // the clean URL so the canonical form is /login, /signup, etc.
+  if (onAffiliateHost && pathname.includes("/affiliate")) {
+    const { locale, rest } = parseAffiliatePath(pathname);
+    const cleanPath =
+      locale === defaultLocale
+        ? rest === "/"
+          ? "/"
+          : rest
+        : rest === "/"
+          ? `/${locale}`
+          : `/${locale}${rest}`;
+    if (cleanPath !== pathname) {
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = cleanPath;
+      return NextResponse.redirect(redirectUrl, 308);
+    }
+  }
+
+  // Auth gate. On the affiliate subdomain every page except /login + /signup
+  // is protected. On the main host the existing /affiliate-prefixed paths
+  // are protected. The gate is only active in production deploys; preview
+  // and local dev bypass it (see lib/affiliate-auth.ts).
+  const isProtectedOnAffiliateHost =
+    onAffiliateHost && !isCleanPublicAffiliatePath(pathname);
+  if (
+    isAffiliateAuthRequired() &&
+    (isProtectedOnAffiliateHost ||
+      (!onAffiliateHost && isAffiliateProtectedPath(pathname)))
+  ) {
+    const token = request.cookies.get(AFFILIATE_SESSION_COOKIE)?.value;
+    const session = await verifyAffiliateSession(token);
+    if (!session) {
+      const loginLocale = getPathLocale(pathname) ?? defaultLocale;
+      const loginUrl = request.nextUrl.clone();
+      loginUrl.pathname = onAffiliateHost
+        ? localizePath("/login", loginLocale)
+        : localizePath("/affiliate/login", loginLocale);
+      loginUrl.searchParams.set(
+        "next",
+        request.nextUrl.pathname + request.nextUrl.search,
+      );
+      return NextResponse.redirect(loginUrl);
+    }
   }
 
   const pathLocale = getPathLocale(pathname);
@@ -40,6 +101,9 @@ export function proxy(request: NextRequest) {
   const resolvedLocale = pathLocale ?? detectRequestLocale(request);
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set(localeHeaderName, resolvedLocale);
+  if (onAffiliateHost) {
+    requestHeaders.set(AFFILIATE_HOST_HEADER, "1");
+  }
 
   if (!pathLocale && resolvedLocale !== defaultLocale) {
     const redirectUrl = request.nextUrl.clone();
@@ -51,6 +115,25 @@ export function proxy(request: NextRequest) {
       maxAge: 60 * 60 * 24 * 365,
       sameSite: "lax",
     });
+    return response;
+  }
+
+  // On the affiliate subdomain rewrite the URL into the /affiliate route
+  // tree before Next.js renders. The user keeps the clean URL in the
+  // browser; Next.js renders /affiliate/* internally.
+  if (onAffiliateHost) {
+    const rewriteUrl = request.nextUrl.clone();
+    rewriteUrl.pathname = buildAffiliatePath(resolvedLocale, getRest(pathname));
+    const response = NextResponse.rewrite(rewriteUrl, {
+      request: { headers: requestHeaders },
+    });
+    if (pathLocale) {
+      response.cookies.set(localeCookieName, pathLocale, {
+        path: "/",
+        maxAge: 60 * 60 * 24 * 365,
+        sameSite: "lax",
+      });
+    }
     return response;
   }
 
@@ -69,6 +152,18 @@ export function proxy(request: NextRequest) {
   }
 
   return response;
+}
+
+// On the affiliate host, /login and /signup are the only paths reachable
+// without an active session. Everything else (dashboard, payouts, /) needs auth.
+function isCleanPublicAffiliatePath(pathname: string): boolean {
+  const stripped = stripLocalePrefix(pathname);
+  return stripped === "/login" || stripped === "/signup";
+}
+
+function getRest(pathname: string): string {
+  const stripped = stripLocalePrefix(pathname);
+  return stripped === "" ? "/" : stripped;
 }
 
 export const config = {

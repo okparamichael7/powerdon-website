@@ -103,6 +103,12 @@ export function StickyHeader({ isMenuOpen, setIsMenuOpen }: StickyHeaderProps) {
               >
                 {copy.header.navigation.contact}
               </Link>
+              <Link
+                href={href("/affiliate")}
+                className="block text-white text-sm font-medium"
+              >
+                {copy.header.navigation.affiliate}
+              </Link>
             </motion.nav>
           </motion.div>
         )}

@@ -20,6 +20,7 @@ export const enMessages = {
         advertising: "Advertising",
         company: "The company",
         contact: "Contact",
+        affiliate: "Affiliate dashboard",
       },
     },
     stickySublines: {
@@ -43,6 +44,7 @@ export const enMessages = {
         advertising: "ADVERTISING",
         about: "ABOUT",
         contact: "CONTACT",
+        affiliate: "AFFILIATE DASHBOARD",
       },
       social: {
         instagram: "INSTAGRAM",
@@ -625,6 +627,192 @@ export const enMessages = {
     },
   },
   legal: legalMessages,
+  affiliate: {
+    hero: {
+      badge: "AFFILIATE DASHBOARD",
+      title: "Track your events, brands & commissions",
+      description:
+        "Your personal PowerDon partner cockpit. Monitor events, brand partnerships, power bank rental commissions, and stay on top of conversations with event organisers.",
+    },
+    selector: {
+      label: "Viewing dashboard for",
+      referralCode: "Referral code",
+      joined: "Joined {date}",
+    },
+    stats: {
+      activeEvents: "Active & upcoming events",
+      brands: "Brand partnerships",
+      rentals: "Total power bank rentals",
+      earnings: "Estimated commission earned",
+    },
+    tabs: {
+      overview: "Events & Brands",
+      threads: "Email Threads",
+      payouts: "Payouts",
+    },
+    events: {
+      title: "Events you are powering",
+      description:
+        "All events where your referred stations are deployed, including the rental commission percentage negotiated for each event.",
+      columns: {
+        event: "Event",
+        date: "Date",
+        brand: "Brand",
+        rentals: "Rentals",
+        price: "Rental price",
+        commission: "Your %",
+        earnings: "Est. earnings",
+        status: "Status",
+      },
+      statusLabels: {
+        upcoming: "Upcoming",
+        active: "Live",
+        completed: "Completed",
+      },
+      empty: "No events assigned to this affiliate yet.",
+    },
+    brands: {
+      title: "Brands leveraging PowerDon via you",
+      description:
+        "Brands routed through your affiliate relationship. Each brand uses PowerDon's charging + LED ad placements at the events you manage.",
+      empty: "No brand partnerships yet.",
+    },
+    threads: {
+      title: "Affiliate ↔ Organiser correspondence",
+      description:
+        "Admin view of all email threads between affiliates and event organisers. Use this to audit deal terms, follow-ups, and unresolved requests.",
+      listTitle: "Conversations",
+      empty: "No conversations for this affiliate yet.",
+      selectPrompt: "Select a thread to read the full correspondence.",
+      participants: "Participants",
+      event: "Event",
+      status: "Status",
+      statusLabels: {
+        open: "Open",
+        "awaiting-reply": "Awaiting reply",
+        closed: "Closed",
+      },
+      roles: {
+        affiliate: "Affiliate",
+        organiser: "Organiser",
+      },
+      composer: {
+        placeholder:
+          "Write a note or reply on behalf of PowerDon (admin-only)...",
+        send: "Send reply",
+        disclaimer:
+          "Admin-only view. Replies are logged against this thread and not sent automatically.",
+      },
+    },
+    commission: {
+      formula:
+        "{rentals} rentals × €{price} × {percent}% = €{total}",
+    },
+    payouts: {
+      title: "Payouts",
+      terms: {
+        title: "Payout terms",
+        cycleLabel: "Monthly / Net-7",
+        description:
+          "This month's commission will be paid next month on the 7th if the payout amount is over €50.",
+      },
+      method: {
+        title: "Selected payout method",
+        setCta: "Set Payout Method",
+        none: "No payout method set",
+        change: "Change",
+        configured: "Payouts will be sent to {detail} via {label}.",
+      },
+      empty: {
+        title: "Payouts",
+        description: "You do not have any payouts yet.",
+      },
+      filterLabel: "Filter payouts",
+      dialog: {
+        title: "Select a payout method",
+        back: "Go Back",
+        add: "Add",
+        options: {
+          paypal: {
+            label: "PayPal",
+            detailLabel: "PayPal email",
+            detailPlaceholder: "you@paypal.com",
+          },
+          bank: {
+            label: "Bank",
+            detailLabel: "IBAN",
+            detailPlaceholder: "NL00 BANK 0000 0000 00",
+          },
+        },
+      },
+    },
+    login: {
+      title: "Admin sign-in",
+      description:
+        "This area is private to PowerDon admins. Enter the admin password to continue.",
+      passwordLabel: "Admin password",
+      passwordPlaceholder: "Enter password",
+      submit: "Sign in",
+      submitting: "Signing in…",
+      error: "Incorrect password. Please try again.",
+      logout: "Sign out",
+    },
+    signup: {
+      logoAlt: "PowerDon",
+      pitch: {
+        title: "PowerDon Affiliate Program",
+        steps: [
+          {
+            emoji: "📝",
+            title: "1. Apply",
+            description:
+              "It only takes a minute to join — fill out the form and our partner team will reach out within 48 hours.",
+          },
+          {
+            emoji: "🔗",
+            title: "2. Connect events & brands",
+            description:
+              "Get your personal affiliate code and start introducing festivals, venues, and brands to PowerDon's charging stations and LED ad network.",
+          },
+          {
+            emoji: "💸",
+            title: "3. Earn on every rental",
+            description:
+              "Earn up to {bold}22% commission{/bold} on every power bank rental at your events, plus a share of advertising revenue.",
+            highlight: "No caps. No expiration. Real, recurring income.",
+          },
+        ],
+        moreInfoPrefix: "For more info,",
+        moreInfoLink: "click here",
+      },
+      form: {
+        title: "Sign Up",
+        google: "Continue with Google",
+        divider: "OR",
+        firstName: "First Name",
+        firstNamePlaceholder: "John",
+        lastName: "Last Name",
+        lastNamePlaceholder: "Doe",
+        email: "Email",
+        emailPlaceholder: "Enter your email",
+        password: "Password",
+        passwordPlaceholder: "Enter your password",
+        phone: "Phone Number",
+        phonePlaceholder: "+31 6 1234 5678",
+        notifications: "Receive notifications",
+        agreementPrefix: "I agree to",
+        agreementLink: "affiliate terms & conditions",
+        required: "*",
+        submit: "Sign Up",
+        submitting: "Creating account…",
+        signinPrompt: "Already have an account?",
+        signinLink: "Sign In",
+        successTitle: "You're in!",
+        successDescription:
+          "We've received your application. Our partner team will email you within 48 hours with next steps and your personal affiliate code.",
+      },
+    },
+  },
   seo: {
     site: {
       description:
@@ -727,6 +915,28 @@ export const enMessages = {
           "reserve station form",
           "event booking",
           "charging station reservation",
+        ],
+      },
+      affiliate: {
+        title: "Affiliate Dashboard - PowerDon",
+        description:
+          "Private dashboard for PowerDon affiliates. View your assigned events, brand partnerships, power bank rental commissions, and correspondence with event organisers.",
+        keywords: [
+          "affiliate dashboard",
+          "PowerDon affiliate",
+          "commission tracking",
+          "event partnerships",
+        ],
+      },
+      affiliateSignup: {
+        title: "Join the PowerDon Affiliate Program",
+        description:
+          "Apply to become a PowerDon affiliate. Earn up to 22% recurring commission on power bank rentals at your events plus a share of advertising revenue.",
+        keywords: [
+          "PowerDon affiliate signup",
+          "affiliate program",
+          "event partnerships",
+          "power bank rental commission",
         ],
       },
       privacy: {

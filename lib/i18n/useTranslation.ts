@@ -2,6 +2,7 @@
 
 import { localizePath, type Locale } from "@/lib/i18n/config";
 import { useI18nContext } from "@/lib/i18n/provider";
+import { stripAffiliatePrefix } from "@/lib/affiliate-host";
 import type { Messages } from "@/lib/i18n/messages/en";
 
 type Primitive = string | number | boolean | null | undefined;
@@ -45,7 +46,7 @@ function interpolate(
 }
 
 export function useTranslation() {
-  const { locale, messages } = useI18nContext();
+  const { locale, messages, isAffiliateHost } = useI18nContext();
 
   function t(key: TranslationKey, values?: Record<string, string | number>) {
     const resolved = getValueByPath(messages, key);
@@ -62,7 +63,8 @@ export function useTranslation() {
   }
 
   function href(path: string, nextLocale: Locale = locale) {
-    return localizePath(path, nextLocale);
+    const localized = localizePath(path, nextLocale);
+    return isAffiliateHost ? stripAffiliatePrefix(localized) : localized;
   }
 
   return {
@@ -71,6 +73,7 @@ export function useTranslation() {
     t,
     namespace,
     href,
+    isAffiliateHost,
   };
 }
 
