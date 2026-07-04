@@ -27,6 +27,8 @@ import { createReserveSchema, reserveSchema } from "@/schema";
 import { reserve, ReserveFormData } from "@/app/actions/reserve";
 import { useTranslation } from "@/lib/i18n/useTranslation";
 import { trackFormSubmit, trackConversion } from "@/lib/analytics";
+import { HoneypotField } from "@/components/HoneypotField";
+import { TurnstileWidget } from "@/components/TurnstileWidget";
 
 export default function ReserveFormPage() {
   const [isPending, startTransition] = useTransition();
@@ -34,13 +36,24 @@ export default function ReserveFormPage() {
     null,
   );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  // Turnstile is opt-in infrastructure: until NEXT_PUBLIC_TURNSTILE_SITE_KEY
+  // is configured in Vercel, don't render the widget or gate submission on
+  // it — the server-side check (lib/turnstile.ts) fails open the same way.
+  const turnstileEnabled = Boolean(
+    process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+  );
   const { href, locale, namespace } = useTranslation();
   const common = namespace("common");
   const reserveCopy = namespace("reserve");
   const forms = namespace("forms");
   const schema = createReserveSchema(forms.validation);
 
-  const form = useForm<z.infer<typeof reserveSchema>>({
+  const form = useForm<
+    z.input<typeof reserveSchema>,
+    any,
+    z.output<typeof reserveSchema>
+  >({
     resolver: zodResolver(schema),
     defaultValues: {
       organizer: "",
@@ -54,8 +67,15 @@ export default function ReserveFormPage() {
       attendees: "",
       eventType: "",
       additionalInfo: "",
+      website: "",
+      turnstileToken: "",
     },
   });
+
+  const handleTurnstileToken = (token: string | null) => {
+    setTurnstileToken(token);
+    form.setValue("turnstileToken", token ?? "", { shouldValidate: true });
+  };
 
   // Handle form submission
   const onSubmit = async (values: ReserveFormData) => {
@@ -69,6 +89,7 @@ export default function ReserveFormPage() {
 
             // Clear form
             form.reset();
+            setTurnstileToken(null);
           } else if (data.error) {
             setFormStatus("error");
           }
@@ -117,6 +138,7 @@ export default function ReserveFormPage() {
                 onSubmit={form.handleSubmit(onSubmit, onError)}
                 className="space-y-6"
               >
+                <HoneypotField />
                 <div className="grid md:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
@@ -368,10 +390,14 @@ export default function ReserveFormPage() {
                   </ul>
                 </div>
 
+                {turnstileEnabled && (
+                  <TurnstileWidget onToken={handleTurnstileToken} />
+                )}
+
                 <Button
                   type="submit"
                   className="w-full bg-black hover:bg-gray-800 py-3 text-sm my-5"
-                  disabled={isPending}
+                  disabled={isPending || (turnstileEnabled && !turnstileToken)}
                 >
                   {isPending ? forms.reserve.submitting : forms.reserve.submit}
                 </Button>

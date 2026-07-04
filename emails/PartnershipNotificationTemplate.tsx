@@ -26,6 +26,8 @@ interface Props {
   attendees?: string;
   eventType?: string;
   additionalInfo: string;
+  trustScore?: number;
+  trustFlags?: string[];
 }
 
 export const PartnershipNotificationTemplate = ({
@@ -41,6 +43,8 @@ export const PartnershipNotificationTemplate = ({
   attendees,
   eventType,
   additionalInfo,
+  trustScore,
+  trustFlags,
 }: Props) => {
   return (
     <Html lang="en">
@@ -152,6 +156,22 @@ export const PartnershipNotificationTemplate = ({
               <Text style={cardTitle}>Additional Information</Text>
               <Text style={messageText}>{additionalInfo}</Text>
             </Section>
+
+            {/* Trust Report */}
+            {typeof trustScore === "number" && (
+              <Section style={trustCard(trustScore)}>
+                <Text style={cardTitle}>
+                  Trust Score: {trustScore}/100
+                </Text>
+                <div style={infoGrid}>
+                  {(trustFlags ?? []).map((flag, index) => (
+                    <Text key={index} style={messageText}>
+                      {flag}
+                    </Text>
+                  ))}
+                </div>
+              </Section>
+            )}
           </Section>
 
           {/* Footer */}
@@ -159,6 +179,12 @@ export const PartnershipNotificationTemplate = ({
             <Text style={footerText}>
               PowerDon Partnership Team • Response within 48 hours
             </Text>
+            {typeof trustScore === "number" && (
+              <Text style={footerText}>
+                This application passed: honeypot, validation, Turnstile,
+                rate limits.
+              </Text>
+            )}
             <Text style={footerCopyright}>
               © {new Date().getFullYear()} PowerDon. All rights reserved.
             </Text>
@@ -336,6 +362,14 @@ const phoneLink: CSSProperties = {
   textDecoration: "none",
   fontWeight: "600",
 };
+
+const trustCard = (score: number): CSSProperties => ({
+  backgroundColor: score < 50 ? "#fef2f2" : score < 80 ? "#fffbeb" : "#f0fdf4",
+  padding: "24px",
+  borderRadius: "12px",
+  marginBottom: "24px",
+  border: `1px solid ${score < 50 ? "#fecaca" : score < 80 ? "#fde68a" : "#bbf7d0"}`,
+});
 
 const messageCard: CSSProperties = {
   backgroundColor: "#ffffff",

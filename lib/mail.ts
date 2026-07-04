@@ -10,6 +10,7 @@ import {
 import { getTranslations } from "@/lib/i18n/getTranslations";
 import { defaultLocale, type Locale } from "@/lib/i18n/config";
 import { generateRequestId } from "./utils";
+import type { TrustReport } from "@/lib/trust-score";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -73,9 +74,10 @@ export async function sendContactConfirmationEmail(
 export async function sendPartnershipEmail(
   values: any,
   locale: Locale = defaultLocale,
+  trust?: TrustReport,
+  requestId: string = generateRequestId("PTN"),
 ) {
   try {
-    const requestId = generateRequestId("PTN");
     const {
       organizer,
       contact,
@@ -90,11 +92,29 @@ export async function sendPartnershipEmail(
       additionalInfo,
     } = values;
 
+    // eventDate arrives as a Date (Zod-coerced); templates render it as text.
+    const eventDateDisplay =
+      eventDate instanceof Date
+        ? new Intl.DateTimeFormat(locale === "nl" ? "nl-NL" : "en-US", {
+            dateStyle: "long",
+          }).format(eventDate)
+        : eventDate;
+
+    const trustPrefix = trust
+      ? trust.score < 50
+        ? "🚨"
+        : trust.score < 80
+          ? "⚠️"
+          : "✅"
+      : "";
+
     // Send to admin
     const adminEmail = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
       to: process.env.TO_EMAIL!,
-      subject: `[${requestId}] Partnership Application Received: ${eventName}`,
+      subject: trust
+        ? `${trustPrefix} [${requestId}] Partnership application: ${eventName} (trust ${trust.score}/100)`
+        : `[${requestId}] Partnership Application Received: ${eventName}`,
       react: PartnershipNotificationTemplate({
         requestId,
         organizer,
@@ -102,19 +122,23 @@ export async function sendPartnershipEmail(
         email,
         phone,
         eventName,
-        eventDate,
+        eventDate: eventDateDisplay,
         address,
         location,
-        attendees,
+        attendees: attendees != null ? String(attendees) : undefined,
         eventType,
         additionalInfo: additionalInfo || "",
+        trustScore: trust?.score,
+        trustFlags: trust?.flags,
       }),
     });
 
     if (adminEmail.error) throw new Error("Failed to send admin email");
 
-    // Send confirmation to user
+    // Send confirmation to user — exclude internal-only fields (honeypot,
+    // Turnstile token) from the submission summary the applicant sees.
     const messages = await getTranslations(locale);
+    const { website, turnstileToken, ...visibleFields } = values;
     const confirmationEmail = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
       to: email,
@@ -122,7 +146,11 @@ export async function sendPartnershipEmail(
       react: ConfirmationTemplate({
         firstName: organizer,
         formType: "partnership",
-        submissionData: values,
+        submissionData: {
+          ...visibleFields,
+          eventDate: eventDateDisplay,
+          attendees: attendees != null ? String(attendees) : undefined,
+        },
         requestId,
         locale,
         messages: messages.emails,
