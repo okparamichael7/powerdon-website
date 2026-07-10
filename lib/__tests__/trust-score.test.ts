@@ -18,7 +18,7 @@ describe("buildTrustReport", () => {
       {
         contact: "Sanne Bakker",
         email: "sanne@acme-events.nl",
-        eventDate: daysFromNow(60),
+        eventStart: daysFromNow(60),
         attendees: 500,
       },
       meta,
@@ -33,7 +33,7 @@ describe("buildTrustReport", () => {
       {
         contact: "Jan Bakker",
         email: "randomuser123@gmail.com",
-        eventDate: daysFromNow(2),
+        eventStart: daysFromNow(2),
         attendees: 15000,
       },
       meta,
@@ -53,7 +53,7 @@ describe("buildTrustReport", () => {
       {
         contact: "Zzz",
         email: "randomuser123@gmail.com",
-        eventDate: daysFromNow(1),
+        eventStart: daysFromNow(1),
         attendees: 999_999,
       },
       meta,

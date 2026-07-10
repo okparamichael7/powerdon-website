@@ -11,6 +11,7 @@ import { getTranslations } from "@/lib/i18n/getTranslations";
 import { defaultLocale, type Locale } from "@/lib/i18n/config";
 import { generateRequestId } from "./utils";
 import type { TrustReport } from "@/lib/trust-score";
+import { SCREEN_TIERS, type ScreenTierId } from "@/lib/reserve-form-schema";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -84,21 +85,35 @@ export async function sendPartnershipEmail(
       email,
       phone,
       eventName,
-      eventDate,
+      eventStart,
       address,
       location,
       attendees,
       eventType,
       additionalInfo,
+      deploymentAt,
+      screenTier,
+      screenContentDetails,
+      contractAcceptedAt,
+      contractVersion,
+      acceptanceIp,
+      acceptanceUserAgent,
     } = values;
 
-    // eventDate arrives as a Date (Zod-coerced); templates render it as text.
+    const dateFormatter = new Intl.DateTimeFormat(
+      locale === "nl" ? "nl-NL" : "en-US",
+      { dateStyle: "long", timeStyle: "short" },
+    );
+
+    // eventStart/deploymentAt arrive as Dates (Zod-coerced); templates render
+    // them as text.
     const eventDateDisplay =
-      eventDate instanceof Date
-        ? new Intl.DateTimeFormat(locale === "nl" ? "nl-NL" : "en-US", {
-            dateStyle: "long",
-          }).format(eventDate)
-        : eventDate;
+      eventStart instanceof Date ? dateFormatter.format(eventStart) : eventStart;
+    const deploymentDisplay =
+      deploymentAt instanceof Date
+        ? dateFormatter.format(deploymentAt)
+        : deploymentAt;
+    const screenTierLabel = SCREEN_TIERS[screenTier as ScreenTierId]?.label;
 
     const trustPrefix = trust
       ? trust.score < 50
@@ -128,6 +143,13 @@ export async function sendPartnershipEmail(
         attendees: attendees != null ? String(attendees) : undefined,
         eventType,
         additionalInfo: additionalInfo || "",
+        deploymentAt: deploymentDisplay,
+        screenTier: screenTierLabel,
+        screenContentDetails: screenContentDetails || "",
+        contractAcceptedAt,
+        contractVersion,
+        acceptanceIp,
+        acceptanceUserAgent,
         trustScore: trust?.score,
         trustFlags: trust?.flags,
       }),
@@ -136,9 +158,18 @@ export async function sendPartnershipEmail(
     if (adminEmail.error) throw new Error("Failed to send admin email");
 
     // Send confirmation to user — exclude internal-only fields (honeypot,
-    // Turnstile token) from the submission summary the applicant sees.
+    // Turnstile token, IP/UA, raw acceptance flags) from the submission
+    // summary the applicant sees.
     const messages = await getTranslations(locale);
-    const { website, turnstileToken, ...visibleFields } = values;
+    const {
+      website,
+      turnstileToken,
+      acceptanceIp: _acceptanceIp,
+      acceptanceUserAgent: _acceptanceUserAgent,
+      acceptTerms,
+      acceptContract,
+      ...visibleFields
+    } = values;
     const confirmationEmail = await resend.emails.send({
       from: `PowerDon <${process.env.FROM_EMAIL!}>`,
       to: email,
@@ -149,6 +180,8 @@ export async function sendPartnershipEmail(
         submissionData: {
           ...visibleFields,
           eventDate: eventDateDisplay,
+          deploymentAt: deploymentDisplay,
+          screenTier: screenTierLabel,
           attendees: attendees != null ? String(attendees) : undefined,
         },
         requestId,

@@ -4,7 +4,7 @@ import { getFirstName } from "@/lib/utils";
 export interface PartnershipApplication {
   contact: string;
   email: string;
-  eventDate: Date;
+  eventStart: Date;
   attendees: number;
 }
 
@@ -35,7 +35,7 @@ export function buildTrustReport(
   const flags: string[] = [];
 
   const freeEmail = isFreeEmailDomain(app.email);
-  const daysToEvent = daysUntil(app.eventDate);
+  const daysToEvent = daysUntil(app.eventStart);
 
   if (freeEmail) {
     score -= 20;

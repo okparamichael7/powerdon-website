@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { createReserveSchema } from "@/schema/schema";
 import { enMessages } from "@/lib/i18n/messages/en";
+import { toLocalInputValue } from "@/lib/reserve-form-schema";
 
 const schema = createReserveSchema(enMessages.forms.validation);
 
@@ -10,18 +11,41 @@ function isoDateDaysFromNow(days: number): string {
   return date.toISOString().split("T")[0];
 }
 
+// Derives a datetime-local-ish value a given number of hours before the
+// supplied event start, so deployment-window fixtures stay correct
+// regardless of what time of day the test happens to run.
+//
+// Must format with LOCAL date/time components (toLocalInputValue), not
+// toISOString: a string like "2026-08-10T01:00" has no timezone marker, so
+// `new Date(...)` (used by the schema's z.coerce.date) parses it as local
+// time. Formatting with UTC components (toISOString) would silently shift
+// the instant by the runner's UTC offset and produce a flaky test.
+function hoursBeforeEventStart(eventStartIso: string, hours: number): string {
+  const eventStart = new Date(eventStartIso);
+  return toLocalInputValue(
+    new Date(eventStart.getTime() - hours * 60 * 60 * 1000),
+  );
+}
+
+const eventStart = isoDateDaysFromNow(30);
+
 const validPayload = {
   organizer: "Acme Events BV",
   contact: "Jan de Vries",
   email: "jan@acme-events.nl",
   phone: "0612345678",
   eventName: "Amsterdam Summer Festival",
-  eventDate: isoDateDaysFromNow(30),
+  eventStart,
   address: "Museumplein 1, 1071 DJ Amsterdam",
   location: "Amsterdam, Netherlands",
   attendees: "5000",
   eventType: "Music Festival",
   additionalInfo: "",
+  deploymentAt: hoursBeforeEventStart(eventStart, 2),
+  screenTier: "none",
+  screenContentDetails: "",
+  acceptTerms: true,
+  acceptContract: true,
   website: "",
   turnstileToken: "test-token",
 };
@@ -35,7 +59,7 @@ describe("createReserveSchema", () => {
   it("rejects an event date of today (the Latino Gang Festival bug)", () => {
     const result = schema.safeParse({
       ...validPayload,
-      eventDate: isoDateDaysFromNow(0),
+      eventStart: isoDateDaysFromNow(0),
     });
     expect(result.success).toBe(false);
   });
@@ -43,17 +67,79 @@ describe("createReserveSchema", () => {
   it("rejects an event date only 2 days ahead", () => {
     const result = schema.safeParse({
       ...validPayload,
-      eventDate: isoDateDaysFromNow(2),
+      eventStart: isoDateDaysFromNow(2),
     });
     expect(result.success).toBe(false);
   });
 
   it("accepts an event date 4 days ahead", () => {
+    const start = isoDateDaysFromNow(4);
     const result = schema.safeParse({
       ...validPayload,
-      eventDate: isoDateDaysFromNow(4),
+      eventStart: start,
+      deploymentAt: hoursBeforeEventStart(start, 2),
     });
     expect(result.success).toBe(true);
+  });
+
+  it("rejects a deployment moment more than 24h before the event start", () => {
+    const result = schema.safeParse({
+      ...validPayload,
+      deploymentAt: hoursBeforeEventStart(eventStart, 25),
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a deployment moment after the event start", () => {
+    const result = schema.safeParse({
+      ...validPayload,
+      deploymentAt: hoursBeforeEventStart(eventStart, -1),
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts a deployment moment exactly at the event start", () => {
+    const result = schema.safeParse({
+      ...validPayload,
+      deploymentAt: hoursBeforeEventStart(eventStart, 0),
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects an unknown screen tier", () => {
+    const result = schema.safeParse({
+      ...validPayload,
+      screenTier: "unlimited_everything",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("requires screen content details when a non-'none' tier is chosen", () => {
+    const result = schema.safeParse({
+      ...validPayload,
+      screenTier: "event_display",
+      screenContentDetails: "",
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts a non-'none' tier when content details are provided", () => {
+    const result = schema.safeParse({
+      ...validPayload,
+      screenTier: "event_display",
+      screenContentDetails: "Program schedule and sponsor logos",
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects submission when terms are not accepted", () => {
+    const result = schema.safeParse({ ...validPayload, acceptTerms: false });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects submission when the contract is not accepted", () => {
+    const result = schema.safeParse({ ...validPayload, acceptContract: false });
+    expect(result.success).toBe(false);
   });
 
   // Note: the incident brief describes "0674746198" as an invalid 10-digit

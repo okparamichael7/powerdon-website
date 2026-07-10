@@ -20,12 +20,18 @@
     "pilotGoalsRequired": "Beschrijf je doelen voor de pilot",
     "disposableEmail": "Gebruik een permanent e-mailadres",
     "invalidPhone": "Voer een geldig Nederlands telefoonnummer in (bijv. 0612345678)",
-    "eventDateTooSoon": "Evenementdatum moet minimaal 3 dagen vanaf vandaag zijn",
+    "eventDateTooSoon": "Datum en starttijd van het evenement moeten minimaal 3 dagen vanaf vandaag zijn",
     "locationRequired": "Locatie van het evenement is verplicht",
     "attendeesRequired": "Verwacht aantal bezoekers is verplicht",
     "attendeesRange": "Verwacht aantal bezoekers moet tussen 1 en 1.000.000 liggen",
     "eventTypeRequired": "Soort evenement is verplicht",
-    "turnstileRequired": "Voltooi de verificatiecontrole"
+    "turnstileRequired": "Voltooi de verificatiecontrole",
+    "deploymentRequired": "Kies een gewenst installatiemoment",
+    "deploymentOutOfWindow": "Het installatiemoment moet binnen 24 uur vóór de start van het evenement liggen (en niet erna)",
+    "screenTierRequired": "Maak een keuze over het schermgebruik",
+    "screenContentRequired": "Beschrijf welke content u op het scherm wilt tonen",
+    "acceptTermsRequired": "U dient de gebruiksvoorwaarden te accepteren",
+    "acceptContractRequired": "U dient de overeenkomst te accepteren"
   },
   "contact": {
     "title": "Stuur ons een bericht",
@@ -103,20 +109,32 @@
       "email": "E-mail *",
       "phone": "Telefoon *",
       "eventName": "Naam van het evenement *",
-      "eventDate": "Datum van het evenement *",
+      "eventStart": "Datum & starttijd van het evenement *",
       "address": "Locatieadres *",
       "location": "Plaats van het evenement *",
       "attendees": "Verwacht aantal bezoekers *",
       "eventType": "Soort evenement *",
-      "additionalInfo": "Aanvullende informatie"
+      "additionalInfo": "Aanvullende informatie",
+      "deploymentAt": "Gewenst installatiemoment *",
+      "screenUsageQuestion": "Wilt u het scherm gebruiken om uw eigen evenementcontent te tonen?",
+      "screenUsageHelper": "Uw keuze bepaalt het samenwerkingsniveau (tier) in de overeenkomst.",
+      "screenContentDetails": "Welke content wilt u tonen? *",
+      "acceptTerms": "Ik ga akkoord met de gebruiksvoorwaarden en het privacybeleid.",
+      "acceptContractPrefix": "Ik heb de ",
+      "acceptContractLinkText": "product- en dienstenovereenkomst",
+      "acceptContractSuffix": " gelezen en ga hiermee akkoord."
     },
     "placeholders": {
       "address": "Straat, huisnummer, postcode, plaats, land",
       "location": "Stad, land",
       "attendees": "bijv. 5.000",
       "eventType": "bijv. muziekfestival, congres of beurs",
-      "additionalInfo": "Vertel ons meer over je evenement, doelgroep, huidige sponsoren en eventuele wensen voor de laadstations..."
+      "additionalInfo": "Vertel ons meer over je evenement, doelgroep, huidige sponsoren en eventuele wensen voor de laadstations...",
+      "screenContentDetails": "Bijv. programma/line-up, sponsorlogo's, aankondigingen, social media feed, QR-code..."
     },
+    "deploymentHelp": "Kies een moment binnen 24 uur vóór de start van uw evenement. De installatie duurt ongeveer 20 minuten.",
+    "deploymentHelpNoDate": "Kies eerst de datum en starttijd van uw evenement hierboven.",
+    "openContract": "Lees de overeenkomst",
     "nextStepsTitle": "Wat gebeurt er hierna?",
     "nextSteps": [
       "We bekijken je aanvraag binnen 48 uur zorgvuldig",

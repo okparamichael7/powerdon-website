@@ -26,6 +26,13 @@ interface Props {
   attendees?: string;
   eventType?: string;
   additionalInfo: string;
+  deploymentAt?: string;
+  screenTier?: string;
+  screenContentDetails?: string;
+  contractAcceptedAt?: string;
+  contractVersion?: string;
+  acceptanceIp?: string;
+  acceptanceUserAgent?: string;
   trustScore?: number;
   trustFlags?: string[];
 }
@@ -43,6 +50,13 @@ export const PartnershipNotificationTemplate = ({
   attendees,
   eventType,
   additionalInfo,
+  deploymentAt,
+  screenTier,
+  screenContentDetails,
+  contractAcceptedAt,
+  contractVersion,
+  acceptanceIp,
+  acceptanceUserAgent,
   trustScore,
   trustFlags,
 }: Props) => {
@@ -142,6 +156,18 @@ export const PartnershipNotificationTemplate = ({
                     <Text style={value}>{eventType}</Text>
                   </div>
                 )}
+                {deploymentAt && (
+                  <div style={infoItem}>
+                    <Text style={label}>Deployment:</Text>
+                    <Text style={value}>{deploymentAt}</Text>
+                  </div>
+                )}
+                {screenTier && (
+                  <div style={infoItem}>
+                    <Text style={label}>Screen Usage:</Text>
+                    <Text style={value}>{screenTier}</Text>
+                  </div>
+                )}
               </div>
               {requestId && (
                 <div style={infoItem}>
@@ -151,11 +177,50 @@ export const PartnershipNotificationTemplate = ({
               )}
             </Section>
 
+            {/* Screen Content */}
+            {screenContentDetails && (
+              <Section style={messageCard}>
+                <Text style={cardTitle}>Screen Content Details</Text>
+                <Text style={messageText}>{screenContentDetails}</Text>
+              </Section>
+            )}
+
             {/* Additional Information */}
             <Section style={messageCard}>
               <Text style={cardTitle}>Additional Information</Text>
               <Text style={messageText}>{additionalInfo}</Text>
             </Section>
+
+            {/* Contract Acceptance (audit trail) */}
+            {contractAcceptedAt && (
+              <Section style={infoCard}>
+                <Text style={cardTitle}>Contract Acceptance</Text>
+                <div style={infoGrid}>
+                  <div style={infoItem}>
+                    <Text style={label}>Accepted at:</Text>
+                    <Text style={value}>{contractAcceptedAt}</Text>
+                  </div>
+                  {contractVersion && (
+                    <div style={infoItem}>
+                      <Text style={label}>Version:</Text>
+                      <Text style={value}>{contractVersion}</Text>
+                    </div>
+                  )}
+                  {acceptanceIp && (
+                    <div style={infoItem}>
+                      <Text style={label}>IP address:</Text>
+                      <Text style={value}>{acceptanceIp}</Text>
+                    </div>
+                  )}
+                  {acceptanceUserAgent && (
+                    <div style={infoItem}>
+                      <Text style={label}>User agent:</Text>
+                      <Text style={value}>{acceptanceUserAgent}</Text>
+                    </div>
+                  )}
+                </div>
+              </Section>
+            )}
 
             {/* Trust Report */}
             {typeof trustScore === "number" && (

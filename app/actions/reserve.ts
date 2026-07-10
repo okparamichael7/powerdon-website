@@ -10,6 +10,7 @@ import { verifyTurnstile } from "@/lib/turnstile";
 import { checkRateLimits } from "@/lib/rate-limit";
 import { buildTrustReport } from "@/lib/trust-score";
 import { generateRequestId } from "@/lib/utils";
+import { CONTRACT_VERSION } from "@/lib/reserve-form-schema";
 
 export type ReserveFormData = z.infer<typeof reserveSchema>;
 
@@ -77,7 +78,7 @@ export async function reserve(
       {
         contact: data.contact,
         email: data.email,
-        eventDate: data.eventDate,
+        eventStart: data.eventStart,
         attendees: data.attendees,
       },
       { ip, userAgent },
@@ -85,10 +86,21 @@ export async function reserve(
 
     const requestId = generateRequestId("PTN");
 
+    // Server-stamped acceptance provenance — the client's own timestamp is
+    // never trusted for this. contractAccepted/acceptTerms are already
+    // guaranteed `true` by the schema's literal-true refinement above.
+    const record = {
+      ...data,
+      contractAcceptedAt: new Date().toISOString(),
+      contractVersion: CONTRACT_VERSION,
+      acceptanceIp: ip,
+      acceptanceUserAgent: userAgent,
+    };
+
     // 6. Notification email — failure here must not block the applicant's
     // response, they did everything right.
     try {
-      await sendPartnershipEmail(data, locale, trust, requestId);
+      await sendPartnershipEmail(record, locale, trust, requestId);
     } catch (emailError) {
       console.error(`[form] ${requestId} — notification email failed:`, emailError);
     }

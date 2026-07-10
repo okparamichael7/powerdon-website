@@ -29,6 +29,18 @@ import { useTranslation } from "@/lib/i18n/useTranslation";
 import { trackFormSubmit, trackConversion } from "@/lib/analytics";
 import { HoneypotField } from "@/components/HoneypotField";
 import { TurnstileWidget } from "@/components/TurnstileWidget";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  DeploymentField,
+  ScreenContentField,
+  AcceptanceFields,
+} from "@/components/reserve/ReserveFormFields";
+import { ContractDocument } from "@/components/reserve/ContractDocument";
 
 export default function ReserveFormPage() {
   const [isPending, startTransition] = useTransition();
@@ -36,6 +48,7 @@ export default function ReserveFormPage() {
     null,
   );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isContractOpen, setIsContractOpen] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   // Turnstile is opt-in infrastructure: until NEXT_PUBLIC_TURNSTILE_SITE_KEY
   // is configured in Vercel, don't render the widget or gate submission on
@@ -61,16 +74,25 @@ export default function ReserveFormPage() {
       email: "",
       phone: "",
       eventName: "",
-      eventDate: "",
+      eventStart: "",
       address: "",
       location: "",
       attendees: "",
       eventType: "",
       additionalInfo: "",
+      deploymentAt: "",
+      screenTier: "",
+      screenContentDetails: "",
+      acceptTerms: false,
+      acceptContract: false,
       website: "",
       turnstileToken: "",
     },
   });
+
+  const formValues = form.watch();
+  const acceptTerms = form.watch("acceptTerms");
+  const acceptContract = form.watch("acceptContract");
 
   const handleTurnstileToken = (token: string | null) => {
     setTurnstileToken(token);
@@ -90,6 +112,7 @@ export default function ReserveFormPage() {
             // Clear form
             form.reset();
             setTurnstileToken(null);
+            setIsContractOpen(false);
           } else if (data.error) {
             setFormStatus("error");
           }
@@ -244,18 +267,19 @@ export default function ReserveFormPage() {
                   />
                   <FormField
                     control={form.control}
-                    name="eventDate"
+                    name="eventStart"
                     render={({ field }) => (
                       <FormItem>
-                        <Label htmlFor="event-date" className="text-black">
-                          {forms.reserve.fields.eventDate}
+                        <Label htmlFor="event-start" className="text-black">
+                          {forms.reserve.fields.eventStart}
                         </Label>
                         <FormControl>
                           <Input
-                            id="event-date"
-                            type="date"
+                            id="event-start"
+                            type="datetime-local"
                             className="bg-white border-gray-300 text-black mt-1"
                             {...field}
+                            value={(field.value as unknown as string) ?? ""}
                           />
                         </FormControl>
                         <FormMessage />
@@ -307,6 +331,18 @@ export default function ReserveFormPage() {
                     )}
                   />
                 </div>
+
+                <DeploymentField
+                  control={form.control}
+                  watch={form.watch}
+                  copy={forms.reserve}
+                />
+
+                <ScreenContentField
+                  control={form.control}
+                  watch={form.watch}
+                  copy={forms.reserve}
+                />
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <FormField
@@ -394,10 +430,21 @@ export default function ReserveFormPage() {
                   <TurnstileWidget onToken={handleTurnstileToken} />
                 )}
 
+                <AcceptanceFields
+                  control={form.control}
+                  copy={forms.reserve}
+                  onOpenContract={() => setIsContractOpen(true)}
+                />
+
                 <Button
                   type="submit"
                   className="w-full bg-black hover:bg-gray-800 py-3 text-sm my-5"
-                  disabled={isPending || (turnstileEnabled && !turnstileToken)}
+                  disabled={
+                    isPending ||
+                    !acceptTerms ||
+                    !acceptContract ||
+                    (turnstileEnabled && !turnstileToken)
+                  }
                 >
                   {isPending ? forms.reserve.submitting : forms.reserve.submit}
                 </Button>
@@ -415,6 +462,28 @@ export default function ReserveFormPage() {
           </CardContent>
         </Card>
       </div>
+
+      <Dialog open={isContractOpen} onOpenChange={setIsContractOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>{forms.reserve.fields.acceptContractLinkText}</DialogTitle>
+          </DialogHeader>
+          <ContractDocument
+            data={{
+              companyName: formValues.organizer ?? "",
+              venueAddress: formValues.address ?? "",
+              eventType: formValues.eventType ?? "",
+              eventLocation: formValues.location ?? "",
+              eventStart: (formValues.eventStart as unknown as string) ?? "",
+              expectedAttendees:
+                formValues.attendees != null ? String(formValues.attendees) : "",
+              deploymentAt: (formValues.deploymentAt as unknown as string) ?? "",
+              screenTier: (formValues.screenTier as any) ?? "",
+            }}
+          />
+        </DialogContent>
+      </Dialog>
+
       <Footer />
     </div>
   );

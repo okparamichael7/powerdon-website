@@ -434,12 +434,20 @@ export const enMessages = {
       pilotGoalsRequired: "Please describe your testing goals",
       disposableEmail: "Please use a permanent email address",
       invalidPhone: "Please enter a valid Dutch phone number (e.g. 0612345678)",
-      eventDateTooSoon: "Event date must be at least 3 days from today",
+      eventDateTooSoon:
+        "Event start date and time must be at least 3 days from today",
       locationRequired: "Event location is required",
       attendeesRequired: "Expected attendees is required",
       attendeesRange: "Expected attendees must be between 1 and 1,000,000",
       eventTypeRequired: "Event type is required",
       turnstileRequired: "Please complete the verification challenge",
+      deploymentRequired: "Please choose a deployment moment",
+      deploymentOutOfWindow:
+        "The deployment moment must be within 24 hours before the event start (and not after it)",
+      screenTierRequired: "Please make a choice about screen usage",
+      screenContentRequired: "Please describe the content you'd like to show",
+      acceptTermsRequired: "You must accept the terms of service",
+      acceptContractRequired: "You must accept the partnership agreement",
     },
     contact: {
       title: "Send us a Message",
@@ -521,12 +529,22 @@ export const enMessages = {
         email: "Email *",
         phone: "Phone *",
         eventName: "Event name *",
-        eventDate: "Event date *",
+        eventStart: "Event date & start time *",
         address: "Venue address *",
         location: "Event location *",
         attendees: "Expected attendees *",
         eventType: "Event type *",
         additionalInfo: "Additional information",
+        deploymentAt: "Desired deployment moment *",
+        screenUsageQuestion:
+          "Would you like to show your own event content on the LED screen?",
+        screenUsageHelper:
+          "Your choice determines the partnership tier (tier) in the agreement.",
+        screenContentDetails: "What content would you like to show? *",
+        acceptTerms: "I agree to the terms of service and privacy policy.",
+        acceptContractPrefix: "I have read the ",
+        acceptContractLinkText: "product & services agreement",
+        acceptContractSuffix: " and agree to it.",
       },
       placeholders: {
         address: "Street address, postal code, city, country",
@@ -535,7 +553,14 @@ export const enMessages = {
         eventType: "e.g. Music Festival, Conference, Trade Show",
         additionalInfo:
           "Tell us about your event, target audience, current sponsors, and any specific requirements for charging stations...",
+        screenContentDetails:
+          "E.g. program/line-up, sponsor logos, announcements, social media feed, QR code...",
       },
+      deploymentHelp:
+        "Choose a moment within 24 hours before your event starts. Installation takes about 20 minutes.",
+      deploymentHelpNoDate:
+        "Choose your event's date and start time above first.",
+      openContract: "Read the agreement",
       nextStepsTitle: "What happens next?",
       nextSteps: [
         "We will review your application within 48 hours",
