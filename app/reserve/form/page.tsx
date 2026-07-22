@@ -36,6 +36,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import {
+  EventStartField,
   DeploymentField,
   ScreenContentField,
   AcceptanceFields,
@@ -245,48 +246,31 @@ export default function ReserveFormPage() {
                   />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="eventName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <Label htmlFor="event-name" className="text-black">
-                          {forms.reserve.fields.eventName}
-                        </Label>
-                        <FormControl>
-                          <Input
-                            id="event-name"
-                            className="bg-white border-gray-300 text-black mt-1"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="eventStart"
-                    render={({ field }) => (
-                      <FormItem>
-                        <Label htmlFor="event-start" className="text-black">
-                          {forms.reserve.fields.eventStart}
-                        </Label>
-                        <FormControl>
-                          <Input
-                            id="event-start"
-                            type="datetime-local"
-                            className="bg-white border-gray-300 text-black mt-1"
-                            {...field}
-                            value={(field.value as unknown as string) ?? ""}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+                <FormField
+                  control={form.control}
+                  name="eventName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <Label htmlFor="event-name" className="text-black">
+                        {forms.reserve.fields.eventName}
+                      </Label>
+                      <FormControl>
+                        <Input
+                          id="event-name"
+                          className="bg-white border-gray-300 text-black mt-1"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <EventStartField
+                  control={form.control}
+                  copy={forms.reserve}
+                  locale={locale}
+                />
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <FormField
@@ -332,18 +316,6 @@ export default function ReserveFormPage() {
                   />
                 </div>
 
-                <DeploymentField
-                  control={form.control}
-                  watch={form.watch}
-                  copy={forms.reserve}
-                />
-
-                <ScreenContentField
-                  control={form.control}
-                  watch={form.watch}
-                  copy={forms.reserve}
-                />
-
                 <div className="grid md:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
@@ -366,27 +338,40 @@ export default function ReserveFormPage() {
                       </FormItem>
                     )}
                   />
+                  <FormField
+                    control={form.control}
+                    name="eventType"
+                    render={({ field }) => (
+                      <FormItem>
+                        <Label htmlFor="event-type" className="text-black">
+                          {forms.reserve.fields.eventType}
+                        </Label>
+                        <FormControl>
+                          <Input
+                            id="event-type"
+                            className="bg-white border-gray-300 text-black mt-1"
+                            placeholder={forms.reserve.placeholders.eventType}
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                 </div>
 
-                <FormField
+                <DeploymentField
                   control={form.control}
-                  name="eventType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <Label htmlFor="event-type" className="text-black">
-                        {forms.reserve.fields.eventType}
-                      </Label>
-                      <FormControl>
-                        <Input
-                          id="event-type"
-                          className="bg-white border-gray-300 text-black mt-1"
-                          placeholder={forms.reserve.placeholders.eventType}
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  watch={form.watch}
+                  setValue={form.setValue}
+                  copy={forms.reserve}
+                  locale={locale}
+                />
+
+                <ScreenContentField
+                  control={form.control}
+                  watch={form.watch}
+                  copy={forms.reserve}
                 />
 
                 <FormField

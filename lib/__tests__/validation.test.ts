@@ -11,6 +11,19 @@ function isoDateDaysFromNow(days: number): string {
   return date.toISOString().split("T")[0];
 }
 
+// Event start N days out at an explicit local time. Deployment-window
+// fixtures need a pinned time-of-day (not just a date) because the window
+// rule itself now branches on whether the event starts before or at/after
+// noon — leaving the hour to whatever the test happens to run at would make
+// these tests flaky across timezones.
+function eventStartAt(days: number, time: string): string {
+  const date = new Date();
+  date.setDate(date.getDate() + days);
+  const [hours, minutes] = time.split(":").map(Number);
+  date.setHours(hours, minutes, 0, 0);
+  return toLocalInputValue(date);
+}
+
 // Derives a datetime-local-ish value a given number of hours before the
 // supplied event start, so deployment-window fixtures stay correct
 // regardless of what time of day the test happens to run.
@@ -27,7 +40,10 @@ function hoursBeforeEventStart(eventStartIso: string, hours: number): string {
   );
 }
 
-const eventStart = isoDateDaysFromNow(30);
+// Pinned before noon so these fixtures exercise the strict "exactly 24h
+// before" rule, not the noon+ day-before relaxation (covered separately
+// below).
+const eventStart = eventStartAt(30, "09:00");
 
 const validPayload = {
   organizer: "Acme Events BV",
@@ -104,6 +120,49 @@ describe("createReserveSchema", () => {
       deploymentAt: hoursBeforeEventStart(eventStart, 0),
     });
     expect(result.success).toBe(true);
+  });
+
+  // For events starting at/after noon, deployment may start as early as
+  // 10:00 the day before instead of being pinned to the exact 24h mark.
+  describe("noon+ events allow an earlier day-before deployment", () => {
+    const noonEventStart = eventStartAt(30, "14:00");
+
+    it("accepts deployment at 10:00 the day before (the new floor)", () => {
+      const result = schema.safeParse({
+        ...validPayload,
+        eventStart: noonEventStart,
+        deploymentAt: hoursBeforeEventStart(noonEventStart, 28), // 10:00 prior day
+      });
+      expect(result.success).toBe(true);
+    });
+
+    it("rejects deployment before 10:00 the day before", () => {
+      const result = schema.safeParse({
+        ...validPayload,
+        eventStart: noonEventStart,
+        deploymentAt: hoursBeforeEventStart(noonEventStart, 29), // 09:00 prior day
+      });
+      expect(result.success).toBe(false);
+    });
+
+    it("accepts a deployment moment more than 24h before a noon+ event", () => {
+      const result = schema.safeParse({
+        ...validPayload,
+        eventStart: noonEventStart,
+        deploymentAt: hoursBeforeEventStart(noonEventStart, 26), // 12:00 prior day
+      });
+      expect(result.success).toBe(true);
+    });
+
+    it("keeps the strict 24h floor for events starting just before noon", () => {
+      const lateMorningEventStart = eventStartAt(30, "11:59");
+      const result = schema.safeParse({
+        ...validPayload,
+        eventStart: lateMorningEventStart,
+        deploymentAt: hoursBeforeEventStart(lateMorningEventStart, 25),
+      });
+      expect(result.success).toBe(false);
+    });
   });
 
   it("rejects an unknown screen tier", () => {

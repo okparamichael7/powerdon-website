@@ -109,7 +109,8 @@
       "email": "E-mail *",
       "phone": "Telefoon *",
       "eventName": "Naam van het evenement *",
-      "eventStart": "Datum & starttijd van het evenement *",
+      "eventDate": "Datum van het evenement *",
+      "startTime": "Starttijd *",
       "address": "Locatieadres *",
       "location": "Plaats van het evenement *",
       "attendees": "Verwacht aantal bezoekers *",
@@ -119,6 +120,23 @@
       "screenUsageQuestion": "Wilt u het scherm gebruiken om uw eigen evenementcontent te tonen?",
       "screenUsageHelper": "Uw keuze bepaalt het samenwerkingsniveau (tier) in de overeenkomst.",
       "screenContentDetails": "Welke content wilt u tonen? *",
+      "screenTiers": {
+        "none": {
+          "label": "Nee — alleen het standaard festivalscherm",
+          "contractTier": "Tier 1 — Basis",
+          "revShare": "30% aandeel in de verhuurinkomsten"
+        },
+        "event_display": {
+          "label": "Ja — programma, aankondigingen en QR-code tonen",
+          "contractTier": "Tier 2 — Evenementweergave inbegrepen",
+          "revShare": "20% aandeel + beperkte advertentierotatie (40%)"
+        },
+        "full_branding": {
+          "label": "Ja — volledige controle over het scherm (eigen branding)",
+          "contractTier": "Tier 3 — Volledige brandingcontrole",
+          "revShare": "Geen aandeel in de verhuurinkomsten"
+        }
+      },
       "acceptTerms": "Ik ga akkoord met de gebruiksvoorwaarden en het privacybeleid.",
       "acceptContractPrefix": "Ik heb de ",
       "acceptContractLinkText": "product- en dienstenovereenkomst",
@@ -130,10 +148,16 @@
       "attendees": "bijv. 5.000",
       "eventType": "bijv. muziekfestival, congres of beurs",
       "additionalInfo": "Vertel ons meer over je evenement, doelgroep, huidige sponsoren en eventuele wensen voor de laadstations...",
-      "screenContentDetails": "Bijv. programma/line-up, sponsorlogo's, aankondigingen, social media feed, QR-code..."
+      "screenContentDetails": "Bijv. programma/line-up, sponsorlogo's, aankondigingen, social media feed, QR-code...",
+      "selectDate": "Selecteer datum",
+      "selectTime": "Selecteer tijd",
+      "selectScreenTier": "Selecteer een optie"
     },
-    "deploymentHelp": "Kies een moment binnen 24 uur vóór de start van uw evenement. De installatie duurt ongeveer 20 minuten.",
+    "deploymentHelp": "Kies een moment binnen 24 uur vóór de start van uw evenement (vanaf 10:00 de dag ervoor, als uw evenement om 12:00 of later begint). De installatie duurt ongeveer 20 minuten.",
     "deploymentHelpNoDate": "Kies eerst de datum en starttijd van uw evenement hierboven.",
+    "deploymentDayBefore": "Dag vóór het evenement",
+    "deploymentDayOf": "Dag van het evenement",
+    "timePickerDone": "Klaar",
     "openContract": "Lees de overeenkomst",
     "nextStepsTitle": "Wat gebeurt er hierna?",
     "nextSteps": [

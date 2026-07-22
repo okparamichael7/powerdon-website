@@ -2,14 +2,17 @@ import { z } from "zod";
 import { differenceInCalendarDays } from "date-fns";
 import { enMessages } from "@/lib/i18n/messages/en";
 import { isDisposableEmail } from "@/lib/disposable-domains";
-import { SCREEN_TIER_IDS, isDeploymentWithinWindow } from "@/lib/reserve-form-schema";
+import {
+  SCREEN_TIER_IDS,
+  isDeploymentWithinWindow,
+  MIN_EVENT_LEAD_DAYS,
+} from "@/lib/reserve-form-schema";
 
 type ValidationCopy = typeof enMessages.forms.validation;
 
 // Matches Dutch mobile/landline numbers after stripping spaces/dashes/parens,
 // e.g. 0612345678, +31612345678, 0031612345678.
 const DUTCH_PHONE_REGEX = /^(\+31|0031|0)([1-9][0-9]{8})$/;
-const MIN_EVENT_LEAD_DAYS = 3;
 
 export function createCampaignSchema(copy: ValidationCopy) {
   return z.object({

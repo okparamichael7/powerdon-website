@@ -529,7 +529,8 @@ export const enMessages = {
         email: "Email *",
         phone: "Phone *",
         eventName: "Event name *",
-        eventStart: "Event date & start time *",
+        eventDate: "Event date *",
+        startTime: "Start time *",
         address: "Venue address *",
         location: "Event location *",
         attendees: "Expected attendees *",
@@ -541,6 +542,23 @@ export const enMessages = {
         screenUsageHelper:
           "Your choice determines the partnership tier (tier) in the agreement.",
         screenContentDetails: "What content would you like to show? *",
+        screenTiers: {
+          none: {
+            label: "No — only the standard festival screen",
+            contractTier: "Tier 1 — Basic",
+            revShare: "30% share of rental revenue",
+          },
+          event_display: {
+            label: "Yes — show programme, announcements and QR code",
+            contractTier: "Tier 2 — Event display included",
+            revShare: "20% share + limited ad rotation (40%)",
+          },
+          full_branding: {
+            label: "Yes — full control over the screen (own branding)",
+            contractTier: "Tier 3 — Full branding control",
+            revShare: "No share of rental revenue",
+          },
+        },
         acceptTerms: "I agree to the terms of service and privacy policy.",
         acceptContractPrefix: "I have read the ",
         acceptContractLinkText: "product & services agreement",
@@ -555,11 +573,17 @@ export const enMessages = {
           "Tell us about your event, target audience, current sponsors, and any specific requirements for charging stations...",
         screenContentDetails:
           "E.g. program/line-up, sponsor logos, announcements, social media feed, QR code...",
+        selectDate: "Select date",
+        selectTime: "Select time",
+        selectScreenTier: "Select an option",
       },
       deploymentHelp:
-        "Choose a moment within 24 hours before your event starts. Installation takes about 20 minutes.",
+        "Choose a moment within 24 hours before your event starts (from 10:00 the day before, if your event starts at noon or later). Installation takes about 20 minutes.",
       deploymentHelpNoDate:
         "Choose your event's date and start time above first.",
+      deploymentDayBefore: "Day before event",
+      deploymentDayOf: "Day of event",
+      timePickerDone: "Done",
       openContract: "Read the agreement",
       nextStepsTitle: "What happens next?",
       nextSteps: [
