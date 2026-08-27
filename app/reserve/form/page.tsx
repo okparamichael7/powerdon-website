@@ -48,6 +48,9 @@ export default function ReserveFormPage() {
   const [formStatus, setFormStatus] = useState<"success" | "error" | null>(
     null,
   );
+  const [formErrorMessage, setFormErrorMessage] = useState<string | null>(
+    null,
+  );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isContractOpen, setIsContractOpen] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
@@ -107,6 +110,7 @@ export default function ReserveFormPage() {
         .then((data) => {
           if (data.success) {
             setFormStatus("success");
+            setFormErrorMessage(null);
             trackFormSubmit("reserve_station_form");
             trackConversion("reserve_station_application", 1);
 
@@ -116,16 +120,23 @@ export default function ReserveFormPage() {
             setIsContractOpen(false);
           } else if (data.error) {
             setFormStatus("error");
+            // Show the server's actual reason (invalid data, bot check,
+            // rate limit, internal error all say something different) —
+            // collapsing them all to one generic string is what made this
+            // kind of failure impossible to diagnose from the UI alone.
+            setFormErrorMessage(data.error);
           }
         })
-        .catch((err) => {
+        .catch(() => {
           setFormStatus("error");
+          setFormErrorMessage(forms.feedback.error);
         });
     });
   };
 
   const onError = () => {
     setFormStatus("error");
+    setFormErrorMessage(forms.feedback.invalid);
   };
 
   return (
@@ -440,7 +451,9 @@ export default function ReserveFormPage() {
                   <SuccessMessage message={forms.feedback.success} />
                 )}
                 {formStatus === "error" && (
-                  <ErrorMessage message={forms.feedback.error} />
+                  <ErrorMessage
+                    message={formErrorMessage ?? forms.feedback.error}
+                  />
                 )}
               </form>
             </FormContainer>

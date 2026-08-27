@@ -3,7 +3,8 @@
     "success": "Je aanvraag is goed ontvangen.",
     "error": "Er ging iets mis bij het versturen van het formulier.",
     "invalid": "De ingevulde gegevens zijn niet geldig.",
-    "internalError": "Er ging iets mis aan onze kant."
+    "internalError": "Er ging iets mis aan onze kant.",
+    "rateLimited": "Je hebt dit formulier onlangs al verzonden. Wacht even voordat je het opnieuw probeert."
   },
   "validation": {
     "companyRequired": "Bedrijfsnaam is verplicht",

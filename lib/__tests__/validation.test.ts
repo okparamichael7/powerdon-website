@@ -218,10 +218,18 @@ describe("createReserveSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("rejects a non-Dutch phone number", () => {
+  it("accepts an international phone number with a country code", () => {
     const result = schema.safeParse({
       ...validPayload,
       phone: "+14155552671",
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects a phone number that's too short to be real", () => {
+    const result = schema.safeParse({
+      ...validPayload,
+      phone: "+3161",
     });
     expect(result.success).toBe(false);
   });

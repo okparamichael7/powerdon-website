@@ -31,25 +31,36 @@ export async function verifyTurnstile(
   const body = new URLSearchParams({ secret, response: token });
   if (remoteIp) body.set("remoteip", remoteIp);
 
-  try {
-    const res = await fetch(VERIFY_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body,
-    });
+  // One retry for transient failures only (a network blip on a mobile
+  // connection, or Cloudflare returning a momentary 5xx) — a real "this
+  // token is bad/expired" response from Cloudflare is returned as-is on
+  // the first attempt, not retried.
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const res = await fetch(VERIFY_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
 
-    if (!res.ok) {
-      return { success: false, errorCodes: [`http-${res.status}`] };
+      if (!res.ok) {
+        if (res.status >= 500 && attempt === 0) continue;
+        return { success: false, errorCodes: [`http-${res.status}`] };
+      }
+
+      const data = (await res.json()) as {
+        success: boolean;
+        "error-codes"?: string[];
+      };
+
+      return { success: data.success, errorCodes: data["error-codes"] };
+    } catch (error) {
+      if (attempt === 0) continue;
+      console.error("[turnstile] verification request failed:", error);
+      return { success: false, errorCodes: ["network-error"] };
     }
-
-    const data = (await res.json()) as {
-      success: boolean;
-      "error-codes"?: string[];
-    };
-
-    return { success: data.success, errorCodes: data["error-codes"] };
-  } catch (error) {
-    console.error("[turnstile] verification request failed:", error);
-    return { success: false, errorCodes: ["network-error"] };
   }
+
+  // Unreachable — the loop above always returns on its second iteration.
+  return { success: false, errorCodes: ["network-error"] };
 }

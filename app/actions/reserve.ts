@@ -70,7 +70,7 @@ export async function reserve(
       console.warn(
         `[form-abuse] ${rateLimitResult.reason} — ip=${ip} ua=${userAgent}`,
       );
-      return { error: messages.forms.feedback.error, status: 429 };
+      return { error: messages.forms.feedback.rateLimited, status: 429 };
     }
 
     // 5. Trust scoring for human review — never blocks submission

@@ -10,9 +10,11 @@ import {
 
 type ValidationCopy = typeof enMessages.forms.validation;
 
-// Matches Dutch mobile/landline numbers after stripping spaces/dashes/parens,
-// e.g. 0612345678, +31612345678, 0031612345678.
-const DUTCH_PHONE_REGEX = /^(\+31|0031|0)([1-9][0-9]{8})$/;
+// Matches a phone number after stripping spaces/dashes/parens. Accepts a
+// Dutch national number (e.g. 0612345678) as well as any international
+// number with an explicit country code, e.g. +31612345678, 0031612345678,
+// +32470123456, +1 (leads aren't only Dutch organizers).
+const PHONE_REGEX = /^(?:\+|00)[1-9]\d{7,14}$|^0[1-9]\d{8}$/;
 
 export function createCampaignSchema(copy: ValidationCopy) {
   return z.object({
@@ -62,7 +64,7 @@ export function createReserveSchema(copy: ValidationCopy) {
         .string()
         .min(1, copy.phoneRequired)
         .refine(
-          (phone) => DUTCH_PHONE_REGEX.test(phone.replace(/[\s\-()]/g, "")),
+          (phone) => PHONE_REGEX.test(phone.replace(/[\s\-()]/g, "")),
           copy.invalidPhone,
         ),
       eventName: z

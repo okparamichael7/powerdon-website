@@ -26,14 +26,23 @@ function getLimiters(): { ip: Ratelimit; email: Ratelimit } | null {
 
   if (!ipLimiter || !emailLimiter) {
     const redis = new Redis({ url, token });
+    // Mobile carriers commonly put many unrelated customers behind one
+    // shared (CGNAT) IP, and a legitimate applicant who hits a transient
+    // failure (flaky mobile network, a momentarily-expired bot-challenge
+    // token) has to retry the same long form more than once or twice.
     ipLimiter = new Ratelimit({
       redis,
-      limiter: Ratelimit.slidingWindow(3, "1 h"),
+      limiter: Ratelimit.slidingWindow(10, "1 h"),
       prefix: "powerdon:form:ip",
     });
+    // A single lead (e.g. a festival organizer or agency) may legitimately
+    // submit applications for several different events in the same day —
+    // this is only a backstop against one address spamming the form, not a
+    // one-request-per-day cap. Submissions are reviewed manually on
+    // receipt, so this can stay generous.
     emailLimiter = new Ratelimit({
       redis,
-      limiter: Ratelimit.slidingWindow(2, "24 h"),
+      limiter: Ratelimit.slidingWindow(20, "24 h"),
       prefix: "powerdon:form:email",
     });
   }

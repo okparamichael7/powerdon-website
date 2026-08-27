@@ -81,9 +81,16 @@ export function splitLocalDateTime(
 }
 
 // Recombines date + time parts back into the "YYYY-MM-DDTHH:mm" format.
+// Deliberately does NOT default a missing timePart to "00:00": that would
+// make picking only a date silently commit to a midnight start time the
+// user never chose, while the time wheel still displays it as if it were a
+// real selection. Leaving the trailing "T" empty produces an Invalid Date
+// once coerced (see lib/__tests__/validation.test.ts), which correctly
+// blocks submission and re-shows the picker as unset until a time is
+// actually picked.
 export function combineLocalDateTime(datePart: string, timePart: string): string {
   if (!datePart) return "";
-  return `${datePart}T${timePart || "00:00"}`;
+  return `${datePart}T${timePart}`;
 }
 
 // Earliest selectable event date, mirroring createReserveSchema's

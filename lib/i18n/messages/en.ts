@@ -418,6 +418,8 @@ export const enMessages = {
       error: "There was an error submitting the form.",
       invalid: "Invalid data",
       internalError: "Internal Server Error",
+      rateLimited:
+        "You've submitted this form recently. Please wait a bit before trying again.",
     },
     validation: {
       companyRequired: "Company name is required",
